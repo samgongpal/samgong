@@ -1,0 +1,138 @@
+@charset "UTF-8";
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Fixedays;
+    padding: 10px;
+    background: white;
+}
+/* 제목 */
+header {
+    padding: 20px;
+    text-align: center; 
+}
+header a{
+	font-size: 50px;
+	text-decoration: none;
+	color: black;
+}
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background: #333;
+}
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#main-menu > li {
+  float: left;
+  position: relative;
+}
+
+#main-menu > li > a {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  display: block;
+  padding: 14px 36px;
+  border-right: 1px solid rgba(0,0,0,0.15);
+}
+
+#main-menu > li:nth-child(1) > a {
+  border-left: 1px solid rgba(0,0,0,0.15);
+}
+
+#sub-menu {
+  position: absolute;
+  width: 100%;
+  background: #f2f2f2;
+  border-radius: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease-in;
+}
+
+#sub-menu > li {
+  padding: 10px 10px;
+  text-align: center;
+}
+
+#sub-menu > li >  a {
+  color: #333;
+  text-decoration: none;
+}
+
+#main-menu > li:hover #sub-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+#sub-menu > li >  a:hover {
+  text-decoration: underline;
+}
+/* Left column */
+.leftcolumn {   
+    float: left;
+    width: 75%;
+}
+/* Right column */
+.rightcolumn {
+    float: left;
+    width: 25%;
+    background-color: #f1f1f1;
+    padding-left: 20px;
+}
+/* 사진넣을곳 */
+.fakeimg {
+    background-color: #aaa;
+    min-width: 200px;
+    height: 300px;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 0.5rem;
+}
+
+.movie {
+	color: #f1f1f1;
+    background-color: #333;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Footer */
+footer {
+    padding: 5px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 700px) {
+    .leftcolumn, .rightcolumn {   
+        width: 100%;
+        padding: 0;
+    }
+    #main-menu > li > a {
+    	padding: 14px 10px;
+    }
+}
+/* 반응형 레이아웃  */
+@media screen and (max-width: 400px) {
+    .topnav a {
+        float: none;
+        width: 100%;
+    }
+}
