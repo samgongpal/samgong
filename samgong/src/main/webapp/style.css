@@ -93,10 +93,9 @@ ul, li {
 /* 사진넣을곳 */
 .fakeimg {
     background-color: #aaa;
-    min-width: 200px;
+    min-width: 250px;
     height: 300px;
     padding: 20px;
-    margin: 10px;
     border-radius: 0.5rem;
 }
 
@@ -128,6 +127,10 @@ footer {
     #main-menu > li > a {
     	padding: 14px 10px;
     }
+    .fakeimg {
+    	margin-bottom: 20px;
+    }
+    
 }
 /* 반응형 레이아웃  */
 @media screen and (max-width: 400px) {

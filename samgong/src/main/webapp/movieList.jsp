@@ -14,6 +14,10 @@ Connection conn = DAO.getConnection();
 <title>현재상영작</title>
 <link rel="stylesheet" href="style.css">
 <style type="text/css">
+.fakeimg {
+	min-width: 200px;
+	margin: 20px;
+}
 @media screen and (min-width: 700px) {
 	.movie {
 		display: flex;
@@ -33,9 +37,14 @@ Connection conn = DAO.getConnection();
       <div class="fakeimg">영화사진</div>
  
       <div class="fakeimg">영화사진</div>
-  
+    </div>
+    
+    <div class="movie" >
       <div class="fakeimg">영화사진</div>
-      
+     
+      <div class="fakeimg">영화사진</div>
+ 
+      <div class="fakeimg">영화사진</div>
     </div>
 
 </section>
