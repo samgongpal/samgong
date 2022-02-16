@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.fakeimg {
+	min-width: 200px;
+	max-width: 250px;
+	margin: 20px;
+}
+@media screen and (min-width: 700px) {
+	.movie {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+.fakeimg:hover{
+	cursor: pointer;
+	background-color: pink;
+}
+botton{
+	margin-top: 20px;
+}

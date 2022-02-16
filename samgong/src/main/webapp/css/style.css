@@ -17,6 +17,15 @@ header a{
 	text-decoration: none;
 	color: black;
 }
+.box { /* header 부분 효과 미완성*/
+    display: block;
+    -webkit-transition:width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+    transition:width 2s, height 2s, background-color 2s, transform 2s;
+}
+.box:hover {
+    -webkit-transform:rotate(180deg);
+    transform:rotate(180deg);
+}
 nav {
   width: 100%;
   display: flex;
@@ -101,7 +110,6 @@ ul, li {
     background-size: cover;
     background-position: 50%;
 }
-
 .movie {
 	color: #f1f1f1;
     background-color: #333;
@@ -146,10 +154,6 @@ height: 100%;
     #main-menu > li > a {
     	padding: 14px 10px;
     }
-    .fakeimg {
-    	margin-bottom: 20px;
-    }
-    
 }
 /* 반응형 레이아웃  */
 @media screen and (max-width: 400px) {

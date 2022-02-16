@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>삼공시네마</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <%@ include file="topmenu.jsp" %>
