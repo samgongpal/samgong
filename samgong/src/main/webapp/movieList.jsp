@@ -32,19 +32,21 @@ Connection conn = DAO.getConnection();
 <section>
  
     <div class="movie" >
-      <div class="fakeimg">영화사진</div>
+      <div style="background-image:url('img/uncharted.jpg')" class="fakeimg">
+      <!-- background-image 배경으로 사진을 첨부해서 비율을 맞추도록합니다. -->
+      </div>
      
-      <div class="fakeimg">영화사진</div>
- 
-      <div class="fakeimg">영화사진</div>
+      <div style="background-image:url('img/uncharted.jpg')" class="fakeimg"></div>
+     
+      <div style="background-image:url('img/uncharted.jpg')" class="fakeimg"></div>
     </div>
     
     <div class="movie" >
-      <div class="fakeimg">영화사진</div>
+      <div style="background-image:url('img/uncharted.jpg')" class="fakeimg"></div>
      
-      <div class="fakeimg">영화사진</div>
+      <div style="background-image:url('img/uncharted.jpg')" class="fakeimg"></div>
  
-      <div class="fakeimg">영화사진</div>
+      <div style="background-image:url('img/uncharted.jpg')" class="fakeimg"></div>
     </div>
 
 </section>

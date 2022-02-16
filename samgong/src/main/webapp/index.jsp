@@ -14,7 +14,10 @@
     <div class="movie">
       <h2>영화제목</h2>
       <h5>날짜, 2022</h5>
-      <div class="fakeimg">영화사진</div>
+      <div class="videowrapper">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/4i0fJurJuXk"
+      frameborder="0" allowfullscreen></iframe>
+      </div>
       <p>출연진</p>
       <p>영화소개
       </p>
@@ -22,7 +25,10 @@
 	<div class="movie">
       <h2>영화제목</h2>
       <h5>날짜, 2022</h5>
-      <div class="fakeimg">영화사진</div>
+      <div class="videowrapper">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ebO37MbksIY"
+      frameborder="0" allowfullscreen></iframe>
+      </div>
       <p>출연진</p>
       <p>영화소개
       </p>
