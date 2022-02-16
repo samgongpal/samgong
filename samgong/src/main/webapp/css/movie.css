@@ -2,7 +2,7 @@
 
 .fakeimg {
 	min-width: 200px;
-	max-width: 250px;
+	max-width: 220px;
 	margin: 20px;
 }
 @media screen and (min-width: 700px) {
@@ -14,8 +14,10 @@
 }
 .fakeimg:hover{
 	cursor: pointer;
-	background-color: pink;
 }
-botton{
+.botton{
 	margin-top: 20px;
+}
+.videowrapper{
+	margin: 80px;
 }

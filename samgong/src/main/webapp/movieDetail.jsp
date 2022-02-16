@@ -22,7 +22,7 @@ Connection conn = DAO.getConnection();
 
     <div class="movie" >
     
-      <div style="background-image:url('img/uncharted.jpg'); margin:50px;" class="fakeimg">
+      <div style="background-image:url('img/uncharted.jpg')"class="fakeimg">
       <!-- background-image 배경으로 사진을 첨부해서 비율을 맞추도록합니다. -->
       </div>
       <!-- 영화설명 -->
@@ -32,13 +32,12 @@ Connection conn = DAO.getConnection();
       	<li>설명입니다.</li>
       	<li>설명입니다.</li>
       	<li>설명입니다.</li>
-        <li><button class="button">예매하기</button></li>
+        <li class="button"><button>예매하기</button></li>
       </ul>
     </div>
-  
-      <div class="videowrapper">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/4i0fJurJuXk"
-      frameborder="0" allowfullscreen></iframe>
+    
+      <div class="videowrapper" >
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/rB3x60FMwm0?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>   
  
 </section>
