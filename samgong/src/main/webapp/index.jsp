@@ -37,9 +37,9 @@
 <!-- 사이드 메뉴입니다. -->
 <div class="rightcolumn">
     <div class="movie">
-      <h2>About Me</h2>
+      <h2>Event</h2>
       
-      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+      <p>..</p>
     </div>
     <div class="movie">
       <h3>Popular Post</h3>

@@ -21,7 +21,7 @@
       <!-- background-image 배경으로 사진을 첨부해서 비율을 맞추도록합니다. -->
       </div>
      
-      <div style="background-image:url('img/uncharted.jpg')" class="fakeimg"></div>
+      <div style="background-image:url('img/death.jpg')" class="fakeimg"></div>
      
       <div style="background-image:url('img/uncharted.jpg')" class="fakeimg"></div>
     </div>
@@ -29,7 +29,7 @@
     <div class="movie" >
       <div style="background-image:url('img/uncharted.jpg')" class="fakeimg"></div>
      
-      <div style="background-image:url('img/uncharted.jpg')" class="fakeimg"></div>
+      <div style="background-image:url('img/death.jpg')" class="fakeimg"></div>
  
       <div style="background-image:url('img/uncharted.jpg')" class="fakeimg"></div>
     </div>
