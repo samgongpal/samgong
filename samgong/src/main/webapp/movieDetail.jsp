@@ -64,13 +64,11 @@ function fn_reservation(){
 </script>
 <section>
     <div class="movie" >
-    
-      <div style="background-image:url('img/<%= m_no %>.jpg')"class="fakeimg">
-      <!-- background-image 배경으로 사진을 첨부해서 비율을 맞추도록합니다. -->
-      
+      <div class="a">
+      <div style="background-image:url('img/<%= m_no %>.jpg');" class="fakeimg"></div>
+      <div class="c"><img src="img/rank<%= m_no %>.png"></div>
       </div>
-
-    
+  
       <!-- 영화설명 -->
       <ul>
       	

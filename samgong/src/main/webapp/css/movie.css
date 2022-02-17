@@ -2,7 +2,8 @@
 
 .fakeimg {	
 	min-width: 200px;
-	max-width: 220px;
+	max-width: 470px;
+	max-height: 640px;
 	margin: 20px;
 }
 @media screen and (min-width: 600px) {
@@ -20,7 +21,6 @@
 }
 button{
 	margin-top: 10px;
-	botton: 0;
 	padding: 0.5rem;
 	cursor: pointer;
 	border: 0;
@@ -30,4 +30,23 @@ button{
 }
 button:hover{
 	background-color: #333;
+}
+.a {
+    position: relative
+}
+.c {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+.a > .c {
+    display: block;
+}
+.right{
+	text-align: right;
+}
+.left{
+	text-align: left;
+	margin-bottom: -20px;
 }

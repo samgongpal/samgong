@@ -16,7 +16,7 @@ ResultSet rs = null;
 try{
 	  conn = DAO.getConnection();
 	  String sql = " SELECT count(*)cnt ";
-	         sql+= " FROM movie WHERE m_name LIKE '"+m_name+"%'";
+	         sql+= " FROM movie WHERE m_name LIKE '%"+m_name+"%'";
 	  ps = conn.prepareStatement(sql);
 	  rs = ps.executeQuery();
 	  rs.next();
