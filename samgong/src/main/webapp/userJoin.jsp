@@ -37,12 +37,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-  <script type="text/javascript" src="check.js">
-  </script>
+ 
 </head>
 <body>
   <section>
-    <form name="check_Join" onsubmit="return checkAll()" action="" method="post">
+    <form name="frm" onsubmit="return checkAll()" action="" method="post">
     <table>
       <input type="hidden" name="u_no" value=<%= max_no%>>
       <tr><th>아이디 : </th><td><input type="text" name="u_id" id="id" onkeydown="inputIdChk()">
@@ -91,11 +90,12 @@
       
       <tr><td colspan="2">
           <input type="submit" value="회원가입">
-          <input type="button" value="취소" onclick="window.location.href='Login.jsp'">
+          <input type="button" value="취소" onclick="window.location.href='userLogin.jsp'">
           </td>
       </tr>
     </table>
     </form>
   </section>
 </body>
+<script type="text/javascript" src="script/check.js"></script>
 </html>
