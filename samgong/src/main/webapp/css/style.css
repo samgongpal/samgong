@@ -16,6 +16,10 @@ header a{
 	font-size: 50px;
 	text-decoration: none;
 	color: black;
+	
+}
+header a:hover{
+	font-size: 55px;
 }
 .box { /* header 부분 효과 미완성*/
     display: block;

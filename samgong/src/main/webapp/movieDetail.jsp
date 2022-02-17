@@ -22,7 +22,7 @@ Connection conn = DAO.getConnection();
 
     <div class="movie" >
     
-      <div style="background-image:url('img/uncharted.jpg')"class="fakeimg">
+      <div style="background-image:url('img/1.jpg')"class="fakeimg">
       <!-- background-image 배경으로 사진을 첨부해서 비율을 맞추도록합니다. -->
       </div>
       
