@@ -3,7 +3,10 @@
 <%
    request.setCharacterEncoding("UTF-8");
    Object obj = session.getAttribute("u_no");
-   int u_no = (int)obj;
+   int u_no = -1;
+   if(obj != null){   
+	   u_no = (int)obj;
+   }
 %>
 <!DOCTYPE html>
 <html>

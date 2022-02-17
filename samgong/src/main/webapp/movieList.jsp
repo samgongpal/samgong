@@ -21,7 +21,7 @@
       <!-- background-image 배경으로 사진을 첨부해서 비율을 맞추도록합니다. -->
       </div>
      
-      <div style="background-image:url('img/2.jpg')" class="fakeimg"></div>
+      <div onclick="location='movieDetail.jsp?m_no=1' " style="background-image:url('img/2.jpg')" class="fakeimg"></div>
      
       <div style="background-image:url('img/3.jpg')" class="fakeimg"></div>
     </div>

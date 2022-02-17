@@ -5,7 +5,7 @@
   int u_no = -1;
   session.setAttribute("u_no", u_no);
 %>
-<scirpt>
+<script>
   alert("로그아웃합니다.");
   location.href="index.jsp";
-</scirpt>
+</script>
