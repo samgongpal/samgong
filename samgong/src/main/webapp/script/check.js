@@ -48,3 +48,7 @@ function checkAll() {
 		return false;
 	}
 }
+function fn_logincheck(){
+
+	
+}

@@ -6,6 +6,7 @@ body {
     font-family: Fixedays;
     padding: 10px;
     background: white;
+    text-align: center;
 }
 /* 제목 */
 header {

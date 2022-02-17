@@ -1,2 +1,22 @@
 @charset "UTF-8";
 
+.login{
+	display: flex;
+	justify-content: center;
+	
+}
+.login table{	
+	width:350px;
+	padding:20px;
+	border-top: 2px solid #333;
+}
+.login input{
+	width:100%;
+}
+.button input{
+	width:350px;
+	padding:10px;
+	color: white;
+	background-color: #333;
+	
+}

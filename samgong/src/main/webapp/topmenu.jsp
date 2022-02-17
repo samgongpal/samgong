@@ -17,8 +17,8 @@
 </head>
 <body>
  
-<header>
-  <h1><a href="index.jsp">삼공시네마</a>
+<header style="background-image:url('img/logo.webp')">
+  <h1><a href="index.jsp" >삼공시네마</a>
   </h1>
 
   <p>C U L T U R E P L E X</p>
@@ -37,7 +37,7 @@
         <li><a href="#" aria-label="subemnu">극장리스트</a></li>
       </ul>
     </li>
-    <li><a href="#" onclick="alert('로그인해주세요.')">예매</a>
+    <li><a href="#" onclick="location='userLogin.jsp'">예매</a>
       <ul id="sub-menu">
         <li><a href="#" aria-label="subemnu">빠른예매</a></li>
       </ul>

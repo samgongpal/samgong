@@ -16,6 +16,23 @@
 <%@ include file="topmenu.jsp"%>
 <section>
  	<div style="text-align:center"><h2>최신개봉작</h2></div>
+ 	<div align="left">
+ 	<select name="">
+ 		<option>장르별</option>
+ 		<option>액션</option>
+ 		<option>액션</option>
+ 		<option>액션</option>
+ 		<option>액션</option>
+ 	</select>
+ 	
+ 	</div>
+ 	<div align="right">
+ 	<select name=""><!--정렬하기위한 이름 -->
+ 		<option value=""></option>
+ 		<option value="">최신순위</option>
+ 		<option value="">테스트</option>
+ 	</select>
+ 	</div>
     <div class="movie" >
       <div onclick="location='movieDetail.jsp'" style="background-image:url('img/1.jpg')" class="fakeimg">
       <!-- background-image 배경으로 사진을 첨부해서 비율을 맞추도록합니다. -->
