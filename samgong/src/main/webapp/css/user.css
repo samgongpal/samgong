@@ -1,9 +1,10 @@
 @charset "UTF-8";
-
+section{
+	text-align: center;
+}
 .login{
 	display: flex;
-	justify-content: center;
-	
+	justify-content: center;	
 }
 .login table{	
 	width:350px;
@@ -12,11 +13,14 @@
 }
 .login input{
 	width:100%;
+	padding:10px;
+	font-size:15px;
 }
 .button input{
 	width:350px;
 	padding:10px;
 	color: white;
 	background-color: #333;
+	border-radius: 0.5rem;
 	
 }

@@ -34,30 +34,25 @@
  	</select>
  	</div>
     <div class="movie" >
-      <div onclick="location='movieDetail.jsp'" style="background-image:url('img/1.jpg')" class="fakeimg">
-      <!-- background-image 배경으로 사진을 첨부해서 비율을 맞추도록합니다. -->
-      </div>
+      <!-- background-image 배경으로 사진을 첨부해서 비율을 맞추도록합니다. -->	
+      <div onclick="location='movieDetail.jsp?m_no=1'" style="background-image:url('img/1.jpg')" class="fakeimg"></div>
+      
+      <div onclick="location='movieDetail.jsp?m_no=2'" style="background-image:url('img/2.jpg')" class="fakeimg"></div>
      
-      <div onclick="location='movieDetail.jsp?m_no=1' " style="background-image:url('img/2.jpg')" class="fakeimg"></div>
+      <div onclick="location='movieDetail.jsp?m_no=3'" style="background-image:url('img/3.jpg')" class="fakeimg"></div>
      
-      <div style="background-image:url('img/3.jpg')" class="fakeimg"></div>
+      <div onclick="location='movieDetail.jsp?m_no=4'" style="background-image:url('img/4.jpg')" class="fakeimg"></div>
     </div>
     
     <div class="movie" >
-      <div style="background-image:url('img/4.jpg')" class="fakeimg"></div>
+      <div onclick="location='movieDetail.jsp?m_no=5'" style="background-image:url('img/5.jpg')" class="fakeimg"></div>
      
-      <div style="background-image:url('img/5.jpg')" class="fakeimg"></div>
+      <div onclick="location='movieDetail.jsp?m_no=6'" style="background-image:url('img/6.jpg')" class="fakeimg"></div>
  
-      <div style="background-image:url('img/6.jpg')" class="fakeimg"></div>
+      <div onclick="location='movieDetail.jsp?m_no=7'" style="background-image:url('img/7.jpg')" class="fakeimg"></div>
+      
+      <div onclick="location='movieDetail.jsp?m_no=8'" style="background-image:url('img/8.jpg')" class="fakeimg"></div>
     </div>
-    <div class="movie" >
-      <div style="background-image:url('img/7.jpg')" class="fakeimg"></div>
-     
-      <div style="background-image:url('img/8.jpg')" class="fakeimg"></div>
- 
-      <div style="background-image:url('img/9.jpg')" class="fakeimg"></div>
-    </div>
-
 </section>
 
 <footer>
