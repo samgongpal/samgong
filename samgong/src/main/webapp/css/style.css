@@ -117,9 +117,6 @@ ul, li {
 /* 사진넣을곳 */
 .fakeimg {
     background-color: #aaa;
-    min-width: 220px;
-    height: 315px;
-   
     border-radius: 0.5rem;
     /*포스터사진의 비율을 맞춰줍니다.*/
     background-size: cover;

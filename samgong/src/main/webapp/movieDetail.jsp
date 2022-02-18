@@ -15,12 +15,12 @@
 	
 	try{
 		conn = DAO.getConnection();
-		String sql = "select * from movie where m_no = "+m_no;
+		String sql = "SELECT * FROM movie WHERE m_no = "+m_no;
 		ps = conn.prepareStatement(sql);
 		rs = ps.executeQuery();
 		
 		if(rs.next()){
-			movie[0] = rs.getInt("m_no") + "";
+			movie[0] = rs.getString("m_no");
 			movie[1] = rs.getString("m_name");
 			movie[2] = rs.getString("m_dir");
 			movie[3] = rs.getString("m_actor");
@@ -28,16 +28,17 @@
 			movie[5] = rs.getString("m_sdate");
 			movie[6] = rs.getString("m_edate");
 			movie[7] = rs.getString("m_grade");
-			movie[8] = rs.getInt("m_rtime") + "";
-			movie[9] = rs.getInt("m_view") + "";
+			movie[8] = rs.getString("m_rtime");
+			movie[9] = rs.getString("m_view");
 			movie[10] = rs.getString("m_info");
-		}
-		
+		}	
 		conn.close();
 		ps.close();
 		rs.close();
 		
-	}catch(Exception e){}
+	}catch(Exception e){
+		e.printStackTrace(); 
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -47,10 +48,12 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/movie.css">
 <style>
+h1{
+	font-size:40px;
+}
 .fakeimg{
 	min-width: 350px;	
 	min-height: 500px;	
-	margin-right: 5rem;
 }
 .fakeimg:hover{
 	opacity: 1;
@@ -61,9 +64,9 @@
 <%@ include file="topmenu.jsp"%>
 <script type="text/javascript">
 function fn_reservation(){
-	if(<%= u_no %> == -1){
+	if(<%= session_no %> == null || <%= session_no %>.equals("")){
 		alert("로그인하세요");
-		location.href="#"; // 로그인페이지
+		location.href="userLogin.jsp"; // 로그인페이지
 	}
 	else{
 		alert("로그확인");

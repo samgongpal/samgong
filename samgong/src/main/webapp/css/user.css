@@ -2,7 +2,8 @@
 section{
 	text-align: center;
 }
-.login{
+.login,.join{
+	padding: 10px;
 	display: flex;
 	justify-content: center;	
 }
@@ -11,16 +12,37 @@ section{
 	padding:20px;
 	border-top: 2px solid #333;
 }
-.login input{
+.login input,.join input{
 	width:100%;
 	padding:10px;
 	font-size:15px;
+	opacity: 0.8;
+	border-radius: 0.5rem;
+	border: 0;
 }
 .button input{
 	width:350px;
-	padding:10px;
+	margin: 2px;
+	padding: 15px;
 	color: white;
 	background-color: #333;
 	border-radius: 0.5rem;
-	
+	border: 0;
+	font-size: 17px;
 }
+.button input:hover{
+	cursor: pointer;
+	color: #333;
+	background-color: papayawhip;
+	border: 1px solid #333;
+}
+.join table{
+	width:400px;
+	border-radius: 2rem;
+	text-align: left;
+}
+.join table,.join td{
+	border-collapse: collapse;
+	padding: 3px;
+}
+

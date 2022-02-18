@@ -1,10 +1,9 @@
 @charset "UTF-8";
 
 .fakeimg {	
-	min-width: 220px;
-	max-width: 470px;
-	min-height: 314px;
-	max-height: 640px;
+	min-width: 300px;	
+	min-height: 443px;	
+	
 	cursor: pointer;
 	margin: 20px;
 }
@@ -14,10 +13,13 @@
 }
 button{
 	margin-top: 10px;
-	padding: 0.5rem;
+	padding-right: 1.2rem;
+	padding-left: 1.2rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
 	cursor: pointer;
 	border: 0;
-	border-radius: 0.1rem;
+	border-radius: 0.2rem;
 	color: #f2f2f2;
 	background-color: #539cae;
 }
@@ -43,7 +45,10 @@ button:hover{
 	text-align: left;
 	margin-bottom: -20px;
 }
-@media screen and (min-width: 650px) {
+.videowrapper{
+	margin: 1rem;
+}
+@media screen and (min-width: 600px) {
 	.movie {
 		display: flex;
 		justify-content: center;
@@ -52,5 +57,9 @@ button:hover{
 	.videowrapper{
 		margin: 5rem;
 		border-radius: 0.5rem;
+	}
+	.fakeimg{
+		min-width: 200px;
+		min-height: 296px;
 	}
 }

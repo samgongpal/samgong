@@ -1,16 +1,28 @@
-<%@page import="DBPKG.DAO"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.sql.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="DBPKG.DAO"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.text.SimpleDateFormat"%>
+
+<%
+String strReferer = request.getHeader("referer");
+if(strReferer == null){ 
+//비정상적인 URL 접근차단을 위해 request.getHeader("referer") 메소드를 사용하였습니다.
+//로그인한 회원의 회원가입페이지 URL 접근을 제한합니다.
+%>
+	<script>
+	alert("정상적인 경로를 통해 다시 접근해 주십시오.");
+	location="index.jsp";
+	</script>
+<%
+	return;
+}
+%>
 <%
   int Y = 0;
   int M = 0;
   int D = 0;
-  int max_no = 0;
+  String u_no = "";
   
   Connection conn = null;
   PreparedStatement ps = null;
@@ -19,84 +31,107 @@
   
   try{
 	  conn = DAO.getConnection();
-	  String sql = "SELECT MAX(u_no) FROM MUSER";
+	  String sql = "SELECT MAX(u_no)+1 u_no FROM MUSER";
 	  ps = conn.prepareStatement(sql);
 	  rs = ps.executeQuery();
 	  if(rs.next()) {
-		  max_no = rs.getInt(1);
+		  u_no = rs.getString("u_no"); //MAX 회원번호 +1 을 u_no 에 담아온다.
 	  }
 	  conn.close();
 	  ps.close();
 	  rs.close();
-  }catch(Exception e) {}
-  max_no += 1;
-  System.out.print(max_no);
+  }catch(Exception e) {  
+	  e.printStackTrace(); 
+  }
+
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
- 
+<title>회원가입</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/user.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+  <script src="script/jquery-1.12.4.js"></script>
+  <script src="script/jquery-ui.js"></script>
+  <script>
+  $( function() {//#은 id 값을 의미한다.
+    $( "#birthday" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  } );
+  </script>
+  
 </head>
-<body>
+<body onload="document.frm.u_id.focus()">
+<%@ include file="topmenu.jsp" %>
+<%
+if(session_no != null){
+%>
+	<script>
+	location="index.jsp";	
+	</script>
+<%	return;
+}	
+%>
   <section>
-    <form name="frm" onsubmit="return checkAll()" action="" method="post">
-    <table>
-      <input type="hidden" name="u_no" value=<%= max_no%>>
-      <tr><th>아이디 : </th><td><input type="text" name="u_id" id="id" onkeydown="inputIdChk()">
-                              <button type="button" onclick="fn_dbCheckId()" name="dbCheckId" class="checkId">중복확인</button>
-                              <input type="hidden" name="idDuplication" value="idUncheck"></td>
+  <h1>Join Member</h1>
+    <form name="frm" action="userJoinPro.jsp" method="post">
+      <input type="hidden" name="u_no" value="<%=u_no%>" readonly> 
+    
+    <div class="join">
+    <table >
+      <tr>
+      <td>
+      <input style="width:50%" type="text" name="u_id" placeholder="아이디" required>
+      <input type="button" onclick="fn_dbCheckId()" name="dbCheckId" value="check ID">
+      <input type="hidden" name="idDuplication" value="0"></td>
+      <!-- 중복체크 확인을 위한 hidden 변수 -->
+      </tr> 
+      <tr>
+      <td><input type="text" name="u_pw" placeholder="비밀번호" required></td>
+      </tr>   
+      <tr>
+      <td><input type="email" name="u_mail" placeholder="e-mail" required></td>
       </tr>
       
-      <tr><th>비밀번호 : </th><td><input type="text" name="u_pw"></td>
-      </tr>
-      
-      <tr><th>이메일 : </th><td><input type="email" name="u_mail"></td>
-      </tr>
-      
-      <tr><th>생년월일 : </th><td><select name="u_birth1"><%for(Y = 2022; Y >= 1950; Y --) {%>
-                                                             <option value="<%= Y%>"><%= Y%>
-                                                       <%} %></select>
-                               <select name="u_birth2"><%for(M = 1; M < 13; M ++) {%>
-                                                             <option value="<%= M%>"><%= M%>
-                                                       <%} %></select>
-                               <select name="u_birth3"><%for(D = 1; D < 32; D ++) {%>
-                                                             <option value="<%= D%>"><%= D%>
-                                                       <%} %></select>
-                           </td>
-      </tr>
-      
-      <tr><th>이름 : </th><td><input type="text" name="u_name"></td>
-      </tr>
-      
-      <tr><th>성별 : </th><td><input type="radio" name="u_gender" value="M" checked="checked">남&nbsp;
-                             <input type="radio" name="u_gender" value="F" >여
-                        </td>
+      <tr>
+	      <td>
+	      <input type="text" name="u_birth" id="birthday" required>
+	      </td>
+      </tr>   
+      <tr>
+      <td><input type="text" name="u_name" placeholder="이름" required></td>
+      </tr>   
+      <tr>
+	      <td>
+	      Male<input style="width:10%" type="radio" name="u_gender" value="M">
+	      Female<input style="width:10%" type="radio" name="u_gender" value="F">
+	      </td>
       </tr>
       
       <%java.util.Date date = new java.util.Date();
-        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
         String strdate = simpleDate.format(date);
       %>
-      <tr><th>가입일 : </th><td><input type="text" name="u_regdte" value=<%= strdate%> readonly="readonly"></td>
+      <tr>
+      <td><input type="text" name="u_regdte" value=<%= strdate%> readonly="readonly"></td>
       </tr>
       
-      <tr><th>휴대폰번호 : </th><td><input type="text" name="u_phone1" value="010" readonly="readonly">
-                                 -<input type="text" name="u_phone2" maxlength="4">
-                                 -<input type="text" name="u_phone3" maxlength="4">
-                            </td>
-      </tr>
-      
-      <tr><td colspan="2">
-          <input type="submit" value="회원가입">
-          <input type="button" value="취소" onclick="window.location.href='userLogin.jsp'">
-          </td>
+      <tr>
+      <td><input type="text" name="u_phone" placeholder="phone" required>
+      </td>
       </tr>
     </table>
+    </div>
+          <input type="submit" onclick="fn_checkAll()" value="회원가입">
+          <input type="button" value="취소" onclick="window.location.href='index.jsp'">
     </form>
   </section>
 <%@include file="footer.jsp" %>
 </body>
-<script type="text/javascript" src="script/check.js"></script>
+<script src="script/check.js"></script>
+
 </html>
