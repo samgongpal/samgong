@@ -28,10 +28,11 @@
       <div class="button">
       <input type="submit" value="로그인"></div>
       <div class="button">
-      <input type="button" value="회원가입" onclick="window.location.href='#'"></div>       
+      <input type="button" value="회원가입" onclick="location='userJoin.jsp'"></div>       
       
     </form>
   </section>
+<%@include file="footer.jsp" %>
 </body>
 <script type="text/javascript" src="script/check.js"></script>
 </html>

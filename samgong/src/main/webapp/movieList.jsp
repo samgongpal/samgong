@@ -79,8 +79,6 @@
     </div>
 </section>
 
-<footer>
-  <h5>삼공시네마 2022</h5>
-</footer>
+<%@include file="footer.jsp" %>
 </body>
 </html>

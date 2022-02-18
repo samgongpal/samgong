@@ -35,6 +35,7 @@
     <li><a href="#" onclick="alert('준비중입니다.')">극장</a>
       <ul id="sub-menu">
         <li><a href="#" aria-label="subemnu">극장리스트</a></li>
+        <li><a href="movieScreen.jsp" aria-label="subemnu">상영관정보</a></li>
       </ul>
     </li>
     <li><a href="#" onclick="location='userLogin.jsp'">예매</a>

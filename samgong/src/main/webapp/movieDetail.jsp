@@ -46,7 +46,16 @@
 <title>현재상영작</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/movie.css">
-
+<style>
+.fakeimg{
+	min-width: 350px;	
+	min-height: 500px;	
+	margin-right: 5rem;
+}
+.fakeimg:hover{
+	opacity: 1;
+}
+</style>
 </head>
 <body>
 <%@ include file="topmenu.jsp"%>
@@ -63,6 +72,7 @@ function fn_reservation(){
 }
 </script>
 <section>
+  
     <div class="movie" >
       <div class="a">
       <div style="background-image:url('img/<%= m_no %>.jpg');" class="fakeimg"></div>
@@ -72,12 +82,12 @@ function fn_reservation(){
       <!-- 영화설명 -->
       <ul>
       	
-      	<li><h2><%= movie[1] %></h2></li>
-      	<li>감독 :<%= movie[2] %></li>
-      	<li>배우 :<%= movie[3] %></li>
-      	<li>장르 :<%= movie[4] %> </li>
-      	<li>상영시간 :<%= movie[8] %> </li>
-      	<li>누적관객수 :<%= movie[9] %> </li>
+      	<li><h1><%= movie[1] %></h1></li>
+      	<li>감독 : <%= movie[2] %></li>
+      	<li>배우 : <%= movie[3] %></li>
+      	<li>장르 : <%= movie[4] %> </li>
+      	<li>상영시간 : <%= movie[8] %> </li>
+      	<li>누적관객수 : <%= movie[9] %>명 </li>
       	<li>영화소개 :<%= movie[10] %> </li>
       	
      
@@ -94,10 +104,7 @@ function fn_reservation(){
       </div>   
  
 </section>
-
-<footer>
-  <h5>삼공시네마 2022</h5>
-</footer>
+<%@include file="footer.jsp" %>
 </body>
 <script src="script/script.js"></script>
 </html>

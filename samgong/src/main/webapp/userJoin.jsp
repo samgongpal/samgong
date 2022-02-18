@@ -96,6 +96,7 @@
     </table>
     </form>
   </section>
+<%@include file="footer.jsp" %>
 </body>
 <script type="text/javascript" src="script/check.js"></script>
 </html>

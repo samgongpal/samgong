@@ -47,11 +47,10 @@
 <!-- 사이드 메뉴입니다. -->
 <div class="rightcolumn">
     <div class="movie">
-    <form name="frm" method="post" action="search.jsp">
+    <form name="frm" method="post" action="indexSearch.jsp">
       <input type="text" name="m_name">
       <button type="submit">search</button>
       </form>
-      <p>..</p>
     </div>
     <div class="movie">
       <h3>Popular Post</h3>
@@ -63,7 +62,6 @@
     </div>
 </div>
 </section>
-
 <%@include file="footer.jsp" %>
 </body>
 </html>
