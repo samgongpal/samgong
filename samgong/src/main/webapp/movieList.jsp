@@ -35,47 +35,29 @@
  	</div>
     <div class="movie" >
       <!-- background-image 배경으로 사진을 첨부해서 비율을 맞추도록합니다. -->	
+      <%for(int i=1; i<5; i++) {%>
       <div class="a">
-      <div onclick="location='movieDetail.jsp?m_no=1'" style="background-image:url('img/1.jpg')" class="fakeimg"></div>
-      <div class="c"><img src="img/rank1.png"></div>
+      <div onclick="location='movieDetail.jsp?m_no=<%=i %>'" style="background-image:url('img/<%=i %>.jpg')" class="fakeimg"></div>
+      <div class="c"><img src="img/rank<%=i %>.png"></div>
       </div>
-      
-      <div class="a">
-      <div onclick="location='movieDetail.jsp?m_no=2'" style="background-image:url('img/2.jpg')" class="fakeimg"></div>
-      <div class="c"><img src="img/rank2.png"></div>
-      </div>
-      
-      <div class="a">
-      <div onclick="location='movieDetail.jsp?m_no=3'" style="background-image:url('img/3.jpg')" class="fakeimg"></div>
-      <div class="c"><img src="img/rank3.png"></div>
-      </div>
-      
-      <div class="a">
-      <div onclick="location='movieDetail.jsp?m_no=4'" style="background-image:url('img/4.jpg')" class="fakeimg"></div>
-      <div class="c"><img src="img/rank4.png"></div>
-      </div>
+      <%} %>
     </div>
     
     <div class="movie" >
+       <%for(int i=5; i<9; i++) {%>
       <div class="a">
-      <div onclick="location='movieDetail.jsp?m_no=5'" style="background-image:url('img/5.jpg')" class="fakeimg"></div>
-      <div class="c"><img src="img/rank5.png"></div>
+      <div onclick="location='movieDetail.jsp?m_no=<%=i %>'" style="background-image:url('img/<%=i %>.jpg')" class="fakeimg"></div>
+      <div class="c"><img src="img/rank<%=i %>.png"></div>
       </div>
-      
+      <%} %>
+    </div>
+    
+    <div class="movie" >
+       <%for(int i=9; i<11; i++) {%>
       <div class="a">
-      <div onclick="location='movieDetail.jsp?m_no=6'" style="background-image:url('img/6.jpg')" class="fakeimg"></div>
-      <div class="c"><img src="img/rank6.png"></div>
+      <div onclick="location='movieDetail.jsp?m_no=<%=i %>'" style="background-image:url('img/<%=i %>.jpg')" class="fakeimg"></div>
       </div>
-      
-      <div class="a">
-      <div onclick="location='movieDetail.jsp?m_no=7'" style="background-image:url('img/7.jpg')" class="fakeimg"></div>
-      <div class="c"><img src="img/rank7.png"></div>
-      </div>
-      
-      <div class="a">
-      <div onclick="location='movieDetail.jsp?m_no=8'" style="background-image:url('img/8.jpg')" class="fakeimg"></div>
-      <div class="c"><img src="img/rank8.png"></div>
-      </div>
+      <%} %>
     </div>
 </section>
 

@@ -16,7 +16,7 @@
 </head>
 <body>
  
-<header style="background-image:url('img/logo.webp')">
+<header style="background-image:url('img/main.jpg')">
   <h1><a href="index.jsp" >삼공시네마</a>
   </h1>
 

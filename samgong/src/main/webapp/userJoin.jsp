@@ -19,9 +19,7 @@ if(strReferer == null){
 }
 %>
 <%
-  int Y = 0;
-  int M = 0;
-  int D = 0;
+
   String u_no = "";
   
   Connection conn = null;
@@ -86,20 +84,23 @@ if(session_no != null){
       <tr>
       <td>
       <input style="width:50%" type="text" name="u_id" placeholder="아이디" required>
-      <input type="button" onclick="fn_dbCheckId()" name="dbCheckId" value="check ID">
+      <input style="width:20%; cursor:pointer;" type="button" onclick="fn_dbCheckId()" name="dbCheckId" value="check ID">
       <input type="hidden" name="idDuplication" value="0"></td>
       <!-- 중복체크 확인을 위한 hidden 변수 -->
       </tr> 
       <tr>
-      <td><input type="text" name="u_pw" placeholder="비밀번호" required></td>
-      </tr>   
+      <td><input type="password" name="u_pw" placeholder="비밀번호" required></td>
+      </tr>
+      <tr>
+      <td><input type="password" name="u_pw2" placeholder="비밀번호 확인" required></td>
+      </tr> 
       <tr>
       <td><input type="email" name="u_mail" placeholder="e-mail" required></td>
       </tr>
       
       <tr>
 	      <td>
-	      <input type="text" name="u_birth" id="birthday" required>
+	      <input type="text" name="u_birth" id="birthday" placeholder="생년월일" required>
 	      </td>
       </tr>   
       <tr>
@@ -113,11 +114,11 @@ if(session_no != null){
       </tr>
       
       <%java.util.Date date = new java.util.Date();
-        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyyMMdd");
         String strdate = simpleDate.format(date);
       %>
       <tr>
-      <td><input type="text" name="u_regdte" value=<%= strdate%> readonly="readonly"></td>
+      <td><input type="text" name="u_regdate" value=<%= strdate%> readonly="readonly"></td>
       </tr>
       
       <tr>
@@ -126,8 +127,8 @@ if(session_no != null){
       </tr>
     </table>
     </div>
-          <input type="submit" onclick="fn_checkAll()" value="회원가입">
-          <input type="button" value="취소" onclick="window.location.href='index.jsp'">
+          <input type="submit" onclick="fn_checkAll();return false;" value="회원가입">
+          <input type="reset" value="취소">
     </form>
   </section>
 <%@include file="footer.jsp" %>

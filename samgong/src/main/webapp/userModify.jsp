@@ -62,6 +62,7 @@ if(strReferer == null){
 <meta charset="UTF-8">
 <title>userModify</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/user.css">
 </head>
 <body>
 
@@ -69,12 +70,9 @@ if(strReferer == null){
     <form action="userModifyPro.jsp" method="post">
     <input type="hidden" name="u_no" value="<%=session_no %>">
     <!-- u_no 값을 hidden 으로 같이 보내줍니다. -->
-    <h3>회원정보 수정</h3>
+    <h3><%=u_name %>님 회원정보 수정</h3>
     <div class="join">
-    <table style="background-image:url('img/logo.webp')">
-      <tr>
-	      <td><%= u_name%></td>
-      </tr>
+    <table>
       <tr>
 	      <td>
 	      <input type="password" name="u_pw" value="<%= u_pw%>" required>
@@ -88,7 +86,7 @@ if(strReferer == null){
       </tr>
       <tr>
 	      <td>
-	      <input style="width:20%" type="text" name="u_phone1" value="<%= u_phone%>">
+	      <input type="text" name="u_phone" value="<%= u_phone%>" required>
 	      </td>
       </tr>
     </table>

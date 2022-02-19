@@ -6,9 +6,24 @@ function fn_checkAll() {
 		f.u_id.focus();
 		return false;
 	}
+	if(f.idDuplication.value == "0") {
+	    alert("아이디를 중복체크 해주세요");
+		f.u_id.focus();
+		return false;
+	}
     if(f.u_pw.value == "") {
         alert("비밀번호가 입력되지 않았습니다.");
 		f.u_pw.focus();
+		return false;
+	}
+	if(f.u_pw.value.length < 4 ){
+		alert("비밀번호는 4자이상으로 입력해주세요.");
+		f.u_pw.focus();
+		return false;
+	}	
+	if(f.u_pw2.value != f.u_pw.value){
+		alert("비밀번호를 확인해주세요.");
+		f.u_pw2.focus();
 		return false;
 	}
 	if(f.u_mail.value == "") {
@@ -16,26 +31,27 @@ function fn_checkAll() {
 		f.u_mail.focus();
 		return false;
 	}
+	if(f.u_birth.value == ""){
+		alert("생년월일을 입력해주세요.");
+		return false;
+	}
 	if(f.u_name.value == "") {
         alert("이름이 입력되지 않았습니다.");
 		f.u_name.focus();
 		return false;
 	}
-	if(f.u_phone2.value == "") {
-        alert("번호가 입력되지 않았습니다.");
-		f.u_phone2.focus();
+	if(f.u_gender.value == ""){
+		alert("성별을 선택하세요.");
 		return false;
 	}
-	if(f.u_phone3.value == "") {
-        alert("번호가 입력되지 않았습니다.");
-		f.u_phone3.focus();
+	var phone = /^[0-9]{8,13}$/; //전화번호 숫자만
+	if(!phone.test(f.u_phone.value)){
+		alert("전화번호를 확인해주세요.");
+		f.u_phone.focus();
 		return false;
 	}
-	if(f.idDuplication.value < 1) {
-	    alert("아이디를 중복체크 해주세요");
-		return false;
-	}
-	document.frm.submit();
+	
+	f.submit();
 }
 
 function fn_dbCheckId(){ // id 중복체크
@@ -45,7 +61,7 @@ function fn_dbCheckId(){ // id 중복체크
 	
 	if(idDuplication == "1"){
 		document.frm.idDuplication.value = "0";
-		document.frm.userid.readOnly=false;
+		document.frm.u_id.readOnly=false;
 		document.frm.dbCheckId.value = "check ID";
 		return false;
 	}

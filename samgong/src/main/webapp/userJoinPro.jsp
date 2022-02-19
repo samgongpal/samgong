@@ -25,59 +25,49 @@ if(strReferer == null){
   String u_name = request.getParameter("u_name");
   String u_gender = request.getParameter("u_gender");
   String u_regdate = request.getParameter("u_regdate");
+  String u_phone = request.getParameter("u_phone");
   
   Connection conn = null;
   PreparedStatement ps = null;
   ResultSet rs = null;
-  
-  int cnt = -1;
-  
+  int result = -1;
   try{
-	  conn = DAO.getConnection();
-	  String sql = "SELECT COUNT(*)cnt FROM MUSER WHERE u_id=? OR u_mail=?";
-	  
-	  ps = conn.prepareStatement(sql);
-	  ps.setString(1, u_id);
-	  ps.setString(2, u_mail);
-	  rs = ps.executeQuery();
-	  rs.next();
-	  cnt = rs.getInt("cnt"); //중복여부 체크
-	  conn.close();
-	  ps.close();
-	  rs.close();
-	  
-	  if(cnt > 0){
-	%>
-		<script>
-		alert("중복된 아이디입니다.");
-		history.back();
-		</script>
-	<%
-	  }else{
-
 		  conn = DAO.getConnection();
-		  		 sql = " INSERT INTO muser ";
-		         sql+= " (u_no,u_id,u_pw,u_birth,u_regdate) ";
-		         sql+= " VALUES(?,?,?,?,?) ";
+		  String sql = " INSERT INTO muser ";
+		         sql+= " (u_no,u_id,u_pw,u_mail,u_name,u_gender,u_phone) ";
+		         sql+= " VALUES(?,?,?,?,?,?,?) ";
 		  ps = conn.prepareStatement(sql);
+		  
 		  ps.setInt(1, Integer.parseInt(u_no));
 		  ps.setString(2, u_id);
 		  ps.setString(3, u_pw);
-		  ps.setString(4, u_regdate);
-		  ps.setString(5, u_regdate);
-		 
-		  int result = ps.executeUpdate();		  
+		  ps.setString(4, u_mail);
+		  /*ora-01861: literal does not match format string (날짜형식 맞지않아서 에러남)
+		  date 타입 INSERT 적용할때 에러가 나서 날짜데이터 수정후에 다시 작성하겠습니다.
+		  */
+		  ps.setString(5, u_name);
+		  ps.setString(6, u_gender);
+		  ps.setString(7, u_phone);
+			 
+		  result = ps.executeUpdate();		  
 		  conn.close();
 		  ps.close();
-		  %>
-			<script>
-				alert("가입을 축하드립니다.");
-				location="index.jsp";
-			</script>
-			<%
-	  }
-	
   }catch(Exception e) {
 	  e.printStackTrace();
-  }
+}
+if(result > 0){
+%>
+	<script>
+	alert("가입을 축하드립니다.");
+	location="index.jsp";
+	</script>
+<%
+}else{
+%>
+	<script>
+	alert("가입안됨 ");
+	location="index.jsp";
+	</script>
+<%
+}
 %>

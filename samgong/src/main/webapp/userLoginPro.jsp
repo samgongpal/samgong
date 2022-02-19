@@ -50,7 +50,6 @@ if(strReferer == null){
   }catch (Exception e) {
 	  e.printStackTrace(); 
   }
-  
   if(id.equals(u_id) && pw.equals(u_pw)) {
 	  session.setAttribute("session_no",u_no);   
 	  /* 수정 (2022 2월 18일 MOM) 

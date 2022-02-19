@@ -7372,11 +7372,14 @@ function Datepicker() {
 		monthNames: [ "January", "February", "March", "April", "May", "June",
 			"July", "August", "September", "October", "November", "December" ], // Names of months for drop-down and formatting
 		monthNamesShort: [ "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" ], // For formatting
+		
 		dayNames: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ], // For formatting
 		dayNamesShort: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ], // For formatting
-		dayNamesMin: [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa" ], // Column headings for days starting at Sunday
+		dayNamesMin: [ "일", "월", "화", "수", "목", "금", "토" ], // Column headings for days starting at Sunday
+		/* 요일 이름 변경하기*/ 
 		weekHeader: "Wk", // Column header for week of the year
 		dateFormat: "yy-mm-dd", // See format options on parseDate
+		/* 데이터 타입 변경 */
 		firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
 		isRTL: false, // True if right-to-left language, false if left-to-right
 		showMonthAfterYear: false, // True if the year select precedes month, false for month then year

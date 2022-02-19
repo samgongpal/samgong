@@ -57,7 +57,6 @@ int cnt = rs.getInt("cnt"); //중복아이디가있으면 1 없으면 0
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>∙ checkId ∙</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -83,6 +82,5 @@ if(cnt==0){
 <button onclick="self.close()">닫기</button>
 </div>
 <!-- self.close() 창닫기  -->
-
 </body>
 </html>

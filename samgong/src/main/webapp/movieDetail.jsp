@@ -4,13 +4,38 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
 <%
+String strReferer = request.getHeader("referer");
+if(strReferer == null){ 
+//비정상적인 URL 접근차단을 위해 request.getHeader("referer") 메소드를 사용하였습니다.
+%>
+	<script>
+	location="index.jsp";
+	</script>
+<%
+	return;
+}
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	request.setCharacterEncoding("UTF-8");
 	
 	String m_no = request.getParameter("m_no");
-		
+	String rank = (Integer.parseInt(m_no)<9)?m_no:"0";//영화순위 
+	String URL = ""; //유튜브 예고편 링크
+	switch(m_no){
+	case "1":	URL = "rB3x60FMwm0"; break;
+	case "2":	URL = "F8uPLJzR57w"; break;
+	case "3":	URL = "-5Dc8EMVYBo"; break;
+	case "4":	URL = "qhKCYXSHpWY"; break;
+	case "5":	URL = "eFgBt6sRS_8"; break;
+	case "6":	URL = "ujiLqutnym8"; break;
+	case "7":	URL = "Y3pfj3yXY5M"; break;
+	case "8":	URL = "WNahsXZgKaw"; break;
+	case "9":	URL = "OAxu7YTMWNc"; break;
+	case "10":	URL = "ywmOxCwBA4k"; break;	
+	}
+	
+	
 	String [] movie = new String [11];
 	
 	try{
@@ -52,8 +77,8 @@ h1{
 	font-size:40px;
 }
 .fakeimg{
-	min-width: 350px;	
-	min-height: 500px;	
+	min-width: 330px;	
+	min-height: 488px;	
 }
 .fakeimg:hover{
 	opacity: 1;
@@ -79,7 +104,7 @@ function fn_reservation(){
     <div class="movie" >
       <div class="a">
       <div style="background-image:url('img/<%= m_no %>.jpg');" class="fakeimg"></div>
-      <div class="c"><img src="img/rank<%= m_no %>.png"></div>
+      <div class="c"><img src="img/rank<%= rank%>.png"></div>
       </div>
   
       <!-- 영화설명 -->
@@ -102,7 +127,7 @@ function fn_reservation(){
     </div>
     
       <div class="videowrapper" >
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/rB3x60FMwm0?controls=0"
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=URL %>?controls=0"
       frameborder="0" allowfullscreen></iframe>
       </div>   
  

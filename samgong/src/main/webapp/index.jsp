@@ -11,37 +11,21 @@
 <%@ include file="topmenu.jsp" %>
 <section>
   <div class="leftcolumn">
-    <div class="movie">
-      <h2>영화제목</h2>
-      <h5>날짜, 2022</h5>
-      <div class="videowrapper">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/XWjZXGRYARk" frameborder="0" ></iframe>
-      </div>
-      <p>출연진</p>
-      <p>영화소개
-      </p>
-    </div>
 	<div class="movie">
-      <h2>영화제목</h2>
-      <h5>날짜, 2022</h5>
+      <h1>나의 촛불</h1>
+      <p>2022년 2월 10일 개봉</p>
       <div class="videowrapper">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/ebO37MbksIY"
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/OAxu7YTMWNc"
       frameborder="0"></iframe>
       </div>
-      <p>출연진</p>
-      <p>영화소개
-      </p>
     </div>
     <div class="movie">
-      <h2>영화제목</h2>
-      <h5>날짜, 2022</h5>
+      <h1>씽2게더</h1>
+      <h5>2022년 1월 5일 개봉</h5>
       <div class="videowrapper">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/ebO37MbksIY"
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/XWjZXGRYARk"
       frameborder="0"></iframe>
       </div>
-      <p>출연진</p>
-      <p>영화소개
-      </p>
     </div>
   </div>
 <!-- 사이드 메뉴입니다. -->
