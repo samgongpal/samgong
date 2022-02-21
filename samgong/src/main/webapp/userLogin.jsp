@@ -7,7 +7,6 @@ if(strReferer == null){
 //로그인한 회원이 주소창에 URL 로 접근하는것을 차단
 %>
 	<script>
-	alert("정상적인 경로를 통해 다시 접근해 주십시오.");
 	location="index.jsp";
 	</script>
 <%
@@ -24,11 +23,11 @@ if(strReferer == null){
 <link rel="stylesheet" href="css/user.css">
 
 </head>
-<body>
+<body onload="document.frm.u_id.focus()">
 <%@ include file="topmenu.jsp" %>
+  <div class="top"><h1>Login</h1></div>
   <section>
     <form name="frm" action="userLoginPro.jsp"  method="post">
-    <h2>Login</h2>
     <div class="login">
     <table>
       <tr>

@@ -59,6 +59,7 @@ if(strReferer == null){
       changeMonth: true,
       changeYear: true
     });
+  
   } );
   </script>
   
@@ -74,8 +75,8 @@ if(session_no != null){
 <%	return;
 }	
 %>
+  <div class="top"><h1>Join Member</h1></div>
   <section>
-  <h1>Join Member</h1>
     <form name="frm" action="userJoinPro.jsp" method="post">
       <input type="hidden" name="u_no" value="<%=u_no%>" readonly> 
     

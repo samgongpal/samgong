@@ -5,7 +5,6 @@
    String session_no = (String)session.getAttribute("session_no");
    // String 으로 변수 타입을 수정하였습니다. 변수명 중복으로 변경합니다.
   
-   String tiket = (session_no == null || session_no.equals(""))?"userLogin.jsp":"tiket.jsp";
 %>
 <!DOCTYPE html>
 <html>
@@ -37,21 +36,21 @@
         <li><a href="movieScreen.jsp" aria-label="subemnu">상영관정보</a></li>
       </ul>
     </li>
-    <li><a href="<%=tiket%>">예매</a>
+    <li><a href="tiket_movie.jsp">예매</a>
       <ul id="sub-menu">
-        <li><a href="<%=tiket%>" aria-label="subemnu">빠른예매</a></li>
+        <li><a href="tiket_movie.jsp" aria-label="subemnu">빠른예매</a></li>
       </ul>
     </li>
-    <li><a href="#" onclick="alert('준비중입니다.')">고객센터</a>
+    <li><a href="qnaBoardList.jsp">고객센터</a>
       <ul id="sub-menu">
-        <li><a href="#" aria-label="subemnu">FAQ</a></li>
+        <li><a href="qnaBoardList.jsp" aria-label="subemnu">FAQ</a></li>
       </ul>
     </li>
     <%if(session_no == null || session_no.equals("")) {%>
    <li><a href="userJoin.jsp">회원가입</a></li>
    <li><a href="userLogin.jsp">로그인</a></li>
     <%}else {%>
-  <li><a href="userModify.jsp"><%=session_no %>마이페이지</a></li>
+  <li><a href="userModify.jsp">마이페이지</a></li>
   <li><a href="userLogout.jsp">로그아웃</a></li>
     <%} %>   
    
