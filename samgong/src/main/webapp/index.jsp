@@ -30,12 +30,17 @@
   </div>
 <!-- 사이드 메뉴입니다. -->
 <div class="rightcolumn">
+
     <div class="movie">
     <form name="frm" method="post" action="indexSearch.jsp">
-      <input type="text" name="m_name">
-      <button type="submit">search</button>
-      </form>
+     
+    <div class="searchBox">
+      	<input type="text" name="m_name">
+ 		<button type="submit">검색</button>
+ 	</div>
+    </form>
     </div>
+    
     <div class="movie">
       <h3>Popular Post</h3>
      

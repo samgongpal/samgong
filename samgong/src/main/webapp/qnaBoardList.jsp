@@ -5,11 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>고객센터</title>
 </head>
+<link rel="stylesheet" href="css/style.css">
 <body>
+<%@ include file="topmenu.jsp" %>
+<div class="top"><h1>테스트 수정중</h1></div>
 <form name="frm" method="post" action="qnaBoardSave.jsp">
-<input type="text" name="hi" >
+<input type="number" name="hi" >
 <input type="submit"  value="button">
 
 </form>

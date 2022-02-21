@@ -72,18 +72,7 @@ if(strReferer == null){
 <title>현재상영작</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/movie.css">
-<style>
-h1{
-	font-size:40px;
-}
-.fakeimg{
-	min-width: 330px;	
-	min-height: 488px;	
-}
-.fakeimg:hover{
-	opacity: 1;
-}
-</style>
+
 </head>
 <body>
 <%@ include file="topmenu.jsp"%>
@@ -98,39 +87,61 @@ function fn_reservation(){
 		location.href="#"; // 예약 페이지
 	}
 }
+const drawStar = (target) => {
+    document.querySelector('.star span').style.width = '${target.value * 10}%';
+  }
 </script>
-<section>
-  
-    <div class="movie" >
+<section> 
+    <div class="movie">  
       <div class="a">
-      <div style="background-image:url('img/<%= m_no %>.jpg');" class="fakeimg"></div>
+      <div style="background-image:url('img/<%= m_no %>.jpg');"class="fakeimg"></div>
       <div class="c"><img src="img/rank<%= rank%>.png"></div>
       </div>
   
       <!-- 영화설명 -->
       <ul>
       	
-      	<li><h1><%= movie[1] %></h1></li>
-      	<li>감독 : <%= movie[2] %></li>
-      	<li>배우 : <%= movie[3] %></li>
-      	<li>장르 : <%= movie[4] %> </li>
-      	<li>상영시간 : <%= movie[8] %> </li>
-      	<li>누적관객수 : <%= movie[9] %>명 </li>
-      	<li>영화소개 :<%= movie[10] %> </li>
-      	
-     
-      <button type="button" onclick="fn_reservation()">예매하기</button>
-      
+      	<li><h1><%= movie[1]%></h1></li>
+      	<li >감독 : <%= movie[2] %></li>
+      	<li style="margin-top:1rem;">배우 : <%= movie[3] %></li>
+      	<li style="margin-top:1rem;">장르 : <%= movie[4] %> </li>
+      	<li style="margin-top:1rem;">상영시간 : <%= movie[8] %> </li>
+      	<li style="margin-top:1rem;">누적관객수 : <%= movie[9] %>명 </li>
+      	<li style="margin-top:1rem;">영화소개 :<%= movie[10] %> </li>
+      	<li style="margin-top:1rem;">평점 : <span>★★★★★</span></li>
+      	<li><button class="button"type="button" onclick="fn_reservation()">예매하기</button></li>
       <!-- 로그인 여부 확인을 위한 자바스크립트 유효성체크 *테스트로 작성했어요 수정하셔야합니다 :)-->
-      </ul>
-      
+      </ul>     
     </div>
-    
-      <div class="videowrapper" >
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=URL %>?controls=0"
-      frameborder="0" allowfullscreen></iframe>
-      </div>   
- 
+    <div class="review">
+    <div class="L">
+    <div class="video">
+	    <div class="videowrapper" >
+	    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=URL %>?controls=0"
+	    frameborder="0" allowfullscreen></iframe>     
+	    </div>
+ 	</div>
+ 	</div>
+ 	<div class="R">
+ 	<div class="comment">
+ 		<span class="star">
+  		★★★★★
+	  	<span>★★★★★</span>
+	  	<input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+	  	</span>
+ 		<div style="display:flex; justify-content:center;">
+ 		<input type="text" name="comment" placeholder="감상평을 등록해주세요.">
+ 		<button style="padding:1rem;"type="button">저장</button>
+ 		</div>
+ 		<div class="text"><%= movie[1]%> 너무재미있어요!</div>
+ 		<div class="text">강추! ★★★★★</div>
+ 		<div class="text">배우들의 연기력이 뛰어났기 때문에 재미있게 볼 수 있었다.</div>
+ 		<div class="text">너무재미있어요!</div>
+ 		<div class="text"><%= movie[1]%> 영상미 아주 훌륭합니다.강추!</div>
+ 		<div class="text">너무재미있어요! ★★★★★</div>
+ 	</div>
+ 	</div>
+ 	</div>
 </section>
 <%@include file="footer.jsp" %>
 </body>

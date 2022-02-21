@@ -1,0 +1,24 @@
+@charset "UTF-8";
+.fakeimg {
+	position: relative;
+	min-width: 330px;	
+	min-height: 488px;	
+	cursor: pointer;
+	margin: 20px;
+}
+.fakeimg:hover {
+	background-color: #fff;
+    opacity: 0.3; /* 투명도 지정*/
+}
+@media screen and (min-width: 700px) {
+	.movie {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.fakeimg{
+		min-width: 170px;
+		min-height: 242px;
+		margin: 5px;
+	}
+}

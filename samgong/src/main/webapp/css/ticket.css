@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+section{
+	font-size: 1.2rem;
+}
+.ticket{
+	
+	max-height: 500px;
+	/* overflow: */
+	border-top: 3px solid #333;
+}
+.ticket table{
+	width:100%;
+}
+
+.ticket table,td{
+	border: 1px solid #333;
+	border-collapse: collapse;
+}
+.ticket th,td{
+	padding: 10px;
+}
+.ticket td{
+	cursor: pointer;
+}
+.ticket td:hover{
+	background-color: #c2c4c4;
+}
+@media screen and (min-width: 700px) {
+	.ticket{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
