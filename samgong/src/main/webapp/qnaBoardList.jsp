@@ -10,11 +10,12 @@
 <link rel="stylesheet" href="css/style.css">
 <body>
 <%@ include file="topmenu.jsp" %>
+<section>
 <div class="top"><h1>테스트 수정중</h1></div>
 <form name="frm" method="post" action="qnaBoardSave.jsp">
-<input type="number" name="hi" >
-<input type="submit"  value="button">
+
 
 </form>
+</section>
 </body>
 </html>

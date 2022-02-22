@@ -3,7 +3,11 @@
     box-sizing: border-box;
     
 }
+
 html { 
+	position: relative;
+	min-height: 100%;
+	margin: 0;
 	background-color: papayawhip; 
 } 
 body {
@@ -156,6 +160,10 @@ section:after {
     display: table;
     clear: both;
 }
+
+
+
+
 /* Footer */
 footer {
 	margin-top: 10px;

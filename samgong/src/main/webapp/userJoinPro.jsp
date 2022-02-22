@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <%@page import="DBPKG.DAO"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%
 String strReferer = request.getHeader("referer");
 if(strReferer == null){ 
@@ -24,8 +25,12 @@ if(strReferer == null){
   String u_birth = request.getParameter("u_birth");
   String u_name = request.getParameter("u_name");
   String u_gender = request.getParameter("u_gender");
-  String u_regdate = request.getParameter("u_regdate");
   String u_phone = request.getParameter("u_phone");
+  
+  
+  java.util.Date date = new java.util.Date();
+  SimpleDateFormat simpleDate = new SimpleDateFormat("dd-MMM-yy");
+  String strdate = simpleDate.format(date);
   
   Connection conn = null;
   PreparedStatement ps = null;
@@ -34,8 +39,8 @@ if(strReferer == null){
   try{
 		  conn = DAO.getConnection();
 		  String sql = " INSERT INTO muser ";
-		         sql+= " (u_no,u_id,u_pw,u_mail,u_name,u_gender,u_phone) ";
-		         sql+= " VALUES(?,?,?,?,?,?,?) ";
+		         sql+= " (u_no,u_id,u_pw,u_mail,u_name,u_gender,u_phone,u_regdate) ";
+		         sql+= " VALUES(?,?,?,?,?,?,?,?) ";
 		  ps = conn.prepareStatement(sql);
 		  
 		  ps.setInt(1, Integer.parseInt(u_no));
@@ -48,6 +53,9 @@ if(strReferer == null){
 		  ps.setString(5, u_name);
 		  ps.setString(6, u_gender);
 		  ps.setString(7, u_phone);
+		  ps.setString(8, strdate);
+		
+		  
 			 
 		  result = ps.executeUpdate();		  
 		  conn.close();

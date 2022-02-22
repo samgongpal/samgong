@@ -43,66 +43,87 @@
 <head>
 <meta charset="UTF-8">
 <title>영화예매</title>
-</head>
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/ticket.css">
+
+<style>
+
+section{
+	font-size: 1.2rem;
+}
+.ticket{	
+	max-height: 500px;
+	/* overflow: */
+	margin-top: 50px;
+}
+.ticketBox{
+	width: 100%;
+	background-color: white;
+}
+.ticketList{
+	padding: 15px;
+	cursor: pointer;
+}
+.ticketList:hover{
+	background: #c2c4c4;
+}
+@media screen and (min-width: 700px) {
+	.ticket{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+</style>
+</head>
 
 <body>
 <%@ include file="topmenu.jsp" %>
 <section>
-<div class="top"><h1>빠른예매</h1></div>
 
 <div class="ticket">
-	<table>
-		<tr>
-		<th><h3>영화</h3></th>
-		</tr>
+	<div class="ticketBox">
+		<div><h3>영화</h3></div>
 
 		<%for(int i = 0; i < movieList.size(); i++) {%>
 		<%String[] movie = movieList.get(i); %>	
-		<tr>
-			<td onClick="location='ticket_theater.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
-			<%=movie[2]%><!-- 영화등급 -->
-			<%=movie[1]%>
-			</td>
-			
-		</tr>
+		
+		<div class="ticketList" onClick="location='ticketTheater.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
+		<img style="width:20px" src="img/A.png"> <%=movie[2]%><!-- 영화등급 -->
+		<%=movie[1]%>
+		</div>
+	
 		<%} %>
-	</table>
+	</div>
 	
-	<table>
-		<tr>
-		<th><h3>극장</h3></th>
-		</tr>
-	
+		<div class="ticketBox">
+		<div><h3>테스트</h3></div>
+
 		<%for(int i = 0; i < movieList.size(); i++) {%>
 		<%String[] movie = movieList.get(i); %>	
-		<tr>
-			<td onClick="location='ticket_theater.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
-			<%=movie[2]%><!-- 영화등급 -->
-			<%=movie[1]%>
-			</td>
-			
-		</tr>
+		
+		<div class="ticketList" onClick="location='ticketTheater.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
+		<img style="width:20px" src="img/B.png"> <%=movie[2]%><!-- 영화등급 -->
+		<%=movie[1]%>
+		</div>
+	
 		<%} %>
-	</table>
+	</div>
 	
-	<table>
-		<tr>
-		<th><h3>시간</h3></th>
-		</tr>
-	
+		<div class="ticketBox">
+		<div><h3>테스트</h3></div>
+
 		<%for(int i = 0; i < movieList.size(); i++) {%>
 		<%String[] movie = movieList.get(i); %>	
-		<tr>
-			<td onClick="location='ticket_theater.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
-			<%=movie[2]%><!-- 영화등급 -->
-			<%=movie[1]%>
-			</td>
-			
-		</tr>
+		
+		<div class="ticketList" onClick="location='ticketTheater.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
+		<img style="width:20px" src="img/C.png"> <%=movie[2]%><!-- 영화등급 -->
+		<%=movie[1]%>
+		</div>
+	
 		<%} %>
-	</table>
+	</div>
+	
 	
 </div>
 

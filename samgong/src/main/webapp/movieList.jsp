@@ -15,8 +15,8 @@
 </head>
 <body>
 <%@ include file="topmenu.jsp"%>
- 	<div class="top"><h1>최신개봉작</h1></div>
 <section>
+ 	<div class="top"><h1>최신개봉작</h1></div>
  	<div class="left">
  	<select name="">
  		<option>장르별</option>

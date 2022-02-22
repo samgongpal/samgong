@@ -15,7 +15,7 @@
 </head>
 <body>
  
-<header style="background-image:url('img/main.jpg')">
+<header style="background-image:url('img/main.webp')">
   <h1><a href="index.jsp" >삼공시네마</a>
   </h1>
 
@@ -36,9 +36,9 @@
         <li><a href="movieScreen.jsp" aria-label="subemnu">상영관정보</a></li>
       </ul>
     </li>
-    <li><a href="tiket_movie.jsp">예매</a>
+    <li><a href="ticketList.jsp">예매</a>
       <ul id="sub-menu">
-        <li><a href="tiket_movie.jsp" aria-label="subemnu">빠른예매</a></li>
+        <li><a href="ticketList.jsp" aria-label="subemnu">빠른예매</a></li>
       </ul>
     </li>
     <li><a href="qnaBoardList.jsp">고객센터</a>

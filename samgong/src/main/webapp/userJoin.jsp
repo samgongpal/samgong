@@ -84,8 +84,8 @@ if(session_no != null){
     <table >
       <tr>
       <td>
-      <input style="width:50%" type="text" name="u_id" placeholder="아이디" required>
-      <input style="width:20%; cursor:pointer;" type="button" onclick="fn_dbCheckId()" name="dbCheckId" value="check ID">
+      <input style="width:75%" type="text" name="u_id" placeholder="아이디" required>
+      <input style="width:20%; float:right; cursor:pointer;" type="button" onclick="fn_dbCheckId()" name="dbCheckId" value="check ID">
       <input type="hidden" name="idDuplication" value="0"></td>
       <!-- 중복체크 확인을 위한 hidden 변수 -->
       </tr> 
@@ -108,23 +108,22 @@ if(session_no != null){
       <td><input type="text" name="u_name" placeholder="이름" required></td>
       </tr>   
       <tr>
-	      <td>
+	      <td style="text-align:center">
 	      Male<input style="width:10%" type="radio" name="u_gender" value="M">
 	      Female<input style="width:10%" type="radio" name="u_gender" value="F">
 	      </td>
       </tr>
       
       <%java.util.Date date = new java.util.Date();
-        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyyMMdd");
+        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
         String strdate = simpleDate.format(date);
-      %>
-      <tr>
-      <td><input type="text" name="u_regdate" value=<%= strdate%> readonly="readonly"></td>
-      </tr>
-      
+      %>  
       <tr>
       <td><input type="text" name="u_phone" placeholder="phone" required>
       </td>
+      </tr>
+      <tr>
+      <td style="text-align:center">Date : <%= strdate%></td>
       </tr>
     </table>
     </div>

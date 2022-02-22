@@ -3,28 +3,20 @@
 section{
 	font-size: 1.2rem;
 }
-.ticket{
-	
+.ticket{	
 	max-height: 500px;
 	/* overflow: */
-	border-top: 3px solid #333;
 }
-.ticket table{
-	width:100%;
+.ticketBox{
+	width: 100%;
+	background-color: white;
 }
-
-.ticket table,td{
-	border: 1px solid #333;
-	border-collapse: collapse;
-}
-.ticket th,td{
-	padding: 10px;
-}
-.ticket td{
+.ticketList{
+	padding: 15px;
 	cursor: pointer;
 }
-.ticket td:hover{
-	background-color: #c2c4c4;
+.ticketList:hover{
+	background: #c2c4c4;
 }
 @media screen and (min-width: 700px) {
 	.ticket{

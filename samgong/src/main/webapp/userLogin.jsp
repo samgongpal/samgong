@@ -25,8 +25,8 @@ if(strReferer == null){
 </head>
 <body onload="document.frm.u_id.focus()">
 <%@ include file="topmenu.jsp" %>
-  <div class="top"><h1>Login</h1></div>
   <section>
+  <div class="top"><h1>Login</h1></div>
     <form name="frm" action="userLoginPro.jsp"  method="post">
     <div class="login">
     <table>
