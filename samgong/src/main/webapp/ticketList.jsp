@@ -53,11 +53,15 @@ section{
 .ticket{	
 	max-height: 500px;
 	/* overflow: */
-	margin-top: 50px;
+	margin-top: 100px;
 }
 .ticketBox{
 	width: 100%;
 	background-color: white;
+	border-radius: 2rem;
+}
+.ticketHead{
+	text-align: center;
 }
 .ticketList{
 	padding: 15px;
@@ -83,7 +87,7 @@ section{
 
 <div class="ticket">
 	<div class="ticketBox">
-		<div><h3>영화</h3></div>
+		<div class="ticketHead"><h3>영화</h3></div>
 
 		<%for(int i = 0; i < movieList.size(); i++) {%>
 		<%String[] movie = movieList.get(i); %>	
@@ -97,7 +101,7 @@ section{
 	</div>
 	
 		<div class="ticketBox">
-		<div><h3>테스트</h3></div>
+		<div class="ticketHead"><h3>테스트</h3></div>
 
 		<%for(int i = 0; i < movieList.size(); i++) {%>
 		<%String[] movie = movieList.get(i); %>	
@@ -111,7 +115,7 @@ section{
 	</div>
 	
 		<div class="ticketBox">
-		<div><h3>테스트</h3></div>
+		<div class="ticketHead"><h3>테스트</h3></div>
 
 		<%for(int i = 0; i < movieList.size(); i++) {%>
 		<%String[] movie = movieList.get(i); %>	

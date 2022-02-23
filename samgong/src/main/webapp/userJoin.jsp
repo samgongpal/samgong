@@ -123,7 +123,7 @@ if(session_no != null){
       </td>
       </tr>
       <tr>
-      <td style="text-align:center">Date : <%= strdate%></td>
+      <td style="text-align:center"><input type="text" name="u_regdate" value="<%= strdate%>" readonly></td>
       </tr>
     </table>
     </div>

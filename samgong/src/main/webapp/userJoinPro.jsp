@@ -26,11 +26,8 @@ if(strReferer == null){
   String u_name = request.getParameter("u_name");
   String u_gender = request.getParameter("u_gender");
   String u_phone = request.getParameter("u_phone");
-  
-  
-  java.util.Date date = new java.util.Date();
-  SimpleDateFormat simpleDate = new SimpleDateFormat("dd-MMM-yy");
-  String strdate = simpleDate.format(date);
+  String u_regdate = request.getParameter("u_regdate");
+
   
   Connection conn = null;
   PreparedStatement ps = null;
@@ -38,9 +35,23 @@ if(strReferer == null){
   int result = -1;
   try{
 		  conn = DAO.getConnection();
+		  String sql2= " ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD' ";
+
+		  Statement stmt = conn.createStatement();
+		  int check = stmt.executeUpdate(sql2);
+			
+		  if(check < 1){ // 위의 명령어가 실행되지 않은경우
+		%>
+			  <script>
+			  alert("회원가입 실패! \n 잠시후 다시 시도해주세요.");
+			  location="index.jsp";
+			  </script>
+		<%    return;	 
+		  }
+		  
 		  String sql = " INSERT INTO muser ";
-		         sql+= " (u_no,u_id,u_pw,u_mail,u_name,u_gender,u_phone,u_regdate) ";
-		         sql+= " VALUES(?,?,?,?,?,?,?,?) ";
+		         sql+= " (u_no,u_id,u_pw,u_mail,u_name,u_gender,u_phone,u_regdate,u_birth) ";
+		         sql+= " VALUES(?,?,?,?,?,?,?,?,?) ";
 		  ps = conn.prepareStatement(sql);
 		  
 		  ps.setInt(1, Integer.parseInt(u_no));
@@ -49,16 +60,18 @@ if(strReferer == null){
 		  ps.setString(4, u_mail);
 		  /*ora-01861: literal does not match format string (날짜형식 맞지않아서 에러남)
 		  date 타입 INSERT 적용할때 에러가 나서 날짜데이터 수정후에 다시 작성하겠습니다.
+		  2022 년 2월 23일(yunamom) ALTER SESSION SET 으로 date format 을 한후 insert 하는걸로 에러수정함
+		  더좋은방법을 찾으면 차후 수정하겠습니다.
 		  */
 		  ps.setString(5, u_name);
 		  ps.setString(6, u_gender);
 		  ps.setString(7, u_phone);
-		  ps.setString(8, strdate);
-		
-		  
+		  ps.setString(8, u_regdate);
+		  ps.setString(9, u_birth);	  
 			 
 		  result = ps.executeUpdate();		  
 		  conn.close();
+		  stmt.close();
 		  ps.close();
   }catch(Exception e) {
 	  e.printStackTrace();
