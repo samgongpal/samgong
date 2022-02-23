@@ -3,6 +3,7 @@
 <%@page import="DBPKG.DAO"%>
 <%@page import="java.sql.*"%>
 <%@page import="java.util.*" %>
+<%@ page import="com.Cookies" %>
 <%
 String strReferer = request.getHeader("referer");
 if(strReferer == null){ 
@@ -15,12 +16,26 @@ if(strReferer == null){
 <%
 	return;
 }
+String idcheck = request.getParameter("idcheck");
+String pwcheck = request.getParameter("pwcheck");
+//아이디/비번 기억하기 체크박스 쿠키
+
 
   request.setCharacterEncoding("UTF-8");
   
   String id = request.getParameter("u_id");
   String pw = request.getParameter("u_pw");
   
+if(id == null || pw == null || id.equals("") || pw.equals("")){
+%>
+	<script>
+	alert("아이디 & 비밀번호를 확인해주세요.");
+	location="userLogin.jsp";
+	</script>
+<%
+	return;
+}
+
   String u_id = "";
   String u_pw = "";
   String u_no = ""; //변수를 int -> String 으로 수정하였습니다.
@@ -50,24 +65,38 @@ if(strReferer == null){
   }catch (Exception e) {
 	  e.printStackTrace(); 
   }
-  if(id.equals(u_id) && pw.equals(u_pw)) {
-	  session.setAttribute("session_no",u_no);   
-	  /* 수정 (2022 2월 18일 MOM) 
+if(id.equals(u_id) && pw.equals(u_pw)) {
+	session.setAttribute("session_no",u_no);   
+	  /* 수정 (2022 2월 18일 yunamom) 
 	  session 으로 받은 u_no -> session_no 수정합니다. 
 	  세션 유지시간을 설정합니다. 60*30 = 30분*/
-	  session.setMaxInactiveInterval(30*60); 
-	  %>
+	if(idcheck != null){ //아이디 기억하기를 선택했다는 의미 
+		response.addCookie(Cookies.createCookie("CookieUserId",u_id,"/",-1));		
+			/*
+			Cookies.createCookie(쿠키명,쿠키값,적용폴더,유지시간);
+			/ 는 모든폴더를 의미한다.
+			*/
+	}else{
+			response.addCookie(Cookies.createCookie("CookieUserId","","/",0));			
+	}
+	if(pwcheck != null){
+			response.addCookie(Cookies.createCookie("CookieUserPw",u_pw,"/",-1));				
+	}else{
+			response.addCookie(Cookies.createCookie("CookieUserPw","","/",0));		
+	}
+	session.setMaxInactiveInterval(30*60); 
+%>
 	  <script>
 	    alert("환영합니다.");
 	    location="index.jsp";
 	  </script>
-	  <%
+<%
   }else {
-	  %>
+%>
 	  <script>
 	    alert("존재하지 않는 아이디또는 비밀번호입니다.");
 	    location="userLogin.jsp";
 	  </script>
-	  <%
+<%
   }
 %>
