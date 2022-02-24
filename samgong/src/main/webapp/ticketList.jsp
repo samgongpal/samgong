@@ -15,7 +15,8 @@
 	
 	
 	ArrayList<String[]> movieList = new ArrayList<String[]>();
-	
+	ArrayList<String[]> theaterList = new ArrayList<String[]>();
+
 	try{
 		//1. 연결
 		conn = DAO.getConnection();
@@ -25,7 +26,7 @@
 		rs = ps.executeQuery();
 		
 		while(rs.next()){
-			String[] movie = new String[11];
+			String[] movie = new String[3];
 			movie[0] = rs.getInt("m_no") + "";
 			movie[1] = rs.getString("m_name");
 			movie[2] = rs.getString("m_grade");
@@ -54,15 +55,19 @@
 <body>
 <%@ include file="topmenu.jsp" %>
 <section>
+<div class="top"><h1>최신개봉작</h1></div>
 
 <div class="ticket">
 	<div class="ticketBox">
 		<div class="ticketHead"><h3>영화</h3></div>
 
 		<%for(int i = 0; i < movieList.size(); i++) {%>
-		<%String[] movie = movieList.get(i); %>	
+		<%String[] movie = movieList.get(i); 
+		String color = (m_no.equals(movie[0]))?"background-color:pink":"";
 		
-		<div class="ticketList" onClick="location='ticketList.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
+		%>	
+		
+		<div class="ticketList" style="<%=color%>"onClick="location='ticketList.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
 		<img style="width:20px" src="img/<%=movie[2].replace(" ","")%>.png"> <!-- 영화등급 -->
 		<%=movie[1]%>
 		</div>
@@ -72,32 +77,43 @@
 
 		<div class="ticketBox">
 		<div class="ticketHead"><h3>극장</h3></div>
+		<% if(m_no != null && !m_no.equals("")){ 
+			
+			
+			conn = DAO.getConnection();
+			Statement stmt = conn.createStatement();
 
-		<%for(int i = 0; i < movieList.size(); i++) {%>
-		<%String[] movie = movieList.get(i); %>	
+			String sql = " SELECT*FROM theater";
+			       
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				String[] theater = new String[3];
+				theater[0] = rs.getInt("t_no") + "";
+				theater[1] = rs.getString("t_name");
+				theater[2] = rs.getString("t_address");
+				theaterList.add(theater);
+			}		
+			
+			rs.close();
+			stmt.close();
+			conn.close(); 
+			
+			
+			for(int i = 0; i < theaterList.size(); i++){
+			String[] theater = theaterList.get(i); 	
+		%>
+			<div class="ticketList" onClick="location='ticketSeat.jsp?m_no=<%=m_no%>&u_no=<%=session_no%>&t_no=<%=theater[0]%>' ">
+			<%=theater[2]%>
+			</div>
 		
-		<div class="ticketList" onClick="location='ticketTheater.jsp?m_no=<%=m_no%>&u_no=<%=session_no%>' ">
-		<img style="width:20px" src="img/B.png"> <%=movie[2]%><!-- 영화등급 -->
-		<%=movie[1]%>
-		</div>
+		<%
+			}
+		%>
+		
 	
 		<%} %>
 	</div>
-	
-		<div class="ticketBox">
-		<div class="ticketHead"><h3>테스트</h3></div>
-
-		<%for(int i = 0; i < movieList.size(); i++) {%>
-		<%String[] movie = movieList.get(i); %>	
-		
-		<div class="ticketList" onClick="location='ticketTheater.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
-		<img style="width:20px" src="img/C.png"> <%=movie[2]%><!-- 영화등급 -->
-		<%=movie[1]%>
-		</div>
-	
-		<%} %>
-	</div>
-	
 	
 </div>
 

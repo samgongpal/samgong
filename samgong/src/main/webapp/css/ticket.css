@@ -2,14 +2,14 @@
 section{
 	font-size: 1.2rem;
 }
-.ticket{	
-	max-height: 500px;
-	/* overflow: */
-	margin-top: 100px;
-}
+
 .ticketBox{
 	width: 100%;
+	min-height: 500px;
+	max-height: 500px;
+	overflow: auto;
 	background-color: white;
+	opacity: 0.7;
 	border-radius: 2rem;
 }
 .ticketHead{
@@ -22,10 +22,13 @@ section{
 .ticketList:hover{
 	background: #c2c4c4;
 }
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 800px) {
 	.ticket{
 		display: flex;
 		justify-content: center;
 		align-items: center;
+	}
+	.ticketBox{
+		margin: 50px;
 	}
 }

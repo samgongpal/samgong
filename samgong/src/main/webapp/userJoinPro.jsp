@@ -33,7 +33,7 @@ if(strReferer == null){
   PreparedStatement ps = null;
   ResultSet rs = null;
   int result = -1;
-  try{
+
 		  conn = DAO.getConnection();
 		  String sql2= " ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD' ";
 
@@ -65,22 +65,3 @@ if(strReferer == null){
 		  conn.close();
 		  stmt.close();
 		  ps.close();
-  }catch(Exception e) {
-	  e.printStackTrace();
-}
-if(result > 0){
-%>
-	<script>
-	alert("가입을 축하드립니다.");
-	location="index.jsp";
-	</script>
-<%
-}else{
-%>
-	<script>
-	alert("가입안됨 ");
-	location="index.jsp";
-	</script>
-<%
-}
-%>
