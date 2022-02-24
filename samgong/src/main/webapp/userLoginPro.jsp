@@ -68,8 +68,10 @@ if(id == null || pw == null || id.equals("") || pw.equals("")){
 if(id.equals(u_id) && pw.equals(u_pw)) {
 	session.setAttribute("session_no",u_no);   
 	  /* 수정 (2022 2월 18일 yunamom) 
-	  session 으로 받은 u_no -> session_no 수정합니다. 
-	  세션 유지시간을 설정합니다. 60*30 = 30분*/
+	  session 으로 받은 u_no -> session_no 수정합니다. */
+	session.setMaxInactiveInterval(30*60);
+	/*세션 유지시간을 설정합니다. 60*30 = 30분*/
+	  
 	if(idcheck != null){ //아이디 기억하기를 선택했다는 의미 
 		response.addCookie(Cookies.createCookie("CookieUserId",u_id,"/",-1));		
 			/*
@@ -77,21 +79,27 @@ if(id.equals(u_id) && pw.equals(u_pw)) {
 			/ 는 모든폴더를 의미한다.
 			*/
 	}else{
-			response.addCookie(Cookies.createCookie("CookieUserId","","/",0));			
+		response.addCookie(Cookies.createCookie("CookieUserId","","/",0));			
 	}
 	if(pwcheck != null){
-			response.addCookie(Cookies.createCookie("CookieUserPw",u_pw,"/",-1));				
+		response.addCookie(Cookies.createCookie("CookieUserPw",u_pw,"/",-1));				
 	}else{
-			response.addCookie(Cookies.createCookie("CookieUserPw","","/",0));		
+		response.addCookie(Cookies.createCookie("CookieUserPw","","/",0));		
 	}
-	session.setMaxInactiveInterval(30*60); 
 %>
 	  <script>
-	    alert(<%=u_name%>+"님 환영합니다.");
+	    alert("고객님 환영합니다.");
 	    location="index.jsp";
 	  </script>
 <%
-  }else {
+  }else if(u_id.equals("samgong")){
+%>
+	  <script>
+	    alert("관리자님 환영합니다.");
+	    location="index.jsp";
+	  </script>
+<%
+  }else{
 %>
 	  <script>
 	    alert("존재하지 않는 아이디또는 비밀번호입니다.");

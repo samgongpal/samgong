@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="DBPKG.DAO" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.util.*" %>
 <%
 request.setCharacterEncoding("UTF-8");
 
@@ -15,28 +16,52 @@ ResultSet rs = null;
 
 try{
 	  conn = DAO.getConnection();
-	  String sql = " SELECT count(*)cnt ";
-	         sql+= " FROM movie WHERE m_name LIKE '%"+m_name+"%'";
+	  String sql = " SELECT m_no ";
+	         sql+= " FROM movie ";
+	         sql+= " WHERE m_name LIKE '%"+m_name+"%' ";
+	         sql+= " UNION ALL "; //select 문 결과를 합쳐줍니다.
+	         sql+= " SELECT count(*) ";
+	         sql+= " FROM movie ";
+	         sql+= " WHERE m_name LIKE '%"+m_name+"%' ";
+	       
 	  ps = conn.prepareStatement(sql);
 	  rs = ps.executeQuery();
-	  rs.next();
-	  int cnt = rs.getInt("cnt");
-	  if(cnt > 0){
+	  int m_no = 0;  
+
+	  ArrayList<String> list = new ArrayList<String>();
+	  
+	  while(rs.next()){
+		m_no = Integer.parseInt(rs.getString("m_no"));
+		list.add(m_no+"");
+		// 영화 검색 결과를 어레이 리스트에 담은뒤
+	 }
+	  session.setAttribute("session_movie_no",list);
+	  //세션값으로 보내줍니다.
+	  
+	  if(m_no > 0){
 		  %>
 		  <script>
-		  alert("영화가있습니다.");
-		  history.back();		  
+		  location = "movieList.jsp?search=1";	  
 		  </script>		  
 		  <%
 	  }else{
 		  %>
 		  <script>
-		  alert("검색결과가 없습니다.");
-		  history.back();	  
-		  </script>		  
+		  location = "index.jsp";	  
+		  </script>
 		  <%
 	  }
 }catch(Exception e) {
-	
+	e.printStackTrace(); 
 }
 %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>삼공시네마</title>
+</head>
+<body>
+
+</body>
+</html>

@@ -7,10 +7,24 @@
 request.setCharacterEncoding("UTF-8");
 String array = request.getParameter("array");
 String m_grade = request.getParameter("m_grade");
+String search = request.getParameter("search"); //메인 영화검색에서 넘어오는 변수
 String movie = "";
 ArrayList<Integer> movienum = new ArrayList<Integer>();
+
+if(search != null){
+ArrayList<String> list = (ArrayList)session.getAttribute("session_movie_no");
+	
+	for(int i=0; i<list.size()-1; i++){
+		int num = Integer.parseInt(list.get(i));
+		movienum.add(num);
+	}
+	list = new ArrayList<String>();
+	session.removeAttribute("session_movie_no"); //세션값을 삭제합니다.
+
+}else{
 	
 try{
+	
 	//1. 연결
 	Connection conn = null;
 	PreparedStatement ps = null;
@@ -26,6 +40,7 @@ try{
 					
 				sql = " SELECT m_no FROM movie WHERE m_grade = '"+m_grade+"' ";
 				movie = m_grade;
+				
 			}else{
 					
 				sql = " SELECT m_no FROM movie ";
@@ -34,17 +49,19 @@ try{
 			//2. 명령문보내기
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-				
+	
 			while(rs.next()){
 				int num = rs.getInt("m_no");
 				movienum.add(num);
-			}							
+			}
+		
 			rs.close();
 			ps.close();
 			conn.close(); 
 		 
 }catch (Exception e) {
 	e.printStackTrace(); 
+}
 }
 String title = "List of Movies";
 

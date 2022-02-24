@@ -3,8 +3,10 @@
 
 .fakeimg {
 	position: relative;
-	min-width: 330px;	
-	min-height: 488px;	
+	min-width: 330px;
+	max-width: 330px;
+	min-height: 488px;
+	
 	margin: 20px;
 }
 .button{
