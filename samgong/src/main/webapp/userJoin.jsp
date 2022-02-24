@@ -114,7 +114,8 @@ if(session_no != null){
 	      </td>
       </tr>
      
-      <%java.util.Date date = new java.util.Date();
+      <%
+      	java.util.Date date = new java.util.Date();
         SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
         String strdate = simpleDate.format(date);
       %>  

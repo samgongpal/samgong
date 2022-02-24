@@ -50,7 +50,7 @@
    <li><a href="userJoin.jsp">회원가입</a></li>
    <li><a href="userLogin.jsp">로그인</a></li>
     <%}else {%>
-  <li><a href="userModify.jsp">마이페이지</a></li>
+  <li><a href="userPage.jsp">마이페이지</a></li>
   <li><a href="userLogout.jsp">로그아웃</a></li>
     <%} %>   
    
