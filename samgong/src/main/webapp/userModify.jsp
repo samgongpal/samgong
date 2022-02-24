@@ -71,7 +71,8 @@ if(strReferer == null){
     <form action="userModifyPro.jsp" method="post">
     <input type="hidden" name="u_no" value="<%=session_no %>">
     <!-- u_no 값을 hidden 으로 같이 보내줍니다. -->
-    <h3><%=u_name %>님 회원정보 수정</h3>
+    <div class="top"><h1><%=u_name %>님 회원정보 수정</h1></div>
+   
     <div class="join">
     <table>
       <tr>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+
 String strReferer = request.getHeader("referer");
 if(strReferer == null){ 
 //비정상적인 URL 접근차단을 위해 request.getHeader("referer") 메소드를 사용하였습니다.
@@ -26,32 +27,35 @@ if(strReferer == null){
   <%
   	return;
   }
-%>
+%> 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/user.css">
 </head>
 <body>
 <%@ include file="topmenu.jsp" %>
   <section>
-    <h2>마이페이지</h2>
-    <table>
-      <tr>
-      <td><button onclick="location.href='userModify.jsp'">회원정보 수정</button></td>
-      </tr>
+  <div class="top"><h1>마이페이지</h1></div>
+  
+    <div class="page">
+   	<div class="pageWrap">
+      <div class="pageBox" onclick="location.href='userModify.jsp'">회원정보 수정</div>
+     
       
-      <tr>
-      <td><button onclick="location.href='userTicketing.jsp'">예매정보</button></td>
-      </tr>
       
-      <tr>
-      <td><button onclick="location.href='userDelete.jsp'">회원탈퇴</button></td>
-      </tr>
-    </table>
+      <div class="pageBox" onclick="location.href='userTicketing.jsp'">예매정보</div>
+     
+      
+      
+     <div class="pageBox" onclick="location.href='userDelete.jsp'">회원탈퇴</div>
+    
+    </div>
+    </div>
   </section>
 <%@include file="footer.jsp" %>
 </body>
