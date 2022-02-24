@@ -11,8 +11,9 @@
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
+	String m_no = request.getParameter("m_no");
 	
-
+	
 	ArrayList<String[]> movieList = new ArrayList<String[]>();
 	
 	try{
@@ -30,9 +31,13 @@
 			movie[2] = rs.getString("m_grade");
 			movieList.add(movie);
 		}
+		
+		
 		rs.close();
 		ps.close();
 		conn.close(); 
+		
+		
 		
 	}catch(Exception e){
 		e.printStackTrace();
@@ -92,21 +97,21 @@ section{
 		<%for(int i = 0; i < movieList.size(); i++) {%>
 		<%String[] movie = movieList.get(i); %>	
 		
-		<div class="ticketList" onClick="location='ticketTheater.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
-		<img style="width:20px" src="img/A.png"> <%=movie[2]%><!-- 영화등급 -->
+		<div class="ticketList" onClick="location='ticketList.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
+		<img style="width:20px" src="img/<%=movie[2]%>.png"> <!-- 영화등급 -->
 		<%=movie[1]%>
 		</div>
 	
 		<%} %>
 	</div>
-	
+
 		<div class="ticketBox">
-		<div class="ticketHead"><h3>테스트</h3></div>
+		<div class="ticketHead"><h3>극장</h3></div>
 
 		<%for(int i = 0; i < movieList.size(); i++) {%>
 		<%String[] movie = movieList.get(i); %>	
 		
-		<div class="ticketList" onClick="location='ticketTheater.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
+		<div class="ticketList" onClick="location='ticketTheater.jsp?m_no=<%=m_no%>&u_no=<%=session_no%>' ">
 		<img style="width:20px" src="img/B.png"> <%=movie[2]%><!-- 영화등급 -->
 		<%=movie[1]%>
 		</div>

@@ -32,7 +32,13 @@ if(strReferer == null){
 	case "7":	URL = "Y3pfj3yXY5M"; break;
 	case "8":	URL = "WNahsXZgKaw"; break;
 	case "9":	URL = "OAxu7YTMWNc"; break;
-	case "10":	URL = "ywmOxCwBA4k"; break;	
+	case "10":	URL = "ywmOxCwBA4k"; break;
+/*	case "11":
+	case "12":
+	case "13":
+	case "14":
+	case "15":
+	case " */
 	}
 	
 	

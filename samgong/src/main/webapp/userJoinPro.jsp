@@ -40,7 +40,6 @@ if(strReferer == null){
 		  Statement stmt = conn.createStatement();
 		  int check = stmt.executeUpdate(sql2);
 			
-		
 		  
 		  String sql = " INSERT INTO muser ";
 		         sql+= " (u_no,u_id,u_pw,u_mail,u_name,u_gender,u_phone,u_regdate,u_birth) ";

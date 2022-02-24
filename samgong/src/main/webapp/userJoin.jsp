@@ -113,7 +113,7 @@ if(session_no != null){
 	      Female<input style="width:10%" type="radio" name="u_gender" value="F">
 	      </td>
       </tr>
-      
+     
       <%java.util.Date date = new java.util.Date();
         SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
         String strdate = simpleDate.format(date);
