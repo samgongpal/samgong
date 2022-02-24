@@ -36,8 +36,7 @@
 		rs.close();
 		ps.close();
 		conn.close(); 
-		
-		
+			
 		
 	}catch(Exception e){
 		e.printStackTrace();
@@ -49,43 +48,9 @@
 <meta charset="UTF-8">
 <title>영화예매</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/ticket.css">
 
-<style>
-
-section{
-	font-size: 1.2rem;
-}
-.ticket{	
-	max-height: 500px;
-	/* overflow: */
-	margin-top: 100px;
-}
-.ticketBox{
-	width: 100%;
-	background-color: white;
-	border-radius: 2rem;
-}
-.ticketHead{
-	text-align: center;
-}
-.ticketList{
-	padding: 15px;
-	cursor: pointer;
-}
-.ticketList:hover{
-	background: #c2c4c4;
-}
-@media screen and (min-width: 700px) {
-	.ticket{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-}
-
-</style>
 </head>
-
 <body>
 <%@ include file="topmenu.jsp" %>
 <section>
@@ -98,7 +63,7 @@ section{
 		<%String[] movie = movieList.get(i); %>	
 		
 		<div class="ticketList" onClick="location='ticketList.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
-		<img style="width:20px" src="img/<%=movie[2]%>.png"> <!-- 영화등급 -->
+		<img style="width:20px" src="img/<%=movie[2].replace(" ","")%>.png"> <!-- 영화등급 -->
 		<%=movie[1]%>
 		</div>
 	

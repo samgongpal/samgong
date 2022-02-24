@@ -1,15 +1,19 @@
 @charset "UTF-8";
-
 section{
 	font-size: 1.2rem;
 }
 .ticket{	
 	max-height: 500px;
 	/* overflow: */
+	margin-top: 100px;
 }
 .ticketBox{
 	width: 100%;
 	background-color: white;
+	border-radius: 2rem;
+}
+.ticketHead{
+	text-align: center;
 }
 .ticketList{
 	padding: 15px;

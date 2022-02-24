@@ -85,8 +85,6 @@ if(array != null && !array.equals("")){
  	<select name="array" ><!--정렬하기위한 이름 -->
  		<option value="m_view">관람객순</option>
  		<option value="m_sdate">최신개봉순</option>
- 		<option value="m_sdate">최신개봉순</option>
- 		<option value=""></option>
  	</select>
  	<button type="submit">GO</button>
  	</form>
