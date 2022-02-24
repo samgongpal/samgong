@@ -38,17 +38,8 @@ if(strReferer == null){
 		  String sql2= " ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD' ";
 
 		  Statement stmt = conn.createStatement();
-		  int check = stmt.executeUpdate(sql2);
-			
-		  if(check < 1){ // 위의 명령어가 실행되지 않은경우
-		%>
-			  <script>
-			  alert("회원가입 실패! \n 잠시후 다시 시도해주세요.");
-			  location="index.jsp";
-			  </script>
-		<%    return;	 
-		  }
-		  
+		  stmt.executeUpdate(sql2);
+		
 		  String sql = " INSERT INTO muser ";
 		         sql+= " (u_no,u_id,u_pw,u_mail,u_name,u_gender,u_phone,u_regdate,u_birth) ";
 		         sql+= " VALUES(?,?,?,?,?,?,?,?,?) ";
@@ -86,7 +77,7 @@ if(result > 0){
 }else{
 %>
 	<script>
-	alert("가입안됨 ");
+	alert("회원가입 실패! \n 잠시후 다시 시도해주세요.");
 	location="index.jsp";
 	</script>
 <%
