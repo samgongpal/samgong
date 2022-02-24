@@ -33,12 +33,16 @@ if(strReferer == null){
 	case "8":	URL = "WNahsXZgKaw"; break;
 	case "9":	URL = "OAxu7YTMWNc"; break;
 	case "10":	URL = "ywmOxCwBA4k"; break;
-/*	case "11":
-	case "12":
-	case "13":
-	case "14":
-	case "15":
-	case " */
+	case "11":  URL = "pCDq-RLfJu0"; break;
+	case "12":  URL = "Xdf7ZW-AqXs"; break;
+	case "13":  URL = "HLmm2ZR_VOI"; break;
+	case "14":  URL = "jAYGFfio00U"; break;
+	case "15":  URL = "8c8sBrMvqWY"; break;
+	case "16":  URL = "uMeq3my5ZlE"; break;
+	case "17":  URL = "HzOfDTKjwTo"; break;
+	case "18":  URL = "pnkZFq4Y_sA"; break;
+	case "19":  URL = "-Xyvn6Dxkz0"; break;
+	case "20":  URL = "7g3fEWsy-ZI"; break;
 	}
 	
 	

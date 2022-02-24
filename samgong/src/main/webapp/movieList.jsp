@@ -14,7 +14,6 @@ if(array != null && !array.equals("")){
 	try{
 		//1. 연결
 		
-	
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -40,8 +39,7 @@ if(array != null && !array.equals("")){
 }else{
 	
 	try{
-		//1. 연결
-		
+		//1. 연결	
 	
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -56,20 +54,15 @@ if(array != null && !array.equals("")){
 				while(rs.next()){
 					int num = rs.getInt("m_no");
 					movienum.add(num);
-				}
-				
-				
+				}	
 				rs.close();
 				ps.close();
 				conn.close(); 
-		 
+				
 	}catch (Exception e) {
 		  e.printStackTrace(); 
 	}
 }
-
-
-
 
 %>
 <!DOCTYPE html>
@@ -86,18 +79,12 @@ if(array != null && !array.equals("")){
 <%@ include file="topmenu.jsp"%>
 <section>
  	<div class="top"><h1>최신개봉작</h1></div>
- 	/*<div class="left">
- 	<select name="" onchange="if(this.value) location.href=(this.value)">
- 		<option value="movieList.jsp?m_genre=미스터리" >미스터리</option>
- 		<option value="movieList.jsp?m_genre=액션" >미스터리</option>
- 	
- 	</select>*/
- 	
- 	</div>
+ 
  	<div class="right">
  	<form name="frm" method="post" action="movieList.jsp">
  	<select name="array" ><!--정렬하기위한 이름 -->
  		<option value="m_view">관람객순</option>
+ 		<option value="m_sdate">최신개봉순</option>
  		<option value="m_sdate">최신개봉순</option>
  		<option value=""></option>
  	</select>
@@ -111,27 +98,44 @@ if(array != null && !array.equals("")){
       <%for(int i=0; i<4; i++) {%>
       <div class="a">
       <div onclick="location='movieDetail.jsp?m_no=<%=movienum.get(i)%>'" style="background-image:url('img/<%=movienum.get(i)%>.jpg')" class="fakeimg"></div>
-      <div class="c"><img src="img/rank<%=i%>.png"></div>
+      <div class="c"><img src="img/rank<%=i+1%>.png"></div>
       </div>
       <%} %>
     </div>
     
     <div class="movie" >
-       <%for(int i=4; i<9; i++) {%>
+       <%for(int i=4; i<8; i++) {%>
       <div class="a">
       <div onclick="location='movieDetail.jsp?m_no=<%=movienum.get(i)%>'" style="background-image:url('img/<%=movienum.get(i)%>.jpg')" class="fakeimg"></div>
-      <div class="c"><img src="img/rank<%=i%>.png"></div>
+      <div class="c"><img src="img/rank<%=i+1%>.png"></div>
       </div>
       <%} %>
     </div>
     
     <div class="movie" >
-       <%for(int i=9; i<11; i++) {%>
+       <%for(int i=8; i<12; i++) {%>
       <div class="a">
       <div onclick="location='movieDetail.jsp?m_no=<%=movienum.get(i)%>'" style="background-image:url('img/<%=movienum.get(i)%>.jpg')" class="fakeimg"></div>
       </div>
       <%} %>
     </div>
+    
+    <div class="movie" >
+       <%for(int i=12; i<16; i++) {%>
+      <div class="a">
+      <div onclick="location='movieDetail.jsp?m_no=<%=movienum.get(i)%>'" style="background-image:url('img/<%=movienum.get(i)%>.jpg')" class="fakeimg"></div>
+      </div>
+      <%} %>
+    </div>
+    
+    <div class="movie" >
+       <%for(int i=16; i<20; i++) {%>
+      <div class="a">
+      <div onclick="location='movieDetail.jsp?m_no=<%=movienum.get(i)%>'" style="background-image:url('img/<%=movienum.get(i)%>.jpg')" class="fakeimg"></div>
+      </div>
+      <%} %>
+    </div>
+    
 </section>
 
 <%@include file="footer.jsp" %>
