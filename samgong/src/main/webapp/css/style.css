@@ -39,6 +39,7 @@ header a:hover{
 .top {
 	margin: 50px;
 	text-align: center;
+	font-size: 20px;
 }
 .box { /* header 부분 효과 미완성*/
     display: block;

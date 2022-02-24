@@ -1,7 +1,8 @@
-<%@page import="DBPKG.DAO"%>
-<%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="DBPKG.DAO"%>
+<%@page import="java.sql.*"%>
+<%@page import="com.Cookies" %>
 <%@ include file="certificated.jsp" %>
 <%
   request.setCharacterEncoding("UTF-8");
@@ -39,6 +40,9 @@
 		  ps.setInt(1, Delete_no1);
 		  ps.executeUpdate();
 		  session.removeAttribute("session_no");
+		  response.addCookie(Cookies.createCookie("CookieUserId","","/",0));
+		  response.addCookie(Cookies.createCookie("CookieUserPw","","/",0));
+		  // 세션 & 쿠키값 제거
 		  conn.close();
 		  ps.close();
 		  %>
@@ -54,7 +58,8 @@
 		    location="userDelete.jsp";
 		  </script>
 		  <%
-	  }
-	  
-  }catch(Exception e) {}
+	  }	  
+  }catch(Exception e) {
+	  e.printStackTrace();
+  }
 %>

@@ -1,4 +1,61 @@
 @charset "UTF-8";
+
+.topList{
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+}
+.topList img{
+	width:30px;
+	margin-right:10px;
+}
+.movieSelect{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.right{
+	text-align: right;
+	width: 50%;
+}
+.left{
+	text-align: left;
+	width: 50%;
+}
+.left select,.right select{
+	padding: 2rem;
+	width: 100px;
+	background-color: white;
+	padding: 0.3rem;
+}
+.button{
+	padding-right: 0.6rem;
+	padding-left: 0.6rem;
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+	cursor: pointer;
+	border: 0;
+	border-radius: 0.2rem;
+	color: #f2f2f2;
+	background-color: #539cae;
+}
+.button:hover{
+	background-color: #333;
+}
+.a {
+    position: relative
+}
+.c { /* 순위 rank 이미지 들어가는곳*/
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+.a > .c {
+    display: block;
+}
 .fakeimg {
 	position: relative;
 	min-width: 330px;	

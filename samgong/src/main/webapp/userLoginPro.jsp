@@ -87,7 +87,7 @@ if(id.equals(u_id) && pw.equals(u_pw)) {
 	session.setMaxInactiveInterval(30*60); 
 %>
 	  <script>
-	    alert(u_name+"님 환영합니다.");
+	    alert(<%=u_name%>+"님 환영합니다.");
 	    location="index.jsp";
 	  </script>
 <%

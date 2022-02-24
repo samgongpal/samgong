@@ -5,14 +5,24 @@
 <%@page import="java.sql.*"%>
 <%@include file="certificated.jsp" %>
 <%
+String strReferer = request.getHeader("referer");
+if(strReferer == null){ 
+//비정상적인 URL 접근차단을 위해 request.getHeader("referer") 메소드를 사용하였습니다.
+//로그인한 회원이 주소창에 URL 로 접근하는것을 차단
+%>
+	<script>
+	location="index.jsp";
+	</script>
+<%
+	return;
+}
 	request.setCharacterEncoding("UTF-8");
 	
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
-	String m_no = request.getParameter("m_no");
-	
+	String m_no = request.getParameter("m_no");	
 	
 	ArrayList<String[]> movieList = new ArrayList<String[]>();
 	ArrayList<String[]> theaterList = new ArrayList<String[]>();
@@ -32,12 +42,10 @@
 			movie[2] = rs.getString("m_grade");
 			movieList.add(movie);
 		}
-		
-		
+			
 		rs.close();
 		ps.close();
-		conn.close(); 
-			
+		conn.close(); 		
 		
 	}catch(Exception e){
 		e.printStackTrace();
@@ -60,28 +68,24 @@
 <div class="ticket">
 	<div class="ticketBox">
 		<div class="ticketHead"><h3>영화</h3></div>
-
 		<%for(int i = 0; i < movieList.size(); i++) {
 		String[] movie = movieList.get(i); 
-		String color="-color:transparent"; //배경화면 투명하게
+		String color=""; 
 
 		if(m_no != null && m_no.equals(movie[0])){
-			color="-image:url('img/main.webp')";
+			color="style=\"background-image:url('img/main.webp')\" ";
 		}
-		%>	
-		
-		<div class="ticketList"  style="background<%=color%>" onClick="location='ticketList.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
+		%>			
+		<div class="ticketList"  <%=color%> onClick="location='ticketList.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
 		<img style="width:20px" src="img/<%=movie[2].replace(" ","")%>.png"> <!-- 영화등급 -->
 		<%=movie[1]%>
 		</div>
-	
-		<%} %>
+		<%}%>
 	</div>
 
 		<div class="ticketBox">
 		<div class="ticketHead"><h3>극장</h3></div>
-		<% if(m_no != null && !m_no.equals("")){ 
-			
+		<% if(m_no != null && !m_no.equals("")){ 		
 			
 			conn = DAO.getConnection();
 			Statement stmt = conn.createStatement();
@@ -108,18 +112,11 @@
 		%>
 			<div class="ticketList" onClick="location='ticketSeat.jsp?m_no=<%=m_no%>&u_no=<%=session_no%>&t_no=<%=theater[0]%>' ">
 			<%=theater[2]%>
-			</div>
-		
-		<%
-			}
-		%>
-		
-	
-		<%} %>
+			</div>		
+		<%}%>
+		<%}%>
 	</div>
-	
 </div>
-
 </section>
 <%@ include file="footer.jsp" %>
 </body>
