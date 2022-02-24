@@ -33,13 +33,21 @@ if(strReferer == null){
   PreparedStatement ps = null;
   ResultSet rs = null;
   int result = -1;
-
+  try{
 		  conn = DAO.getConnection();
 		  String sql2= " ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD' ";
 
 		  Statement stmt = conn.createStatement();
 		  int check = stmt.executeUpdate(sql2);
 			
+		  if(check < 1){ // 위의 명령어가 실행되지 않은경우
+		%>
+			  <script>
+			  alert("회원가입 실패! \n 잠시후 다시 시도해주세요.");
+			  location="index.jsp";
+			  </script>
+		<%    return;	 
+		  }
 		  
 		  String sql = " INSERT INTO muser ";
 		         sql+= " (u_no,u_id,u_pw,u_mail,u_name,u_gender,u_phone,u_regdate,u_birth) ";
@@ -65,3 +73,22 @@ if(strReferer == null){
 		  conn.close();
 		  stmt.close();
 		  ps.close();
+  }catch(Exception e) {
+	  e.printStackTrace();
+}
+if(result > 0){
+%>
+	<script>
+	alert("가입을 축하드립니다.");
+	location="index.jsp";
+	</script>
+<%
+}else{
+%>
+	<script>
+	alert("가입안됨 ");
+	location="index.jsp";
+	</script>
+<%
+}
+%>

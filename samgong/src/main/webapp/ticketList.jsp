@@ -63,11 +63,11 @@
 
 		<%for(int i = 0; i < movieList.size(); i++) {
 		String[] movie = movieList.get(i); 
-		String color = (m_no.equals(movie[0]))?"pink":"transparent";
+		String color = (m_no.equals(movie[0]))?"pink":"blue";
 		
 		%>	
 		<%=color%>
-		<div class="ticketList" style="background-color:<%=color%>"onClick="location='ticketList.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
+		<div class="ticketList" style="background-color:<%=color%>" onClick="location='ticketList.jsp?m_no=<%=movie[0]%>&u_no=<%=session_no%>' ">
 		<img style="width:20px" src="img/<%=movie[2].replace(" ","")%>.png"> <!-- 영화등급 -->
 		<%=movie[1]%>
 		</div>
