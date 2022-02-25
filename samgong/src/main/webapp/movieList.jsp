@@ -23,45 +23,45 @@ ArrayList<String> list = (ArrayList)session.getAttribute("session_movie_no");
 
 }else{
 	
-try{
-	
-	//1. 연결
-	Connection conn = null;
-	PreparedStatement ps = null;
-	ResultSet rs = null;
-	String sql = "";
-			conn = DAO.getConnection();
-			if(array != null && !array.equals("")){
-					
-				sql = " SELECT m_no FROM movie ORDER BY "+array+" DESC";
-				movie = array;
-					
-			}else if(m_grade != null && !m_grade.equals("")){
-					
-				sql = " SELECT m_no FROM movie WHERE m_grade = '"+m_grade+"' ";
-				movie = m_grade;
-				
-			}else{
-					
-				sql = " SELECT m_no FROM movie ";
-					
-			}		
-			//2. 명령문보내기
-			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery();
-	
-			while(rs.next()){
-				int num = rs.getInt("m_no");
-				movienum.add(num);
-			}
+	try{
 		
-			rs.close();
-			ps.close();
-			conn.close(); 
-		 
-}catch (Exception e) {
-	e.printStackTrace(); 
-}
+		//1. 연결
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "";
+				conn = DAO.getConnection();
+				if(array != null && !array.equals("")){
+						
+					sql = " SELECT m_no FROM movie ORDER BY "+array+" DESC";
+					movie = array;
+						
+				}else if(m_grade != null && !m_grade.equals("")){
+						
+					sql = " SELECT m_no FROM movie WHERE m_grade = '"+m_grade+"' ";
+					movie = m_grade;
+					
+				}else{
+						
+					sql = " SELECT m_no FROM movie ";
+						
+				}		
+				//2. 명령문보내기
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+		
+				while(rs.next()){
+					int num = rs.getInt("m_no");
+					movienum.add(num);
+				}
+			
+				rs.close();
+				ps.close();
+				conn.close(); 
+			 
+	}catch (Exception e) {
+		e.printStackTrace(); 
+	}
 }
 String title = "List of Movies";
 

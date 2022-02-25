@@ -17,7 +17,7 @@ ResultSet rs = pstmt.executeQuery();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객센터</title>
+<title>QnA</title>
 </head>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/qna.css">
@@ -27,7 +27,7 @@ ResultSet rs = pstmt.executeQuery();
 <div class="top"><h1>테스트 수정중</h1></div>
 
 
-<div class="qna">
+<div class="board">
    	
 	<table >		
 	<colgroup>

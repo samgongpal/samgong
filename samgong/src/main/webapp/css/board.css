@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+.rightcolumn{
+	width: 30%;
+}
+.leftcolumn{
+	width: 70%;
+}
+.board{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.board table{
+	min-width: 80%;
+}
+
+.board th{
+	padding: 1.5rem;
+	background-color: #f2f4f5;
+}
+
+.board td{
+	padding: 1.5rem;
+	border-bottom: 1px solid gray;
+	border-collapse: collapse;
+	cursor: pointer;
+}
+
+.boardWrap{
+	width: 600px;
+}
+.boardBox{
+	width:100%;
+	height: 100px;
+	padding: 40px;
+	cursor: pointer;
+	border-radius: 1rem;
+	font-size: 20px;
+}
+.boardBox:hover{
+	background-image:url('../img/main.webp')
+}
+.homeBox{
+	border-radius: 0 0 1rem 1rem;
+	border: 2px solid #d7d8da;
+	border-top: 0;
+}
+.home,.home1,.home2,.home3{
+	color: #f1f1f1;   
+    padding: 20px;
+    border-radius: 0.8rem 0.8rem 0.8rem 0.8rem;
+}
+.home{
+	background-color: #f2f4f5;
+}
+.home1{
+	background-color: #3c3c3c;
+	border-radius: 0.8rem 0.8rem 0 0;
+	text-align: center;
+}
+.home2{
+	color: #333;
+	background-color: #f2f4f5;
+	border-radius: 0 0 0 0;
+}
+.home2 > div{
+	margin: 0;
+	padding: 1rem;
+	border-bottom: 1px solid #d7d8da;
+	cursor: pointer;
+}
+.home2 > div:hover{
+	color: #317188;
+	background-color: #ffffff;
+}
+.home3{
+	color: #666666;
+	background-color: #ffffff;
+	border-radius: 0 0 0.8rem 0.8rem;
+	border-top: 1px solid #d7d8da;
+}
+.searchBox {
+	display:flex;
+	justify-content:center;
+	width:100%;
+}
+.searchBox input{
+    border-radius: 0;
+    width: 80%;
+    padding: 0.5rem;
+    font-size: 15px;
+}
+.searchBox button{
+	border-radius: 0;
+	border-top-right-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+	cursor: pointer;
+	}
+@media screen and (max-width: 750px) {
+    .leftcolumn, .rightcolumn {   
+        width: 100%;
+        padding: 0;
+    }
+ 
+}

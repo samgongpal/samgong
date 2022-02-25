@@ -41,9 +41,10 @@
         <li><a href="ticketList.jsp" aria-label="subemnu">빠른예매</a></li>
       </ul>
     </li>
-    <li><a href="qnaBoardList.jsp">고객센터</a>
+    <li><a href="boardHome.jsp">고객센터</a>
       <ul id="sub-menu">
-        <li><a href="qnaBoardList.jsp" aria-label="subemnu">FAQ</a></li>
+        <li><a href="boardFaqList.jsp" aria-label="subemnu">FAQ</a></li>
+        <li><a href="boardQnaList.jsp" aria-label="subemnu">QnA</a></li>
       </ul>
     </li>
     <%if(session_no == null || session_no.equals("")) {%>
