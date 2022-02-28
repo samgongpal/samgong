@@ -115,9 +115,7 @@ textarea{
 	</table>
 		<div class="view">
 			<button type="submit" onclick="fn_submit();return false;">저장</button>
-		</div>
 			<!-- 오류가났을때 submit 멈추기위해 자바스크립트를 작성해준다. -->
-		<div class="view">
 			<button type="reset" onclick="location='boardFaqList.jsp'">취소</button>
 		</div>
 	</form>

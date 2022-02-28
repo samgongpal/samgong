@@ -90,7 +90,13 @@ ResultSet rs = pstmt.executeQuery();
 </head>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/board.css">
-
+<script>
+function fn_boardDelete(q_no){ //게시물 삭제 컨펌
+	if(confirm("정말 삭제하시겠습니까?")){
+		location="boardFaqSave.jsp?GUBUN=D&q_no="+q_no;		
+	}
+}
+</script>
 <body>
 <%@ include file="topmenu.jsp" %>
 <section>
@@ -131,8 +137,7 @@ ResultSet rs = pstmt.executeQuery();
 			%>
 			<button style="text-align:right" type="button" 
 			onclick="location='boardFaqWrite.jsp?G=M&q_no=<%=q_no%>'">수정</button>
-			<button style="text-align:right" type="button" 
-			onclick="javascript:fn_boardDelete('<%=q_no%>')">>삭제</button>
+			<button style="text-align:right" type="button" onclick="fn_boardDelete('<%=q_no%>')">삭제</button>
 			<!--  삭제 를 클릭했을때 함수가 실행되면서 q_no 값을 보내준다. -->
 			<%}else{%>
 			<%=q_date%>
