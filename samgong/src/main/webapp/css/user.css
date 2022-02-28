@@ -70,6 +70,7 @@ section{
 }
 */
 .pageWrap{
+	width: 400px;
 	border-radius: 0 0 1rem 1rem;
 	border: 2px solid #d7d8da;
 	border-top: 0;

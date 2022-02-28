@@ -94,7 +94,7 @@ if(id.equals(u_id) && pw.equals(u_pw)) {
 	    location="index.jsp";
 	  </script>
 <%
-  }else if(u_id.equals("samgong")){
+  }else if(u_id.equals("samgongpal")){
 %>
 	  <script>
 	    alert("관리자님 환영합니다.");

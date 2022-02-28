@@ -18,6 +18,11 @@ if(strReferer == null){
 
 request.setCharacterEncoding("UTF-8");
 
+String no = request.getParameter("q_no"); //제목을 클릭했을때 넘어오는 게시물번호
+int q_no = (no == null)? -1 : Integer.parseInt(no);
+//게시물 제목을 클릭했을때 내용을 불러오기위한 게시물번호 입니다.
+
+
 int listNo = 5; //한페이지에 나오는 게시물 갯수
 String view = request.getParameter("view");
 
@@ -65,6 +70,7 @@ int rowNo = total - index;
 String sql = " SELECT * FROM ";
        sql+= " (SELECT A.*,FLOOR((ROWNUM-1)/5+1)page, ";
        sql+= " ROWNUM FROM(SELECT ";
+       sql+= " q_no, ";
        sql+= " q_title, ";
        sql+= " q_con, ";
        sql+= " q_hit, ";
@@ -80,25 +86,40 @@ ResultSet rs = pstmt.executeQuery();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FAQ</title>
+<title>∙ 삼공시네마 FAQ ∙</title>
 </head>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/board.css">
+<style>
+.view{
+	display: flex;
+	justify-content: center;
+	width: 100%;	
+}
+.view a{
+	padding: 2rem;
+	font-size: 15px;
+	color: #333;
+}
+.view a:hover{
+	color: white;
+}
 
+
+</style>
 <body>
 <%@ include file="topmenu.jsp" %>
 <section>
-<div class="top" style="text-align:left"><h1>QnA</h1></div>
-<%
-if(check_id != null && check_id.equals("samgongpal")){
-%>
-	<button>글쓰기</button>
-<%
-}
-%>
+<div class="top" style="text-align:left"><h1>FAQ</h1></div>
 <!-- 사이드 메뉴입니다. -->
 <%@ include file="boardSide.jsp" %>
 <div class="leftcolumn">
+<%
+if(check_id != null && check_id.equals("samgongpal")){
+%>
+	<div class="write"><button style="text-align:right" type="button" 
+	onclick="location='boardFaqWrite.jsp'">글쓰기</button></div>
+<%}%>
 <div class="board">
 	<table>
 	<colgroup>
@@ -111,15 +132,29 @@ if(check_id != null && check_id.equals("samgongpal")){
 			<th>제목</th>
 			<th>등록일</th>
 		</tr>
-		<%while(rs.next()) {%>
+		<%while(rs.next()) {
+		String q_title = rs.getString("q_title");
+		String q_date = rs.getString("q_date");
+		String q_con = rs.getString("q_con");
+		String q_hit = rs.getString("q_hit");	
+		%>
 		<tr>
 			<td><%=rowNo%></td>
-			<td><%=rs.getString("q_title")%></td>		
-			<td><%=rs.getString("q_date")%></td>
+			<td class="cursor" onClick="location='boardFaqList.jsp?view=<%=viewPage%>&q_no=<%=rs.getInt("q_no") %>'">
+			<%=q_title%></td>	
+			<td><%=q_date%></td>
 		</tr>
 		<%	rowNo--;
-		}
-		%>
+			if(q_no == rs.getInt("q_no")){
+			%>
+			<tr>
+				<td colspan="3" style="background-color: white;">
+				<%=q_con%>
+				</td>
+			</tr>		
+			<%
+			}
+		}%>
 	</table>
 
 </div>

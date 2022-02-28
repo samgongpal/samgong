@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객센터</title>
+<title>∙ 삼공시네마 고객센터 ∙</title>
 </head>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/board.css">

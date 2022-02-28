@@ -154,16 +154,13 @@ ul, li {
 	padding: 0.5rem;
 }
 section{
-	min-height: 700px;
+	min-height: 1000px;
 }
 section:after {
     content: "";
     display: table;
     clear: both;
 }
-
-
-
 
 /* Footer */
 footer {
