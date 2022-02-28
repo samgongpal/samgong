@@ -75,8 +75,8 @@ String sql = " SELECT * FROM ";
 pstmt = conn.prepareStatement(sql);
 ResultSet rs = pstmt.executeQuery();
 
+String button=(check_id != null && check_id.equals("samgongpal"))?"<button type='button' onclick='location='boardFaqWrite.jsp''>글쓰기</button></div>":"";
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,15 +93,7 @@ ResultSet rs = pstmt.executeQuery();
 <!-- 사이드 메뉴입니다. -->
 <%@ include file="boardSide.jsp" %>
 <div class="leftcolumn">
-<%
-if(check_id != null && check_id.equals("samgongpal")){
-	//관리자만 글을쓸수있게 관리자 로그인시에 글쓰기 버튼을 생성합니다.
-%>
-   	<button class="button" type="button" onclick="location='boardFaqWrite.jsp'">
-   	글쓰기</button></div>
-<%
-}
-%>
+<%=button %>
 <div class="board">
 	<table>
 	<colgroup>
