@@ -74,6 +74,11 @@ section{
 	border: 2px solid #d7d8da;
 	border-top: 0;
 }
+.pageBox{
+	border-radius: 0 0 1rem 1rem;
+	border: 2px solid #d7d8da;
+	border-top: 0;
+}
 .pageBox1,.pageBox2,.pageBox3{
 	color: #f1f1f1;   
     padding: 20px;

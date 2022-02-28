@@ -39,31 +39,28 @@ if(strReferer == null){
 </head>
 <body>
 <%@ include file="topmenu.jsp" %>
-  <section>
-  
-  
-  
-  
-
-  
-  <div class="top"><h1>마이페이지</h1></div>
-  
-    <div class="page">
-   	<div class="pageWrap">
-    	<div class="pageBox1">마이페이지</div>
+<section> 
+<div class="top"><h1>마이페이지</h1></div>
+ 
+	<div class="page">
+	<div class="pageWrap">
+    <div class="pageBox1">마이페이지</div>
+    <div class="pageBox">
    		<div class="pageBox2">
 		    <div onclick="location.href='userModify.jsp'">회원정보 수정</div> 
 		    <div onclick="location.href='userTicketing.jsp'">예매정보</div> 
 		    <div onclick="location.href='userDelete.jsp'">회원탈퇴</div>
    		</div>
-     <div class="pageBox3" >
-      <h3>삼공시네마</h3>
-      <p>Samgong center</p>
-      <p>10:30 ~ 18:30</p>
-     </div>   
-    </div>
-    </div>
-  </section>
+     	<div class="pageBox3" >
+      		<h3>삼공시네마</h3>
+      		<p>Samgong center</p>
+      		<p>10:30 ~ 18:30</p>
+    	</div>   
+	</div>
+	</div>
+    
+</div>
+</section>
 <%@include file="footer.jsp" %>
 </body>
 </html>

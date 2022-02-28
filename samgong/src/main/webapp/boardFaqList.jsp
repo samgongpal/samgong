@@ -75,7 +75,6 @@ String sql = " SELECT * FROM ";
 pstmt = conn.prepareStatement(sql);
 ResultSet rs = pstmt.executeQuery();
 
-String button=(check_id != null && check_id.equals("samgongpal"))?"<button type='button' onclick='location='boardFaqWrite.jsp''>글쓰기</button></div>":"";
 %>
 <!DOCTYPE html>
 <html>
@@ -90,10 +89,16 @@ String button=(check_id != null && check_id.equals("samgongpal"))?"<button type=
 <%@ include file="topmenu.jsp" %>
 <section>
 <div class="top" style="text-align:left"><h1>QnA</h1></div>
+<%
+if(check_id != null && check_id.equals("samgongpal")){
+%>
+	<button>글쓰기</button>
+<%
+}
+%>
 <!-- 사이드 메뉴입니다. -->
 <%@ include file="boardSide.jsp" %>
 <div class="leftcolumn">
-<%=button %>
 <div class="board">
 	<table>
 	<colgroup>
