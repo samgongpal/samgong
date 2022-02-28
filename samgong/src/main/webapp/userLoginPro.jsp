@@ -21,10 +21,10 @@ String pwcheck = request.getParameter("pwcheck");
 //아이디/비번 기억하기 체크박스 쿠키
 
 
-  request.setCharacterEncoding("UTF-8");
+request.setCharacterEncoding("UTF-8");
   
-  String id = request.getParameter("u_id");
-  String pw = request.getParameter("u_pw");
+String id = request.getParameter("u_id");
+String pw = request.getParameter("u_pw");
   
 if(id == null || pw == null || id.equals("") || pw.equals("")){
 %>

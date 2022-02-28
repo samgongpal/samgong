@@ -11,9 +11,6 @@
 	justify-content: center;
 	align-items: center;
 }
-.board > table{
-	min-width: 90%;
-}
 
 .board th{
 	padding: 1rem;
@@ -25,11 +22,10 @@
 	border-bottom: 1px solid gray;
 	border-collapse: collapse;
 }
-.cursor{
+.board a{
 	cursor: pointer;
-}
-.cursor:hover{
-	opacity: 0.7;
+	text-decoration: none;
+	color: #333;
 }
 .boardWrap{
 	width: 600px;
@@ -101,10 +97,15 @@
 	border-bottom-right-radius: 0.5rem;
 	cursor: pointer;
 }
+.board a{
+	cursor: pointer;
+	text-decoration: none;
+	color: #333;
+}
 .view{
 	display: flex;
 	justify-content: center;
-	width: 100%;	
+	width: 100%;
 }
 .view a{
 	padding: 2rem;
@@ -114,6 +115,13 @@
 .view a:hover{
 	color: white;
 }
+.view button{
+	margin: 20px;
+}
+.write{
+	width: 750px;
+	text-align: right;
+}
 .write button{
 	background-color: #539cae;
 	color: #f2f2f2;
@@ -122,9 +130,25 @@
 	cursor: pointer;
 	padding: 0.5rem;
 }
+table{
+	width: 90%;
+}
+button{
+	text-align: center;
+	background-color: #539cae;
+	color: #f2f2f2;
+	border-radius: 0.3rem;
+	border: 0;
+	cursor: pointer;
+	padding: 0.5rem;
+}
+
 @media screen and (max-width: 750px) {
     .leftcolumn, .rightcolumn {   
         width: 100%;
         padding: 0;
+    }
+    table,.write {
+    	width: 100%;
     }
 }

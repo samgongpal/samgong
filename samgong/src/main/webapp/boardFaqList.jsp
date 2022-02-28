@@ -19,7 +19,7 @@ if(strReferer == null){
 request.setCharacterEncoding("UTF-8");
 
 String no = request.getParameter("q_no"); //제목을 클릭했을때 넘어오는 게시물번호
-int q_no = (no == null)? -1 : Integer.parseInt(no);
+int faq_no = (no == null)? -1 : Integer.parseInt(no);
 //게시물 제목을 클릭했을때 내용을 불러오기위한 게시물번호 입니다.
 
 
@@ -90,23 +90,7 @@ ResultSet rs = pstmt.executeQuery();
 </head>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/board.css">
-<style>
-.view{
-	display: flex;
-	justify-content: center;
-	width: 100%;	
-}
-.view a{
-	padding: 2rem;
-	font-size: 15px;
-	color: #333;
-}
-.view a:hover{
-	color: white;
-}
 
-
-</style>
 <body>
 <%@ include file="topmenu.jsp" %>
 <section>
@@ -114,49 +98,56 @@ ResultSet rs = pstmt.executeQuery();
 <!-- 사이드 메뉴입니다. -->
 <%@ include file="boardSide.jsp" %>
 <div class="leftcolumn">
-<%
-if(check_id != null && check_id.equals("samgongpal")){
-%>
-	<div class="write"><button style="text-align:right" type="button" 
-	onclick="location='boardFaqWrite.jsp'">글쓰기</button></div>
-<%}%>
+
 <div class="board">
 	<table>
 	<colgroup>
-		<col width="8%"/>
-		<col width="75%"/>
+		<col width="7%"/>
+		<col width="70%"/>
 		<col width="*"/>
 	</colgroup>	
 		<tr>
 			<th>No.</th>
 			<th>제목</th>
-			<th>등록일</th>
+			<th><%if(check_id != null && check_id.equals("samgongpal")){%>
+			<button type="button"onclick="location='boardFaqWrite.jsp?G=N'">글쓰기</button>
+			<%}else{%>등록일<%}%></th>
 		</tr>
 		<%while(rs.next()) {
+		int q_no = rs.getInt("q_no");
 		String q_title = rs.getString("q_title");
 		String q_date = rs.getString("q_date");
 		String q_con = rs.getString("q_con");
-		String q_hit = rs.getString("q_hit");	
+		String q_hit = rs.getString("q_hit");
 		%>
 		<tr>
 			<td><%=rowNo%></td>
-			<td class="cursor" onClick="location='boardFaqList.jsp?view=<%=viewPage%>&q_no=<%=rs.getInt("q_no") %>'">
-			<%=q_title%></td>	
-			<td><%=q_date%></td>
-		</tr>
-		<%	rowNo--;
-			if(q_no == rs.getInt("q_no")){
+			<td><a href="boardFaqList.jsp?view=<%=viewPage%>&q_no=<%=q_no%>">
+			<%=q_title%></a>
+			</td>	
+			<td style="text-align:center">
+			<% //관리자 모드
+			if(check_id != null && check_id.equals("samgongpal")){
 			%>
-			<tr>
-				<td colspan="3" style="background-color: white;">
-				<%=q_con%>
-				</td>
-			</tr>		
-			<%
-			}
+			<button style="text-align:right" type="button" 
+			onclick="location='boardFaqWrite.jsp?G=M&q_no=<%=q_no%>'">수정</button>
+			<button style="text-align:right" type="button" 
+			onclick="javascript:fn_boardDelete('<%=q_no%>')">>삭제</button>
+			<!--  삭제 를 클릭했을때 함수가 실행되면서 q_no 값을 보내준다. -->
+			<%}else{%>
+			<%=q_date%>
+			<%}%>
+			</td>
+		</tr>
+		<%rowNo--;
+			
+			if(faq_no == q_no){%>
+			<tr><td colspan="3" style="background-color: white;">
+				[삼공시네마] : <%=q_con%>
+				</td></tr>		
+			<%}	
 		}%>
 	</table>
-
 </div>
 <div class="view">
 	<%
@@ -165,9 +156,7 @@ if(check_id != null && check_id.equals("samgongpal")){
 	//	out.print("<a href='boardFaqList.jsp?view="+i+"'>"+i+"</a> ");
 	%>		
 	<a href="boardFaqList.jsp?view=<%=i%>"><%=i%></a>
-	<% 
-	}	
-	%>
+	<%}%>
 	</div>
 </div>
 </section>

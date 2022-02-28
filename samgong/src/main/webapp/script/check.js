@@ -89,3 +89,22 @@ function fn_dbCheckId(){ // id 중복체크
 	window.open(url,"page","width=400,height=200,left="+w+",top="+h ); //left and top 으로 창의 위치를 설정할수있습니다.
 	//팝업이름을 똑같이 하면 새창으로 열리지않고 그이름을 가진곳에 열린다. 없으면 새창으로 열린다. 
 }
+// 게시판 유효성 체크
+function fn_submit(){
+	var f = document.frm;
+	if(f.q_title.value.trim().length == ""){
+		alert("제목을 입력해주세요.");
+		return false;
+	}
+	if(f.q_con.value.trim().length == "" || f.q_con.value.trim().length < 10){
+		alert("내용을 10자 이상으로 작성해주세요.");
+		return false;
+	}
+	f.submit();
+}
+
+function fn_boardDelete(q_no){ //게시물 삭제 컨펌
+	if(confirm("정말 삭제하시겠습니까?")){
+		location='boardFaqSave.jsp?GUBUN=D&q_no='+q_no;		
+	}
+}
