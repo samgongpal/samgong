@@ -17,7 +17,7 @@
       <div onclick="location='boardHome.jsp'">고객센터 홈</div>
       <div onclick="location='boardHome.jsp'">자주 묻는 질문</div>
       <div onclick="location='boardHome.jsp'">공지사항</div>
-      <div onclick="location='boardHome.jsp'">1:1문의</div>
+      <div onclick="location='boardQnaList.jsp'">1:1문의</div>
       <div onclick="location='boardHome.jsp'">이용약관</div>
       <div onclick="location='boardHome.jsp'">위치기반서비스</div>
       <div onclick="location='boardHome.jsp'">개인정보처리방침</div>

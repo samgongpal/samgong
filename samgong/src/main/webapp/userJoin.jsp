@@ -105,7 +105,7 @@ if(session_no != null){
 	      </td>
       </tr>   
       <tr>
-      <td><input type="text" name="u_name" placeholder="이름" required></td>
+      <td><input type="text" name="u_name" placeholder="이름" required maxlength="3" ></td>
       </tr>   
       <tr>
 	      <td style="text-align:center">

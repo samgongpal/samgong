@@ -51,6 +51,7 @@ section{
 	justify-content: center;
 	align-items: center;
 }
+/*
 .pageWrap{
 	width: 400px;
 	height: 300px;
@@ -66,5 +67,42 @@ section{
 }
 .pageBox:hover{
 	background-image:url('../img/main.webp')
+}
+*/
+.pageWrap{
+	border-radius: 0 0 1rem 1rem;
+	border: 2px solid #d7d8da;
+	border-top: 0;
+}
+.pageBox1,.pageBox2,.pageBox3{
+	color: #f1f1f1;   
+    padding: 20px;
+    border-radius: 0.8rem 0.8rem 0.8rem 0.8rem;
+}
+.pageBox1{
+	background-color: #3c3c3c;
+	border-radius: 0.8rem 0.8rem 0 0;
+	text-align: center;
+}
+.pageBox2{
+	color: #333;
+	background-color: #f2f4f5;
+	border-radius: 0 0 0 0;
+}
+.pageBox2 > div{
+	margin: 0;
+	padding: 1rem;
+	border-bottom: 1px solid #d7d8da;
+	cursor: pointer;
+}
+.pageBox2 > div:hover{
+	color: #317188;
+	background-color: #ffffff;
+}
+.pageBox3{
+	color: #666666;
+	background-color: #ffffff;
+	border-radius: 0 0 0.8rem 0.8rem;
+	border-top: 1px solid #d7d8da;
 }
 

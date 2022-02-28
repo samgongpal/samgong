@@ -40,19 +40,25 @@ if(strReferer == null){
 <body>
 <%@ include file="topmenu.jsp" %>
   <section>
+  
+  
+  
+  
+
+  
   <div class="top"><h1>마이페이지</h1></div>
   
     <div class="page">
    	<div class="pageWrap">
-      <div class="pageBox" onclick="location.href='userModify.jsp'">회원정보 수정</div>
+      <div class="pageBox1" onclick="location.href='userModify.jsp'">회원정보 수정</div>
      
       
       
-      <div class="pageBox" onclick="location.href='userTicketing.jsp'">예매정보</div>
+      <div class="pageBox2" onclick="location.href='userTicketing.jsp'">예매정보</div>
      
       
       
-     <div class="pageBox" onclick="location.href='userDelete.jsp'">회원탈퇴</div>
+     <div class="pageBox3" onclick="location.href='userDelete.jsp'">회원탈퇴</div>
     
     </div>
     </div>

@@ -40,6 +40,7 @@
 		  ps.setInt(1, Delete_no1);
 		  ps.executeUpdate();
 		  session.removeAttribute("session_no");
+		  session.removeAttribute("session_id");
 		  response.addCookie(Cookies.createCookie("CookieUserId","","/",0));
 		  response.addCookie(Cookies.createCookie("CookieUserPw","","/",0));
 		  // 세션 & 쿠키값 제거

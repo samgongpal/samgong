@@ -3,6 +3,7 @@
 <%@ page import="DBPKG.DAO" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
+<%@ include file="certificated.jsp" %> 
 <%
 String strReferer = request.getHeader("referer");
 if(strReferer == null){ 
@@ -80,7 +81,7 @@ ResultSet rs = pstmt.executeQuery();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>QnA</title>
+<title>FAQ</title>
 </head>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/board.css">
@@ -92,8 +93,16 @@ ResultSet rs = pstmt.executeQuery();
 <!-- 사이드 메뉴입니다. -->
 <%@ include file="boardSide.jsp" %>
 <div class="leftcolumn">
+<%
+if(check_id != null && check_id.equals("samgongpal")){
+	//관리자만 글을쓸수있게 관리자 로그인시에 글쓰기 버튼을 생성합니다.
+%>
+   	<button class="button" type="button" onclick="location='boardFaqWrite.jsp'">
+   	글쓰기</button></div>
+<%
+}
+%>
 <div class="board">
-   	
 	<table>
 	<colgroup>
 		<col width="8%"/>
@@ -121,9 +130,9 @@ ResultSet rs = pstmt.executeQuery();
 	<%
 	for(int i=1; i<=lastpage; i++){
 	//페이지 화면 2가지 방법으로 작성할수 있습니다. 
-	//	out.print("<a href='boardQnaList.jsp?view="+i+"'>"+i+"</a> ");
+	//	out.print("<a href='boardFaqList.jsp?view="+i+"'>"+i+"</a> ");
 	%>		
-	<a href="boardQnaList.jsp?view=<%=i%>"><%=i%></a>
+	<a href="boardFaqList.jsp?view=<%=i%>"><%=i%></a>
 	<% 
 	}	
 	%>

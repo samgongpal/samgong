@@ -11,8 +11,8 @@
 	justify-content: center;
 	align-items: center;
 }
-.board table{
-	min-width: 80%;
+.board > table{
+	min-width: 90%;
 }
 
 .board th{
@@ -81,9 +81,9 @@
 	border-top: 1px solid #d7d8da;
 }
 .searchBox {
-	display:flex;
-	justify-content:center;
-	width:100%;
+	display: flex;
+	justify-content: center;
+	width: 100%;
 }
 .searchBox input{
     border-radius: 0;
@@ -96,11 +96,23 @@
 	border-top-right-radius: 0.5rem;
 	border-bottom-right-radius: 0.5rem;
 	cursor: pointer;
-	}
+}
+.view{
+	display: flex;
+	justify-content: center;
+	width: 100%;	
+}
+.view a{
+	font-size: 13px;
+	color: white;
+}
+.view a:hover{
+	background-color: white;
+	color: papayawhip;
+}
 @media screen and (max-width: 750px) {
     .leftcolumn, .rightcolumn {   
         width: 100%;
         padding: 0;
     }
- 
 }
