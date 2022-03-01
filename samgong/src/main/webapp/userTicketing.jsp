@@ -40,8 +40,11 @@ if(strReferer == null){
   
   try{
 	  conn = DAO.getConnection();
-	  String sql = "SELECT T.t_address, M.m_name, R.r_count, R.r_date, R.r_no FROM RESERVATION R, MOVIE M, THEATER T WHERE R.u_no= ? AND M.m_no = R.m_no AND T.t_no = R.t_no"; 
-	  ps = conn.prepareStatement(sql);
+	 String sql = "SELECT T.t_address, M.m_name, R.r_count, R.r_date, R.r_no ";
+	         sql+= "FROM RESERVATION R, MOVIE M, THEATER T WHERE R.u_no= ? AND M.m_no = R.m_no AND T.t_no = R.t_no"; 
+	
+	
+	ps = conn.prepareStatement(sql);
 	  ps.setInt(1, Ticketing_no);
 	  rs = ps.executeQuery();
 	  while(rs.next()) {

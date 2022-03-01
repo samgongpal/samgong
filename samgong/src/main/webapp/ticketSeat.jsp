@@ -14,6 +14,14 @@
 좌석선택 후 저장할 때 몇번좌석 골랐는지 체크해서 체크된 좌석은 값을 1로 바꾸고,
 다음 예매할 때 값이 1인 좌석은 못고르게하기. -->
 
+
+
+
+
+
+
+
+
 <%
 	request.setCharacterEncoding("UTF-8");
 
@@ -21,11 +29,11 @@
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 
-	String m_no = request.getParameter("m_no");
-	String u_no = request.getParameter("u_no");
-	String t_no = request.getParameter("t_no");
-	String r_no = request.getParameter("r_no");
-	String r_count = request.getParameter("r_count");
+	String m_no = request.getParameter("m_no"); //영화번호 
+	String u_no = request.getParameter("u_no"); //회원번호 
+	String t_no = request.getParameter("t_no"); //상영관번호 
+	String r_no = request.getParameter("r_no"); //예약번호
+	String r_count = request.getParameter("r_count"); //예약인원수
 
 	
 	ArrayList<String[]> seatList = new ArrayList<String[]>();
@@ -79,69 +87,77 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>좌석선택</title>
+<title>∙ 좌석선택 ∙</title>
 <link rel="stylesheet" href="css/style.css">
-
+<link rel="stylesheet" href="css/ticket.css">
 <style>
-section{
-	font-size: 1.2rem;
+.seatWrap{
+	margin: 50px;
 }
-.ticket{	
-	max-height: 500px;
-	/* overflow: */
-	margin-top: 100px;
+.seat{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-.ticketBox{
-	width: 100%;
-	background-color: white;
-	border-radius: 2rem;
-}
-.ticketHead{
-	text-align: center;
-}
-.ticketList{
-	padding: 15px;
+input[type=checkbox] + label{
+	display: inline-block;
+	margin-left: 10px;
+	width: 80px;
+	height: 80px;
+	border: 2px solid #a9a49d;
+	border-radius: 0.8rem;
 	cursor: pointer;
 }
-.ticketList:hover{
-	background: #c2c4c4;
+input[type=checkbox] + label:hover{
+	background-color: rgba(255,255,255,0.5);
 }
-@media screen and (min-width: 700px) {
-	.ticket{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+input[type=checkbox]:checked + label{
+	background-color: #a9a49d;
 }
+input[type=checkbox]{
+	display: none;
+}
+
 </style>
 </head>
-
+<script>
+function fn_submit(){
+	var f = document.frm;
+	if(f.seat.value == null){
+		alert("좌석을 선택해주세요.");
+		return false;
+	}
+	f.submit();
+}
+</script>
 <body>
 <%@ include file="topmenu.jsp" %>
-
-<div align="center">
-	<h2>빠른예매_좌석선택</h2>
-	<form name="form" action="ticketSeatPro.jsp?m_no=<%=m_no%>&u_no=<%=session_no%>&t_no=<%=t_no %>" method="post">
-		<table border="1">
+<section>
+<div class="top"><h1>∙ 좌석선택 ∙</h1></div>
+	<form name="frm" action="ticketSeatPro.jsp?m_no=<%=m_no%>&u_no=<%=session_no%>&t_no=<%=t_no %>" method="post">
+	<div class="seatWrap">
 			<%int n = 0; %>
 			<%String[] seat = seatList.get(n); %>
-			<%for(int i = 0; i < 5; i++){ %>
-				<tr>
-				<%for(int j = 0; j < 5; j++) { %>
-					<td width="50px" height="50px" align="center">
-					<input type="checkbox" name="seat" value=<%=n + 1 %>></td>
-				<% n++;
-				}%>
-				</tr>
+			<%for(int i = 0; i < 4; i++){ %>
+				<div class="seat">
+				<%for(int j = 0; j < 6; j++) { 
+				String check = "chk"+n; n++;
+				//id 값을 다르게 적용해야 중복체크&효과 를 줄수있어서 변수를 생성하였습니다.
+				%>
+					<div>
+					<input type="checkbox" id="<%=check %>" name="seat" value=<%=n + 1 %>>
+					<label for="<%=check %>"></label>
+					</div>
+				<%}%>
+				</div>
 			<%}%>
-			<tr>			
-				<td colspan="5" align="center"><input type="submit" value="선택완료"></td>									
-			</tr>
-		</table>
+	</div>
+		<div style="text-align:center">
+		<input type="submit" onclick="fn_submit(); return false;" value="선택완료">						
+		<button type="reset" onclick="history.back()">뒤로가기</button>	
+		</div>		
 	</form>
-</div>
-
-
+</section>
 <%@ include file="footer.jsp" %>
 </body>
 </html>

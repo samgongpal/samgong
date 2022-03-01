@@ -22,6 +22,32 @@ section{
 .ticketList:hover{
 	background: #c2c4c4;
 }
+.seatWrap{
+	margin: 50px;
+}
+.seat{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+input[type=checkbox] + label{
+	display: inline-block;
+	margin-left: 10px;
+	width: 80px;
+	height: 80px;
+	border: 2px solid #a9a49d;
+	border-radius: 0.8rem;
+	cursor: pointer;
+}
+input[type=checkbox] + label:hover{
+	background-color: rgba(255,255,255,0.5);
+}
+input[type=checkbox]:checked + label{
+	background-color: #a9a49d;
+}
+input[type=checkbox]{
+	display: none;
+}
 @media screen and (min-width: 800px) {
 	.ticket{
 		display: flex;
