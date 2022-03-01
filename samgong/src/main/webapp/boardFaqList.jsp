@@ -131,27 +131,22 @@ function fn_boardDelete(q_no){ //게시물 삭제 컨펌
 			<td><a href="boardFaqList.jsp?V=<%=viewPage%>&Q=<%=q_no%>">
 			<%=q_title%></a>
 			</td>	
-			<td style="text-align:center">
-			<% //관리자 모드
-			if(check_id != null && check_id.equals("samgongpal")){
-			%>
-			<button type="button" 
-			onclick="location='boardModify.jsp?q_no=<%=q_no%>'">수정</button>
-			<button type="button" onclick="fn_boardDelete('<%=q_no%>')">삭제</button>
-			<!--  삭제 를 클릭했을때 함수가 실행되면서 q_no 값을 보내준다. -->
-			<%}else{%>
-			<%=q_date%>
-			<%}%>
-			</td>
+			<td style="text-align:center"><%=q_date%></td>
 		</tr>
-		<%rowNo--;
-			
-			if(faq_no == q_no){%>
-			<tr><td colspan="3" style="background-color: white;">
-				[삼공시네마]<br><%=q_con%> <!-- 제목을 눌렀을때 글 내용이 보여집니다. -->
-				</td></tr>		
-			<%}	
-		}%>
+		<%rowNo--;			
+		if(faq_no == q_no){%>
+		<tr><td colspan="3" style="background-color: rgba(255,255,255,0.5);">
+			[삼공시네마]<br><%=q_con%> <!-- 제목을 눌렀을때 글 내용이 보여집니다. -->
+		<%if(check_id != null && check_id.equals("samgongpal")){%>
+		<div style="text-align:center;">
+		<button type="button" 
+		onclick="location='boardModify.jsp?q_no=<%=q_no%>'">수정</button>
+		<button type="button" onclick="fn_boardDelete('<%=q_no%>')">삭제</button>
+		<!--  삭제 를 클릭했을때 함수가 실행되면서 q_no 값을 보내준다. -->
+		</div><%}%>
+		</td></tr>		
+		<%}	
+	}%>
 	</table>
 </div>
 <div class="view">

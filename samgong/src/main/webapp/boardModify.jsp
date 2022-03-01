@@ -25,16 +25,10 @@ if(check_no == null || check_id == null){
 	return;
 }
 
-String name = (check_id.equals("samgongpal"))?"삼공팔":check_id;
-String title = (check_id.equals("samgongpal"))?"":"[QnA]"+check_id;
-// 게시글 작성은 관리자 or QnA 에서 넘어오는 회원이므로 관리자 외에는 이름 앞에 [QnA]를 붙여서 구분합니다.
-String caption = (check_id.equals("samgongpal"))?"관리자 write":"QnA write";
-
-
 String q_no = request.getParameter("q_no");
 String q_title = "";
 String q_con = "";
-String q_hit = "";
+int q_hit = 0;
 String q_date = "";
 Connection conn = null;
 PreparedStatement ps = null;
@@ -53,7 +47,7 @@ try{
 	  if(rs.next()) {
 		  q_title = rs.getString("q_title");
 		  q_con = rs.getString("q_con");
-		  q_hit = rs.getString("q_hit");
+		  q_hit = rs.getInt("q_hit");
 		  q_date = rs.getString("q_date");
 	  }
 	  conn.close();
@@ -63,7 +57,29 @@ try{
 	  e.printStackTrace(); 
 }
 
-q_con = q_con.replace("<br>","\r\n");
+
+String name = "";
+String title = "";
+// 게시글 작성은 관리자 or QnA 에서 넘어오는 회원이므로 관리자 외에는 이름 앞에 [QnA]를 붙여서 구분합니다.
+String caption = "";
+String editTitle = (q_hit == 0)?"- [답변 완료]":"";
+String line = "\n- - - - - - - - - - - - - - - - - - - -";
+String editContent = (q_hit == 0)?line+"\n\n[삼공 시네마] 1:1 문의글의 답변 입니다.\n\n":"";
+
+switch(check_id){
+case("samgongpal"): 
+	name = "삼공팔";
+	caption = "관리자 write";
+	
+	break;
+default: 
+	name = check_id;
+	title = "[QnA]["+check_id+"] ";
+	caption = "QnA write";
+	break;
+}
+
+q_con = q_con.replace("<br>","\r\n"); //게시물 줄바꿈
 
 %>
 <!DOCTYPE html>
@@ -106,7 +122,6 @@ textarea{
 	
 	<input type="hidden" name="q_date" value="<%= q_date%>"> 
 	<input type="hidden" name="q_no" value="<%=q_no%>">
-	<input type="hidden" name="q_hit" value="<%=q_hit%>">
 	<input type="hidden" name="GUBUN" value="M">
 	<!-- N = 새글 작성 , M = 수정 , D = 삭제 구분을 위한 GUBUN변수* -->
 	<input type="hidden" name="title" value="<%=title %>">
@@ -115,11 +130,11 @@ textarea{
 		<tr>
 			<td style="text-align:left">
 			<input type="text" name="q_title" required
-			placeholder="제목을 입력하세요." value="<%=q_title%>"></td>
+			placeholder="제목을 입력하세요." value="<%=q_title%> <%=editTitle%>"></td>
 		</tr>			
 		<tr>
 			<td style="text-align:left">
-			<textarea name="q_con" placeholder="내용을 입력하세요." required><%=q_con%></textarea>
+			<textarea name="q_con" placeholder="내용을 입력하세요." required><%=q_con%> <%=editContent%></textarea>
 			</td>
 		</tr>
 		<tr>

@@ -26,7 +26,7 @@ if(check_id == null || check_no == null){
 }
 
 String name = (check_id.equals("samgongpal"))?"삼공팔":check_id;
-String title = (check_id.equals("samgongpal"))?"":"[QnA]"+check_id;
+String title = (check_id.equals("samgongpal"))?"":"[QnA]"+check_id+" - ";
 // 게시글 작성은 관리자 or QnA 에서 넘어오는 회원이므로 관리자 외에는 이름 앞에 [QnA]를 붙여서 구분합니다.
 String caption = (check_id.equals("samgongpal"))?"관리자 write":"QnA write";
 
@@ -63,7 +63,7 @@ try{
 <link rel="stylesheet" href="css/board.css">
 <style>
 table{
-	width:750px;
+	min-width:100%;
 }
 input,textarea{
 	width:100%;
@@ -76,12 +76,6 @@ input,textarea{
 textarea{
 	min-height:300px;
 }
-@media screen and (max-width: 750px) {
-    
-    table{
-    	width: 450px;
-    }
-}
 </style>
 <body onload="document.frm.q_title.focus()">
 <%@ include file="topmenu.jsp" %>
@@ -89,6 +83,7 @@ textarea{
 <section>
 <div class="top"><h1>∙ <%=caption %> ∙</h1></div>
 <div class="board">
+<div class="boardWrap">
 	<form name="frm" method="post" action="boardPro.jsp">
 	<%
       	java.util.Date date = new java.util.Date();
@@ -125,6 +120,7 @@ textarea{
 			<button type="reset" onclick="location='boardFaqList.jsp'">취 소</button>
 		</div>
 	</form>
+</div>
 </div>
 </section>
 <%@include file="footer.jsp" %>

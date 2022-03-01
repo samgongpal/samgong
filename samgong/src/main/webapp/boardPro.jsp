@@ -32,7 +32,7 @@ String title = request.getParameter("title");
 String q_no = request.getParameter("q_no");
 String q_title = request.getParameter("q_title");
 String q_con = request.getParameter("q_con");
-String q_hit = request.getParameter("q_hit");
+String q_hit = (check_id.equals("samgongpal"))?"1":"0";
 String q_date = request.getParameter("q_date");
 
 
@@ -48,7 +48,7 @@ try{
 	
 	conn = DAO.getConnection();
 	if(GUBUN.equals("N")){ //새글 작성
-		q_con = q_con.replace("\r\n","<br>"); //게시글 줄바꿈 저장(새글)
+		q_con = q_con.replace("\r\n","<br>"); //게시글 줄바꿈 저장
 				
 		String sql2= " ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD' ";
 
@@ -77,11 +77,13 @@ try{
 				
 		sql = " UPDATE qna SET ";
 		sql+= " q_title = ?, ";
-		sql+= " q_con = ? ";	
+		sql+= " q_con = ?, ";
+		sql+= " q_hit = ? ";
 		sql+= " WHERE q_no = "+q_no;
 		ps = conn.prepareStatement(sql);	
 		ps.setString(1, title + q_title);
 		ps.setString(2, q_con);	
+		ps.setString(3, q_hit);	
 		
 	}else{ //삭제
 					

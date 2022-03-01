@@ -31,31 +31,50 @@ if(check_no == null || check_no.equals("")){ //로그인 하지 않은 유저가
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원탈퇴</title>
+<title>∙ 회원탈퇴 ∙</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/user.css">
 </head>
+<script>
+function fn_confirm(){
+	var f = document.frm;
+	if(f.u_pw.value != f.u_pw2.value){
+		alert("비밀번호가 일치하지 않습니다.");
+		f.u_pw.focus();
+		return false;
+	}
+	if(confirm("정말 탈퇴 하시겠습니까?")){
+		f.submit();	
+	}else{
+		location="index.jsp";
+	}
+}
+
+</script>
 <body>
 <%@ include file="topmenu.jsp" %>
-  <section>
-    <form action="userDeletePro.jsp" method="post">
-    <h2>회원 탈퇴</h2>
+<section>
+	<div class="join">
+    <form name="frm" action="userDeletePro.jsp" method="post">
+    <h2>∙ 회원 탈퇴 ∙</h2>
     <table>
-      <tr>
-      <td><input type="password" name="u_pw" maxlength="10" placeholder="비밀번호" required></td>
-      </tr>
+    	<tr>
+    	<td><input type="password" name="u_pw" maxlength="10" placeholder="비밀번호" required></td>
+    	</tr>
       
-      <tr>
-      <td><input type="password" name="u_pw" maxlength="10" placeholder="비밀번호" required></td>
-      </tr>
+    	<tr>
+    	<td><input type="password" name="u_pw2" maxlength="10" placeholder="비밀번호 확인" required></td>
+    	</tr>
       
-      <tr>
-      <td colspan="2"><input type="submit" value="탈퇴">
-                      <input type="button" value="취소" onclick="window.location.href='userPage.jsp'"><td>
-      </tr>
+    	<tr>
+    	<td colspan="2">
+    	<input type="submit" onclick="fn_confirm(); return false;" value="탈퇴">
+    	<input type="button" value="취소" onclick="window.location.href='userPage.jsp'"><td>
+    	</tr>
     </table>
     </form>
-  </section>
+	</div>
+</section>
 <%@include file="footer.jsp" %>
 </body>
 </html>

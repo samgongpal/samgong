@@ -26,7 +26,6 @@ header {
     text-align: center; 
     border-top-left-radius: 0.5rem;
 	border-top-right-radius: 0.5rem;
-	background-image:url('img/main.jpg');
 }
 header a{
 	font-size: 50px;
@@ -194,9 +193,6 @@ footer {
 }
 
 @media screen and (max-width: 700px) {
-	header{
-		background-image:url('img/main.webp');
-	}
     .leftcolumn, .rightcolumn {   
         width: 100%;
         padding: 0;

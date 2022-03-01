@@ -15,7 +15,7 @@ if(strReferer == null){
 <%
 	return;
 }
-if(check_id == null || check_no == null){
+if(check_id == null || check_no == null || check_id.equals("") || check_no.equals("")){
 %>
 	<script>
 	alert("회원 전용 게시판 입니다.\n로그인 페이지로 이동합니다.");
@@ -29,9 +29,9 @@ String no = request.getParameter("Q"); //제목을 클릭했을때 넘어오는 
 int faq_no = (no == null)? -1 : Integer.parseInt(no);
 //게시물 제목을 클릭했을때 내용을 불러오기위한 게시물번호 입니다.
 
+String button = (check_id.equals("samgongpal"))?"답변":"수정";
 String check = (check_id.equals("samgongpal"))?"":check_id;
 //관리자에게는 모든 QnA 글이 보이게합니다.
-
 
 int listNo = 5; //한페이지에 나오는 게시물 갯수
 
@@ -77,9 +77,10 @@ function fn_boardDelete(q_no){ //게시물 삭제 컨펌
 <%
 if(total == 0){
 %>
-	문의 글이 없습니다. 글을 작성해주세요.
+	<div>
+	<h3>문의 글이 없습니다. 글을 작성해주세요.</h3>
 	<button type="button" onclick="location='boardWrite.jsp' ">∙ QnA 작성 ∙</button>
-
+	</div>
 <%
 }else{
 int lastpage = (int)Math.ceil((double)total/listNo);
@@ -111,14 +112,15 @@ ResultSet rs = pstmt.executeQuery();
 		<tr>
 			<th>No.</th>
 			<th>제목</th>
-			<th>등록일</th>
+			<th><button type="button"onclick="location='boardWrite.jsp'">
+			글쓰기</button></th>
 		</tr>
 		<%while(rs.next()) {
 		int q_no = rs.getInt("q_no");
 		String q_title = rs.getString("q_title");
 		String q_date = rs.getString("q_date");
 		String q_con = rs.getString("q_con");
-		String q_hit = rs.getString("q_hit");
+		int q_hit = rs.getInt("q_hit");
 		
 		q_title = q_title.replace(check,"");
 		//[QnA] 옆에 회원아이디를 출력하지 않도록 합니다.
@@ -131,23 +133,26 @@ ResultSet rs = pstmt.executeQuery();
 			<td style="text-align:center"><%=q_date%></td>
 		</tr>
 		<%rowNo--;		
-			if(faq_no == q_no){%>
-			<tr><td colspan="3" style="background-color: white;">
-				[QnA]<br><%=q_con%> <!-- 제목을 눌렀을때 글 내용이 보여집니다. -->
-				</td></tr>		
-			<%}%>			
-			<%
-			if(check.equals(check_id) || check_id.equals("samgongpal")){
-			%>
-			<tr><td colspan="3" style="text-align:center;">
-			<button type="button"onclick="location='boardWrite.jsp'">글쓰기</button>
-			<button type="button" 
-			onclick="location='boardModify.jsp?q_no=<%=q_no%>'">수정</button>
+		if(faq_no == q_no){%>
+		<tr><td colspan="3" style="background-color: rgba(255,255,255,0.5);">
+		[QnA]<br><%=q_con%> <!-- 제목을 눌렀을때 글 내용이 보여집니다. -->
+		<%if(check.equals(check_id) && q_hit == 0 || check_id.equals("samgongpal")){%>
+		<div style="text-align:center;">
+		<button type="button" 
+		onclick="location='boardModify.jsp?q_no=<%=q_no%>'">수정</button>
+		<button type="button" onclick="fn_boardDelete('<%=q_no%>')">삭제</button>
+		<!--  삭제 를 클릭했을때 함수가 실행되면서 q_no 값을 보내준다. -->
+		</div>
+		<%}if(check.equals(check_id) && q_hit > 0){ 
+			//q_hit 값이 0 이상이면 관리자가 답변 완료 하였으므로 수정할수없게 한다.%>
+			<div style="text-align:center;">			
 			<button type="button" onclick="fn_boardDelete('<%=q_no%>')">삭제</button>
 			<!--  삭제 를 클릭했을때 함수가 실행되면서 q_no 값을 보내준다. -->
-			</td></tr>
-			<%}%>
+			</div>
 		<%}%>
+		</td></tr>		
+	<%}%>		
+<%}%>
 	</table>
 </div>
 <div class="view">
@@ -158,7 +163,6 @@ ResultSet rs = pstmt.executeQuery();
 	<%}%>
 	</div>
 <%}%>
-
 </div>
 </section>
 <%@include file="footer.jsp" %>

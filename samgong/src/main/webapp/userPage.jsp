@@ -33,14 +33,14 @@ if(strReferer == null){
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지</title>
+<title>∙ Mypage ∙</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/user.css">
 </head>
 <body>
 <%@ include file="topmenu.jsp" %>
 <section> 
-<div class="top"><h1>마이페이지</h1></div>
+<div class="top"><h1>∙ 마이페이지 ∙</h1></div>
  
 	<div class="page">
 	<div class="pageWrap">

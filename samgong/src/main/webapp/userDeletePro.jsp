@@ -9,7 +9,7 @@
 
   int Delete_no1 = Integer.parseInt(check_no);
     
-  String u_id = request.getParameter("u_id");
+  String u_id = check_id;
   String u_pw = request.getParameter("u_pw");
   
   Connection conn = null;
