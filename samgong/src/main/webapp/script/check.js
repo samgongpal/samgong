@@ -105,6 +105,6 @@ function fn_submit(){
 
 function fn_boardDelete(q_no){ //게시물 삭제 컨펌
 	if(confirm("정말 삭제하시겠습니까?")){
-		location="boardFaqSave.jsp?GUBUN=D&q_no="+q_no;		
+		location="boardPro.jsp?GUBUN=D&q_no="+q_no;		
 	}
 }

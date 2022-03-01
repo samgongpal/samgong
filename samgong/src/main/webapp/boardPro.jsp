@@ -16,17 +16,18 @@ if(strReferer == null){
 <%
 	return;
 }
-if(!check_id.equals("samgongpal")){
+if(check_id == null || check_no == null){
 %>
 	<script>
-	alert("관리자 전용 페이지입니다.");
 	location="index.jsp";
 	</script>
 <%
 	return;
 }
 String GUBUN = request.getParameter("GUBUN");
-// N = 새글 작성 , M = 수정 , D = 삭제 구분을 위한 변수*
+// N = new 새글 작성 , M = modify 수정 , D = delete 삭제 * 구분을 위한 변수입니다. *
+String title = request.getParameter("title");
+//[QnA] 와 관리자를 구분하기위한 제목에 들어갈 변수 입니다.
 
 String q_no = request.getParameter("q_no");
 String q_title = request.getParameter("q_title");
@@ -64,7 +65,7 @@ try{
 		더좋은방법을 찾으면 차후 수정하겠습니다.
 		*/ 
 		ps.setString(1, q_no);
-		ps.setString(2, q_title);
+		ps.setString(2, title + q_title);
 		ps.setString(3, q_con);
 		ps.setString(4, q_hit);
 		ps.setString(5, q_date);	  
@@ -72,21 +73,15 @@ try{
 		stmt.close();
 					
 	}else if(GUBUN.equals("M")){ //수정
-		q_con = q_con.replace("<br>","\r\n"); //게시글 줄바꿈 수정
+		q_con = q_con.replace("\r\n","<br>");
 				
 		sql = " UPDATE qna SET ";
-		sql+= " q_no = ?, ";
 		sql+= " q_title = ?, ";
-		sql+= " q_con, ";
-		sql+= " q_hit, ";
-		sql+= " q_date ";
+		sql+= " q_con = ? ";	
 		sql+= " WHERE q_no = "+q_no;
-		ps = conn.prepareStatement(sql);
-		ps.setString(1, q_no);
-		ps.setString(2, q_title);
-		ps.setString(3, q_con);
-		ps.setString(4, q_hit);
-		ps.setString(5, q_date);
+		ps = conn.prepareStatement(sql);	
+		ps.setString(1, title + q_title);
+		ps.setString(2, q_con);	
 		
 	}else{ //삭제
 					
@@ -104,26 +99,25 @@ try{
 }catch (Exception e) {
 	e.printStackTrace(); 
 }
-
 if(result == 1 && GUBUN.equals("N")){
 %>
 	<script>
 	alert("저장 완료!");
-	location="boardFaqList.jsp";
+	location="boardHome.jsp";
 	</script>
 <%
 }else if(result == 1 && GUBUN.equals("M")){
 %>
 	<script>
 	alert("수정 완료!");
-	location="boardFaqList.jsp";
+	location="boardHome.jsp";
 	</script>
 <%
 }else if(result == 1 && GUBUN.equals("D")){
 %>
 	<script>
 	alert("삭제 완료!");
-	location="boardFaqList.jsp";
+	location="boardHome.jsp";
 	</script>
 <%
 }else{

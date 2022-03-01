@@ -15,9 +15,8 @@ if(strReferer == null){
 <%
 	return;
 }
-
-if(check_no == null || check_id == null || !check_id.equals("samgongpal")){ 
-	//관리자만 작성할수있는 페이지
+if(check_id == null || check_no == null){ 
+	//비회원의 접근차단
 %>
 	<script>
 	location="index.jsp";
@@ -25,6 +24,11 @@ if(check_no == null || check_id == null || !check_id.equals("samgongpal")){
 <%
 	return;
 }
+
+String name = (check_id.equals("samgongpal"))?"삼공팔":check_id;
+String title = (check_id.equals("samgongpal"))?"":"[QnA]"+check_id;
+// 게시글 작성은 관리자 or QnA 에서 넘어오는 회원이므로 관리자 외에는 이름 앞에 [QnA]를 붙여서 구분합니다.
+String caption = (check_id.equals("samgongpal"))?"관리자 write":"QnA write";
 
 String q_no = "";
 
@@ -53,7 +57,7 @@ try{
 <html>
 <head>
 <meta charset="UTF-8">
-<title>∙ FQA write ∙</title>
+<title>∙ <%=caption %> ∙</title>
 </head>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/board.css">
@@ -83,9 +87,9 @@ textarea{
 <%@ include file="topmenu.jsp" %>
 
 <section>
-<div class="top"><h1>∙ FAQ 작성 ∙</h1></div>
+<div class="top"><h1>∙ <%=caption %> ∙</h1></div>
 <div class="board">
-	<form name="frm" method="post" action="boardFaqSave.jsp">
+	<form name="frm" method="post" action="boardPro.jsp">
 	<%
       	java.util.Date date = new java.util.Date();
         SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
@@ -95,6 +99,8 @@ textarea{
 	<input type="hidden" name="q_no" value="<%=q_no %>">
 	<input type="hidden" name="q_hit" value="0">
 	<input type="hidden" name="GUBUN" value="N">
+	<!-- N = 새글 작성 , M = 수정 , D = 삭제 구분을 위한 GUBUN변수* -->
+	<input type="hidden" name="title" value="<%=title %>">
 	<table>
 		<tr>
 			<td style="text-align:left">
@@ -107,16 +113,16 @@ textarea{
 			</td>
 		</tr>
 		<tr>
-			<td style="text-align:left"> 삼공팔</td>
+			<td style="text-align:left"><%=name %></td>
 		</tr>
 		<tr>
-			<td style="text-align:left"><%= strdate%></td>
+			<td style="text-align:left"><%=strdate %></td>
 		</tr>
 	</table>
 		<div class="view">
-			<button type="submit" onclick="fn_submit();return false;">저장</button>
+			<button type="submit" onclick="fn_submit();return false;">저 장</button>
 			<!-- 오류가났을때 submit 멈추기위해 자바스크립트를 작성해준다. -->
-			<button type="reset" onclick="location='boardFaqList.jsp'">취소</button>
+			<button type="reset" onclick="location='boardFaqList.jsp'">취 소</button>
 		</div>
 	</form>
 </div>

@@ -102,6 +102,14 @@
 	text-decoration: none;
 	color: #333;
 }
+.viewBox{
+	width: 90%;
+	min-height: 500px;
+	max-height: 500px;
+	overflow: auto;
+	border-radius: 1rem;
+	background-color: white;
+}
 .view{
 	display: flex;
 	justify-content: center;
@@ -116,7 +124,7 @@
 	color: white;
 }
 .view button{
-	margin: 20px;
+	margin: 10px;
 }
 .write{
 	width: 750px;
