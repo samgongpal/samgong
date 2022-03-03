@@ -93,8 +93,7 @@ function fn_reservation(){
 		location.href="userLogin.jsp"; // 로그인페이지
 	}
 	else{
-		alert("로그확인");
-		location.href="#"; // 예약 페이지
+		location.href="ticketList.jsp"; // 예약 페이지
 	}
 }
 const drawStar = (target) => {

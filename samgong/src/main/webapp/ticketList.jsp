@@ -55,7 +55,7 @@ if(strReferer == null){
 <html>
 <head>
 <meta charset="UTF-8">
-<title>영화예매</title>
+<title>∙ 영화예매 ∙</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/ticket.css">
 
@@ -63,7 +63,7 @@ if(strReferer == null){
 <body>
 <%@ include file="topmenu.jsp" %>
 <section>
-<div class="top"><h1>최신개봉작</h1></div>
+<div class="top"><h1>∙ 영화 예매 ∙</h1></div>
 
 <div class="ticket">
 	<div class="ticketBox">

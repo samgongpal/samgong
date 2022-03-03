@@ -4,25 +4,26 @@
 <%@page import="DBPKG.DAO"%>
 <%@page import="java.sql.*"%>
 <%@include file="certificated.jsp" %>
-
-
-
-
-<!-- 해야 할 일
-좌석번호 1-25번까지(default=0 선택 시=1)
-
-좌석선택 후 저장할 때 몇번좌석 골랐는지 체크해서 체크된 좌석은 값을 1로 바꾸고,
-다음 예매할 때 값이 1인 좌석은 못고르게하기. -->
-
-
-
-
-
-
-
-
-
 <%
+String strReferer = request.getHeader("referer");
+if(strReferer == null){ 
+//비정상적인 URL 접근차단을 위해 request.getHeader("referer") 메소드를 사용하였습니다.
+//로그인한 회원이 주소창에 URL 로 접근하는것을 차단
+%>
+	<script>
+	location="index.jsp";
+	</script>
+<%
+	return;
+}
+if(check_id == null || check_no == null){
+%>
+	<script>
+	alert("로그인후 이용해주세요");
+	location="userLogin.jsp";
+	</script>
+<%	return;
+}
 	request.setCharacterEncoding("UTF-8");
 
 	Connection conn = null;

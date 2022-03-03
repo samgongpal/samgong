@@ -25,7 +25,7 @@
     <li><a href="movieList.jsp">영화</a>
       <ul id="sub-menu">
         <li><a href="movieList.jsp" aria-label="subemnu">현재상영작</a></li>
-        <li><a href="#" aria-label="subemnu">개봉예정작</a></li>
+        <li><a href="movieList2.jsp" aria-label="subemnu">개봉예정작</a></li>
       </ul>
     </li>
     <li><a href="movieScreen.jsp">극장</a>
