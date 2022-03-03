@@ -55,8 +55,8 @@ int rowNo = total - index;
 
 //listNo = 5 한페이지당 보여주는 게시물의 수
 
-/*String sql = " SELECT * FROM(";
-       sql+= " SELECT A.*,FLOOR((ROWNUM - 1)/"+(listNo+1)+")page, rownum FROM(";
+/*String sql = " SELECT * FROM";
+       sql+= " (SELECT A.*,FLOOR((ROWNUM - 1)/"+(listNo+1)+")page, rownum FROM(";
        sql+= " SELECT ";
        sql+= " q_title, ";
        sql+= " q_con, ";

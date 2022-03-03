@@ -8,13 +8,21 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/movie.css">
 </head>
+<style>
+.screen img{
+	text-align: center;
+	width: 100%;
+	border-radius: 1rem;
+}
+</style>
 <body>
 <%@ include file="topmenu.jsp" %>
 <section>
+<div class="top"></div>
 <div class="screenwrapper">
-<div class="screen" style="background-image:url('img/logo.jpg')"></div>
+<div class="screen"><img src="img/logo.jpg"></div>
 </div>
-<div style="margin:0px">
+<div class="screenwrite">
 <h2>삼공팔 Screen</h2>
 <ul><!-- 수정중 -->
 	<li>삼공팔 Screen</li>

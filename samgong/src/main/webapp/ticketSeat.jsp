@@ -145,7 +145,7 @@ function fn_submit(){
 				//id 값을 다르게 적용해야 중복체크&효과 를 줄수있어서 변수를 생성하였습니다.
 				%>
 					<div>
-					<input type="checkbox" id="<%=check %>" name="seat" value=<%=n + 1 %>>
+					<input type="checkbox" id="<%=check %>" name="seat" value=<%=n %>>
 					<label for="<%=check %>"></label>
 					</div>
 				<%}%>
