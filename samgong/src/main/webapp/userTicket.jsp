@@ -54,6 +54,17 @@ if(strReferer == null){
 <title>userTicketing</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/user.css">
+<style>
+.page{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.page > table,th,td{
+	border: 1px solid #333;
+	border-collapse: collapse;
+}
+</style>
 </head>
 <body>
 <%@ include file="topmenu.jsp" %>
@@ -76,9 +87,13 @@ if(strReferer == null){
     	rs = ps.executeQuery();
     %>
     <h2>예매정보</h2>
+    <div class="page">
     <table>
       <tr>
-      <td>영화관</td><td>영화제목</td><td>인원</td><td>날짜</td>
+      <td>영화관</td>
+      <td>영화제목</td>
+      <td>인원</td>
+      <td>날짜</td>
       </tr>
       
       <%while(rs.next()){%>
@@ -99,6 +114,7 @@ if(strReferer == null){
       <td colspan="4"><button type="button" onclick="location.href='index.jsp'">돌아가기</button></td>
       </tr>
     </table>
+    </div>
     <%}else {%>
       <h2>예매내역이 없습니다.</h2>
       <button type="button" onclick="location.href='ticketList.jsp'">예매하러가기</button>

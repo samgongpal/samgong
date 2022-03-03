@@ -9,7 +9,6 @@
   
   Connection conn = null;
   PreparedStatement ps = null;
-  
   try{
 	  conn = DAO.getConnection();
 	  String sql = "DELETE FROM RESERVATION WHERE r_no =?";

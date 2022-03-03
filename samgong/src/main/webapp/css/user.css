@@ -51,24 +51,7 @@ section{
 	justify-content: center;
 	align-items: center;
 }
-/*
-.pageWrap{
-	width: 400px;
-	height: 300px;
-	border: 1px solid #333;
-}
-.pageBox{
-	width:100%;
-	height: 100px;
-	padding: 40px;
-	cursor: pointer;
-	border-radius: 1rem;
-	font-size: 20px;
-}
-.pageBox:hover{
-	background-image:url('../img/main.webp')
-}
-*/
+
 .pageWrap{
 	width: 400px;
 	border-radius: 0 0 1rem 1rem;

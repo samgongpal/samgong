@@ -38,7 +38,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>현재상영작</title>
+<title>∙ 개봉예정작 ∙</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/movieList.css">
 
@@ -46,6 +46,7 @@
 <body>
 <%@ include file="topmenu.jsp"%>
 <section>
+	<div class="topList"><h1> 개봉예정작 </h1></div>
  	<%
  	int size = movienum.size();
  	int index = 0;

@@ -30,6 +30,11 @@ section{
 	justify-content: center;
 	align-items: center;
 }
+.seat > table{
+	width: 300px;
+	border-collapse: collapse;
+	border: 1px solid #333;
+}
 input[type=checkbox] + label{
 	display: inline-block;
 	margin-left: 10px;

@@ -87,15 +87,7 @@ if(strReferer == null){
 <body>
 <%@ include file="topmenu.jsp"%>
 <script type="text/javascript">
-function fn_reservation(){
-	if(<%= session_no %> == null || <%= session_no %>.equals("")){
-		alert("로그인하세요");
-		location.href="userLogin.jsp"; // 로그인페이지
-	}
-	else{
-		location.href="ticketList.jsp"; // 예약 페이지
-	}
-}
+
 const drawStar = (target) => {
     document.querySelector('.star span').style.width = '${target.value * 10}%';
   }
@@ -118,7 +110,7 @@ const drawStar = (target) => {
       	<li style="margin-top:1rem;">누적관객수 : <%= movie[9] %>명 </li>
       	<li style="margin-top:1rem;">영화소개 :<%= movie[10] %> </li>
       	<li style="margin-top:1rem;">평점 : <span>★★★★★</span></li>
-      	<li><button class="button"type="button" onclick="fn_reservation()">예매하기</button></li>
+      	<li><button class="button"type="button" onclick="location='ticketList.jsp?m_no=<%=m_no%>' ">예매하기</button></li>
       <!-- 로그인 여부 확인을 위한 자바스크립트 유효성체크 *테스트로 작성했어요 수정하셔야합니다 :)-->
       </ul>     
     </div>

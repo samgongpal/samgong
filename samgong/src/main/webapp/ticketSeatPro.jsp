@@ -32,7 +32,9 @@
 	
 	try{
 		conn = DAO.getConnection();
-		String sql = "INSERT INTO RESERVATION (r_no, r_count, m_no, u_no, t_no) VALUES(RES_DEPT.NEXTVAL, ?, ?, ?, ?)";
+		String sql = " INSERT INTO RESERVATION ";
+		       sql+= " (r_no, r_count, m_no, u_no, t_no) ";
+		       sql+= " VALUES(RES_DEPT.NEXTVAL, ?, ?, ?, ?) ";
 		ps = conn.prepareStatement(sql);
 		ps.setString(1, r_count);
 		ps.setString(2, m_no);
@@ -47,7 +49,7 @@
 		  e.printStackTrace();
 	}
 	
-
+response.sendRedirect("userTicketing.jsp");
 %>
 
 <!DOCTYPE html>
@@ -56,45 +58,32 @@
 <meta charset="UTF-8">
 <title>좌석선택</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/ticket.css">
 
 <style>
-section{
-	font-size: 1.2rem;
+.seat{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-.ticket{	
-	max-height: 500px;
-	/* overflow: */
-	margin-top: 100px;
+.seat > table,th,td{
+	width: 300px;
+	padding: 1rem;
+	border-collapse: collapse;
+	border: 1px solid #333;
 }
-.ticketBox{
-	width: 100%;
-	background-color: white;
-	border-radius: 2rem;
-}
-.ticketHead{
-	text-align: center;
-}
-.ticketList{
-	padding: 15px;
-	cursor: pointer;
-}
-.ticketList:hover{
-	background: #c2c4c4;
-}
-@media screen and (min-width: 700px) {
-	.ticket{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
+.seat > th{
+	background-color: rgba(255,255,255,0.5);
 }
 </style>
 </head>
 
 <body>
 <%@ include file="topmenu.jsp" %>
+<section>
 	<h2 align="center">빠른예매_좌석선택</h2>
-	<table border="1" align="center">
+	<div class="seat">
+	<table>
 
 			<tr>
 				<%if(seat != null){ %>
@@ -110,11 +99,8 @@ section{
 			<input type="button" value="메인으로" onclick="window.location.href='index.jsp'"></td>									
 		</tr>
 	</table>
-
+	</div>
+</section>
 <%@ include file="footer.jsp" %>
 </body>
 </html>
-
-<script>
-alert("예매가 완료되었습니다.");
-</script>

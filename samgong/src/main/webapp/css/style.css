@@ -3,7 +3,6 @@
     box-sizing: border-box;
 
 }
-
 html { 
 	position: relative;
 	min-height: 100%;
@@ -11,14 +10,12 @@ html {
 	background-color: papayawhip; 
 } 
 body {
+    font-family: Georgia, "Times New Roman", serif;
+    padding: 10px;
     max-width: 1200px; /* 화면이 일정크기 이상 늘어나지않도록합니다.*/
     min-height: 100vh;
     background-color: papayawhip; 
     margin: 0 auto;
-}
-body {
-    font-family: Fixedays;
-    padding: 10px;
 }
 /* 제목 */
 header {
@@ -26,12 +23,12 @@ header {
     text-align: center; 
     border-top-left-radius: 0.5rem;
 	border-top-right-radius: 0.5rem;
+	
 }
 header a{
 	font-size: 50px;
 	text-decoration: none;
-	color: black;
-	
+	color: #333;
 }
 header a:hover{
 	font-size: 55px;

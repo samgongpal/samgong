@@ -30,10 +30,11 @@ ArrayList<String> list = (ArrayList)session.getAttribute("session_movie_no");
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "";
-				conn = DAO.getConnection();
-				if(array != null && !array.equals("")){
+		
+		conn = DAO.getConnection();
+		if(array != null && !array.equals("")){
 						
-					sql = " SELECT m_no FROM movie ORDER BY "+array+" DESC";
+		sql = " SELECT m_no FROM movie ORDER BY "+array+" DESC";
 					movie = array;
 						
 				}else if(m_grade != null && !m_grade.equals("")){
@@ -80,7 +81,7 @@ default: break;
 <html>
 <head>
 <meta charset="UTF-8">
-<title>현재상영작</title>
+<title>∙ 현재상영작 ∙</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/movieList.css">
 

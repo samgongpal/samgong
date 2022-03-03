@@ -15,9 +15,9 @@
 </head>
 <body>
  
-<header style="background-image:url('img/main.jpg')">
+<header style="background-image:url('img/main.webp')">
   <h1><a href="index.jsp" >삼공시네마</a></h1>
-  <p>C U L T U R E P L E X</p>
+  <p>∙ C U L T U R E P L E X ∙</p>
 </header>
 
 <nav role="navigation">
