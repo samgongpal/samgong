@@ -10,7 +10,7 @@ html {
 	background-color: papayawhip; 
 } 
 body {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: Times New Roman;
     padding: 10px;
     max-width: 1200px; /* 화면이 일정크기 이상 늘어나지않도록합니다.*/
     min-height: 100vh;
@@ -128,6 +128,9 @@ ul, li {
     background-size: cover;
     background-position: 50%;
 }
+img{
+	border-radius: 0.5rem;
+}
 .movie {
 	color: #f1f1f1;
     background-color: #333;
@@ -135,7 +138,14 @@ ul, li {
     margin-top: 20px;
     border-radius: 0.5rem;
 }
-
+.movieBox {
+	display: flex; 
+	justify-content: center; 
+	align-items: center;
+}
+.movieBox > img {
+	width: 100%;
+}
 .searchBox input {
 	width: 100%;
 	opacity: 0.7;

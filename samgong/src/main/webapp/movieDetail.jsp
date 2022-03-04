@@ -20,6 +20,7 @@ if(strReferer == null){
 	request.setCharacterEncoding("UTF-8");
 	
 	String m_no = request.getParameter("m_no");
+	
 	String rank = (Integer.parseInt(m_no)<9)?m_no:"0";//영화순위 
 	String URL = ""; //유튜브 예고편 링크
 	switch(m_no){
@@ -36,15 +37,19 @@ if(strReferer == null){
 	case "11":  URL = "pCDq-RLfJu0"; break;
 	case "12":  URL = "Xdf7ZW-AqXs"; break;
 	case "13":  URL = "HLmm2ZR_VOI"; break;
-	case "14":  URL = "jAYGFfio00U"; break;
+	case "14":  URL = "tMKniHlecyc"; break;
 	case "15":  URL = "8c8sBrMvqWY"; break;
 	case "16":  URL = "uMeq3my5ZlE"; break;
 	case "17":  URL = "HzOfDTKjwTo"; break;
 	case "18":  URL = "pnkZFq4Y_sA"; break;
 	case "19":  URL = "-Xyvn6Dxkz0"; break;
 	case "20":  URL = "7g3fEWsy-ZI"; break;
-	}
-	
+	case "21":  URL = "Rdq1Uao67aQ"; break;
+	case "22":  URL = "c8T2uJZVKBI"; break;
+	case "23":  URL = "99DlyQZgfs8"; break;
+	case "24":  URL = "-8KEWrFO-l0"; break;
+	default: break;
+	}	
 	
 	String [] movie = new String [11];
 	
@@ -93,6 +98,7 @@ const drawStar = (target) => {
   }
 </script>
 <section> 
+<div class="top"></div>
     <div class="movie">  
       <div class="a">
       <div style="background-image:url('img/<%= m_no %>.jpg');"class="fakeimg"></div>

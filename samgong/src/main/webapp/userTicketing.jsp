@@ -3,19 +3,6 @@
 <%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-String strReferer = request.getHeader("referer");
-if(strReferer == null){ 
-//비정상적인 URL 접근차단을 위해 request.getHeader("referer") 메소드를 사용하였습니다.
-%>
-	<script>
-	alert("정상적인 경로를 통해 다시 접근해 주십시오.");
-	location="index.jsp";
-	</script>
-<%
-	return;
-}
-%>
 <%@ include file="certificated.jsp" %> 
 <%
   //수정(2022.2월18일.MOM) session 으로 받은 u_no 변수명 중복으로 오류방지를 위해 이름 변경합니다.
@@ -92,31 +79,37 @@ if(strReferer == null){
   <section>
     <%if(userTicket.size() > 0) {%>
     <form action="userTicketingPro.jsp">
-
     <div class="page">
-    <table>
-      <tr>
-      <th>영화제목</th>
-      <th>영화관</th>
-      <th>인원</th>
-      <th></th>
-      </tr>
-      
-      
-      <%for(int i = 0; i < userTicket.size(); i ++) {%>
-        <tr>
-          <%String[] Ticketing = userTicket.get(i);%>
-          <td><%= Ticketing[1]%></td>
-          <td><%= Ticketing[2]%></td>
-          <td><%= Ticketing[3]%></td>
-          <td><input type="button" value="삭제" onclick="location.href='userTicketingPro.jsp?r_no=<%= Ticketing[0]%>'">
-        </tr>
-      <%} %>
-      <tr>
-      <td colspan="4"><button type="button" onclick="location.href='index.jsp'">돌아가기</button></td>
-      </tr>
-    </table>
-    </div>
+	<div class="pageWrap">
+    <div class="pageBox1">마이페이지</div>
+    <div class="pageBox">
+   		<div class="pageBox2">
+		    <div>영화제목  영화관  인원</div>
+		    <%for(int i = 0; i < userTicket.size(); i ++) {%>
+ 
+        	<%String[] Ticketing = userTicket.get(i);%>
+        	<div class="page">
+       		<div><%= Ticketing[1]%></div>
+        	<div><%= Ticketing[2]%></div>
+        	<div><%= Ticketing[3]%></div>
+        	</div>
+        	<div>
+			<input type="button" value="삭제" onclick="location.href='userTicketingPro.jsp?r_no=<%= Ticketing[0]%>'">
+       		</div>
+      		<%} %>
+     		<div>
+     		<button type="button" onclick="location.href='index.jsp'">돌아가기</button></td>
+			</div>
+   		</div>
+     	<div class="pageBox3" >
+      		<h3>삼공시네마</h3>
+      		<p>Samgong center</p>
+      		<p>10:30 ~ 18:30</p>
+    	</div>   
+	</div>
+	</div>
+    
+</div>
     </form>
     <%}else {%>
       <h2>예매내역이 없습니다.</h2>
