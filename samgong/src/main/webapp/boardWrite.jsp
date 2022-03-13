@@ -99,6 +99,12 @@ textarea{
 	<table>
 		<tr>
 			<td style="text-align:left">
+			<%if(check_id.equals("samgongpal")) {%>
+			<select name="q_select">
+				<option value=""></option>
+				<option value="[공지] ">[공지]</option>
+			</select>
+			<%} %>
 			<input type="text" name="q_title" required
 			placeholder="제목을 입력하세요."></td>
 		</tr>			

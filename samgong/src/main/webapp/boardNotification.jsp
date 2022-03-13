@@ -16,31 +16,67 @@ if(strReferer == null){
 }
 request.setCharacterEncoding("UTF-8");
 
-String no = request.getParameter("Q"); //제목을 클릭했을때 넘어오는 게시물번호
+/* 제목을 클릭했을때 넘어오는 게시물번호 */
+String no = request.getParameter("Q"); 
+
+
+/* 게시물 제목을 클릭했을때 내용을 불러오기위한 게시물번호 입니다. */
 int faq_no = (no == null)? -1 : Integer.parseInt(no);
-//게시물 제목을 클릭했을때 내용을 불러오기위한 게시물번호 입니다.
 
 
-int listNo = 5; //한페이지에 나오는 게시물 갯수
+/* 한 페이지의 게시물 수 */
+int pageSize = 5;
 
-String view = request.getParameter("V"); //현재 페이지 번호 입니다.
 
+/* 한 블럭( range : 범위 ) 의 페이지 수 */
+int rangeSize = 5; 
+
+
+/* 현재 페이지 번호 입니다. */
+String view = request.getParameter("V"); 
+
+
+/* 현재 페이지 */
 int viewPage = (view == null)? 1 :Integer.parseInt(view);
-//첫페이지
 
-int index = (viewPage-1)*listNo; //불러올 데이터의 LIMIT index,pageView
+
+/* 시작 index */
+int index = (viewPage-1)*pageSize;
+
 
 Connection conn = DAO.getConnection();
 String count = " SELECT count(*) total FROM qna WHERE q_title LIKE '%공지%' ";
 PreparedStatement pstmt = conn.prepareStatement(count);
 ResultSet rscnt = pstmt.executeQuery();
 rscnt.next();
+
+/* 총 게시글 수 */
 int total = rscnt.getInt("total");
 
-int lastpage = (int)Math.ceil((double)total/listNo);
 
+/* 마지막 페이지 */
+int endPage = (int)Math.ceil((double)total/pageSize);
+
+
+/* 게시물 행번호 */
 int rowNo = total - index; 
-// 제목 옆에 나올 게시물(행 번호) 번호  중요*
+
+
+/* ( range : 범위 ) */
+int Range = (viewPage % rangeSize == 0)?viewPage/rangeSize:(viewPage/rangeSize)+1;
+
+
+/* 이전 버튼 블럭( range : 범위 ) */
+int startRange = (Range-1)*rangeSize+1;
+
+
+/* 다음 버튼 블럭( range : 범위 ) */
+int endRange = startRange + rangeSize-1;
+
+
+/* 마지막 블락에서 총페이지수를 넘어가면 끝 페이지를 마지막 페이지 숫자로 넣어줍니다. */
+endRange = (endRange >= endPage) ? endPage : endRange;
+
 
 String sql = " SELECT * FROM ";
        sql+= " (SELECT A.*,FLOOR((ROWNUM-1)/5+1)page, ";
@@ -62,9 +98,17 @@ ResultSet rs = pstmt.executeQuery();
 <head>
 <meta charset="UTF-8">
 <title>∙ 공지사항 ∙</title>
-</head>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/board.css">
+<style>
+table,th,td{
+	border-collapse: collapse;
+}
+a{
+	text-decoration: none;
+}
+</style>
+</head>
 <script>
 function fn_boardDelete(q_no){ //게시물 삭제 컨펌
 	if(confirm("정말 삭제하시겠습니까?")){
@@ -126,11 +170,31 @@ function fn_boardDelete(q_no){ //게시물 삭제 컨펌
 </div>
 <div class="view">
 	<%
-	for(int i=1; i<=lastpage; i++){
+	String startStyle = "";
+	String startURL = "boardNotification.jsp?V="+(startRange-1)+"";
+	if(startRange == 1){
+		startStyle = "color:#5d5e5e";
+		startURL = "#";
+	}
+	%>
+	<a href="<%=startURL %>" style="<%=startStyle %>">이전</a>
+	<% 
+	for(int i=startRange; i<=endRange; i++){
+		String style = (viewPage == i)?"text-decoration:underline":"";
 	%>		
-	<a href="boardNotification.jsp?V=<%=i%>"><%=i%></a>
-	<%}%>
+	<a href="boardNotification.jsp?V=<%=i%>" style="<%=style%>"><%=i%></a>
+	<% 
+	}
+	String endStyle = "";
+	String endURL = "boardNotification.jsp?V="+(endRange+1)+"";
+	if(endRange >= endPage){
+		endStyle = "color:#5d5e5e";
+		endURL = "#";
+	}
+	%>
+	<a href="<%=endURL%>" style="<%=endStyle %>">다음</a>	
 	</div>
+
 </div>
 </section>
 <%@include file="footer.jsp" %>

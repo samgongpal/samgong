@@ -30,11 +30,13 @@ String title = request.getParameter("title");
 //[QnA] 와 관리자를 구분하기위한 제목에 들어갈 변수 입니다.
 
 String q_no = request.getParameter("q_no");
+String q_select = request.getParameter("q_select");
 String q_title = request.getParameter("q_title");
 String q_con = request.getParameter("q_con");
 String q_hit = (check_id.equals("samgongpal"))?"1":"0";
 String q_date = request.getParameter("q_date");
 
+q_select = (q_select == null)?"":q_select;
 
 int result = 0;
 
@@ -65,7 +67,7 @@ try{
 		더좋은방법을 찾으면 차후 수정하겠습니다.
 		*/ 
 		ps.setString(1, q_no);
-		ps.setString(2, title + q_title);
+		ps.setString(2, q_select + title + q_title);
 		ps.setString(3, q_con);
 		ps.setString(4, q_hit);
 		ps.setString(5, q_date);	  

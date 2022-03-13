@@ -20,7 +20,6 @@
 .board td{
 	padding: 1.5rem;
 	border-bottom: 1px solid gray;
-	border-collapse: collapse;
 }
 .board a{
 	cursor: pointer;
@@ -142,6 +141,12 @@
 }
 table{
 	width: 90%;
+}
+table,th,td{
+	border-collapse: collapse;
+}
+a{
+	text-decoration: none;
 }
 button{
 	text-align: center;
