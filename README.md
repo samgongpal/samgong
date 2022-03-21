@@ -12,7 +12,7 @@ https://green27.duckdns.org
 
 이영수 \- DB 설계 / 영화목록 / 현재상영작 / 자료수집
 
-정재희[yunamom] \- DB 설계 / 메인화면 영화검색 / 고객센터 / CSS 총괄 / AWS EC2 서버 구축 및 배포
+정재희 \- DB 설계 / 메인화면 영화검색 / 고객센터 / CSS 총괄 / AWS EC2 서버 구축 및 배포
 <br>
 <br>
 <br>
