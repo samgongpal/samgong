@@ -93,8 +93,8 @@ if(strReferer == null){
       </tr>
     </table>
       </div>
-	      <input type="submit" value="수정">
-	      <input type="button" value="취소" onclick="window.location.href='index.jsp'">
+	      <input class="button" type="submit" value="수정">
+	      <input class="button" type="button" value="취소" onclick="window.location.href='index.jsp'">
     </form>
   </section>
   <%@include file="footer.jsp" %>

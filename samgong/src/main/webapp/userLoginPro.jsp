@@ -16,16 +16,17 @@ if(strReferer == null){
 <%
 	return;
 }
+/* 아이디/비번 기억하기 체크박스 쿠키 */
 String idcheck = request.getParameter("idcheck");
 String pwcheck = request.getParameter("pwcheck");
-//아이디/비번 기억하기 체크박스 쿠키
+
 
 
 request.setCharacterEncoding("UTF-8");
   
 String id = request.getParameter("u_id");
 String pw = request.getParameter("u_pw");
-  
+
 if(id == null || pw == null || id.equals("") || pw.equals("")){
 %>
 	<script>
@@ -56,8 +57,7 @@ if(id == null || pw == null || id.equals("") || pw.equals("")){
 		  u_id = rs.getString("u_id");
 		  u_pw = rs.getString("u_pw");
 		  u_no = rs.getString("u_no");
-		  u_name = rs.getString("u_name");
-		 
+		  u_name = rs.getString("u_name");		 
 	  }
 	  conn.close();
 	  ps.close();
@@ -90,14 +90,7 @@ if(id.equals(u_id) && pw.equals(u_pw)) {
 	}
 %>
 	  <script>
-	    alert("고객님 환영합니다.");
-	    location="index.jsp";
-	  </script>
-<%
-  }else if(u_id.equals("samgongpal")){
-%>
-	  <script>
-	    alert("관리자님 환영합니다.");
+	    alert("환영합니다.");
 	    location="index.jsp";
 	  </script>
 <%

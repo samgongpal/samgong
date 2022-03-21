@@ -53,6 +53,22 @@ input[type=checkbox]:checked + label{
 input[type=checkbox]{
 	display: none;
 }
+.button{
+	margin-top: 20px;
+	padding-right: 1.2rem;
+	padding-left: 1.2rem;
+	padding-top: 0.7rem;
+	padding-bottom: 0.7rem;
+	cursor: pointer;
+	border: 0;
+	border-radius: 0.2rem;
+	color: #f2f2f2;
+	background-color: #539cae;
+	font-size: 15px;
+}
+.button:hover{
+	background-color: #333;
+}
 @media screen and (min-width: 800px) {
 	.ticket{
 		display: flex;

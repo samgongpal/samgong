@@ -27,15 +27,13 @@ if(check_id == null || check_no == null){
 
 String name = (check_id.equals("samgongpal"))?"삼공팔":check_id;
 String title = (check_id.equals("samgongpal"))?"":"[QnA]"+check_id+" - ";
-// 게시글 작성은 관리자 or QnA 에서 넘어오는 회원이므로 관리자 외에는 이름 앞에 [QnA]를 붙여서 구분합니다.
+/* 게시글 작성은 관리자 or QnA 에서 넘어오는 회원이므로 관리자 외에는 이름 앞에 [QnA]를 붙여서 구분합니다. */
 String caption = (check_id.equals("samgongpal"))?"관리자 write":"QnA write";
-
 String q_no = "";
 
 Connection conn = null;
 PreparedStatement ps = null;
 ResultSet rs = null;
-
 
 try{
 	  conn = DAO.getConnection();

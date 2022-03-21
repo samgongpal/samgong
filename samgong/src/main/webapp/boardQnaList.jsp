@@ -84,6 +84,7 @@ table,th,td{
 }
 a{
 	text-decoration: none;
+	padding: 1rem;
 }
 </style>
 </head>
@@ -174,7 +175,7 @@ ResultSet rs = pstmt.executeQuery();
 		int q_hit = rs.getInt("q_hit");
 		
 		/* [QnA] 옆에 회원아이디를 출력하지 않도록 합니다. */
-		q_title = q_title.replace(check,"");
+		q_title = q_title.replace("[QnA]"+check+" - ","[QnA] - ");
 		%>
 		<tr>
 			<td><%=rowNo%></td>

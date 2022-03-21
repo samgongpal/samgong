@@ -107,6 +107,7 @@ table,th,td{
 }
 a{
 	text-decoration: none;
+	padding: 1rem;
 }
 </style>
 </head>

@@ -60,23 +60,29 @@ try{
 
 String name = "";
 String title = "";
-// 게시글 작성은 관리자 or QnA 에서 넘어오는 회원이므로 관리자 외에는 이름 앞에 [QnA]를 붙여서 구분합니다.
-String caption = "";
-String editTitle = (q_hit == 0)?"- [답변 완료]":"";
-String line = "\n- - - - - - - - - - - - - - - - - - - -";
-String editContent = (q_hit == 0)?line+"\n\n[삼공 시네마] 1:1 문의글의 답변 입니다.\n\n":"";
 
-switch(check_id){
-case("samgongpal"): 
+/* 관리자가 답변을 작성할때 제목/내용에 자동으로 추가될수있게 변수를 생성해 줍니다. */
+String caption = "";
+String line = "\n- - - - - - - - - - - - - - - - - - - -";
+String editTitle = "";
+String editContent = "";
+
+if(q_hit == 0 && check_id.equals("samgongpal")){
+	editTitle = "- [답변 완료]";
+	editContent = line+"\n\n[삼공 시네마] 1:1 문의글의 답변 입니다.\n\n";
+}
+
+if(check_id.equals("samgongpal")){
 	name = "삼공팔";
 	caption = "관리자 write";
-	
-	break;
-default: 
+}else{
 	name = check_id;
-	title = "[QnA]["+check_id+"] ";
 	caption = "QnA write";
-	break;
+	/* 회원에게는 문의글 제목만 보여지게 합니다. */
+	q_title = q_title.replace("[QnA]"+check_id+" - ","");
+	
+	/* 게시글 작성은 관리자 or QnA 에서 넘어오는 회원이므로 관리자 외에는 이름 앞에 [QnA]를 붙여서 구분합니다. */
+	title = "[QnA]"+check_id+" - ";
 }
 
 q_con = q_con.replace("<br>","\r\n"); //게시물 줄바꿈
@@ -122,10 +128,10 @@ textarea{
 	
 	<input type="hidden" name="q_date" value="<%= q_date%>"> 
 	<input type="hidden" name="q_no" value="<%=q_no%>">
-	<input type="hidden" name="GUBUN" value="M">
+	<input type="hidden" name="q_hit" value="<%=q_hit%>">
 	<!-- N = 새글 작성 , M = 수정 , D = 삭제 구분을 위한 GUBUN변수* -->
+	<input type="hidden" name="GUBUN" value="M">
 	<input type="hidden" name="title" value="<%=title %>">
-	
 	<table>
 		<tr>
 			<td style="text-align:left">

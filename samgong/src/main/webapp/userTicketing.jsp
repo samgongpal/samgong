@@ -84,21 +84,21 @@
     <div class="pageBox1">마이페이지</div>
     <div class="pageBox">
    		<div class="pageBox2">
-		    <div>영화제목  영화관  인원</div>
+		    <div>영화제목 | 영화관 | 인원</div>
 		    <%for(int i = 0; i < userTicket.size(); i ++) {%>
  
         	<%String[] Ticketing = userTicket.get(i);%>
         	<div class="page">
        		<div><%= Ticketing[1]%></div>
-        	<div><%= Ticketing[2]%></div>
-        	<div><%= Ticketing[3]%></div>
+        	<div> | <%= Ticketing[2]%></div>
+        	<div> | <%= Ticketing[3]%></div>
         	</div>
         	<div>
 			<input type="button" value="삭제" onclick="location.href='userTicketingPro.jsp?r_no=<%= Ticketing[0]%>'">
        		</div>
       		<%} %>
      		<div>
-     		<button type="button" onclick="location.href='index.jsp'">돌아가기</button></td>
+     		<button type="button" onclick="location.href='index.jsp'">돌아가기</button>
 			</div>
    		</div>
      	<div class="pageBox3" >
@@ -113,8 +113,8 @@
     </form>
     <%}else {%>
       <h2>예매내역이 없습니다.</h2>
-      <button type="button" onclick="location.href='ticketList.jsp'">예매하러가기</button>
-      <button type="button" onclick="location.href='index.jsp'">취소</button>
+      <button class="button" type="button" onclick="location.href='ticketList.jsp'">예매하러가기</button>
+      <button class="button" type="button" onclick="location.href='index.jsp'">취소</button>
     <%} %>
   </section>
 <%@include file="footer.jsp" %>

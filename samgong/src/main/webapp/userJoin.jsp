@@ -105,7 +105,7 @@ if(session_no != null){
 	      </td>
       </tr>   
       <tr>
-      <td><input type="text" name="u_name" placeholder="이름" required maxlength="3" ></td>
+      <td><input type="text" name="u_name" placeholder="이름" required maxlength="10" ></td>
       </tr>   
       <tr>
 	      <td style="text-align:center">
@@ -127,8 +127,8 @@ if(session_no != null){
       </tr>
     </table>
     </div>
-          <input type="submit" onclick="fn_checkAll();return false;" value="회원가입">
-          <input type="reset" value="취소">
+          <input class="button" type="submit" onclick="fn_checkAll();return false;" value="회원가입">
+          <input class="button" type="reset" value="취소">
     </form>
   </section>
 <%@include file="footer.jsp" %>

@@ -91,35 +91,7 @@ if(check_id == null || check_no == null){
 <title>∙ 좌석선택 ∙</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/ticket.css">
-<style>
-.seatWrap{
-	margin: 50px;
-}
-.seat{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-input[type=checkbox] + label{
-	display: inline-block;
-	margin-left: 10px;
-	width: 80px;
-	height: 80px;
-	border: 2px solid #a9a49d;
-	border-radius: 0.8rem;
-	cursor: pointer;
-}
-input[type=checkbox] + label:hover{
-	background-color: rgba(255,255,255,0.5);
-}
-input[type=checkbox]:checked + label{
-	background-color: #a9a49d;
-}
-input[type=checkbox]{
-	display: none;
-}
 
-</style>
 </head>
 <script>
 function fn_submit(){
@@ -154,8 +126,8 @@ function fn_submit(){
 			<%}%>
 	</div>
 		<div style="text-align:center">
-		<input type="submit" onclick="fn_submit(); return false;" value="선택완료">						
-		<button type="reset" onclick="history.back()">뒤로가기</button>	
+		<input class="button" type="submit" onclick="fn_submit(); return false;" value="선택완료">						
+		<button class="button" type="reset" onclick="history.back()">뒤로가기</button>	
 		</div>		
 	</form>
 </section>
